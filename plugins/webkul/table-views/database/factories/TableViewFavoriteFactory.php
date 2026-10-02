@@ -1,6 +1,6 @@
 <?php
 
-namespace Webkul\TableView\Database\Factories;
+namespace Webkul\TableViews\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Webkul\Security\Models\User;
