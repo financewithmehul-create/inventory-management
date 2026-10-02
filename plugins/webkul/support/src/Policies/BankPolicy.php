@@ -15,7 +15,7 @@ class BankPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_supporbank');
+        return $user->can('view_any_support_bank');
     }
 
     /**
@@ -23,7 +23,7 @@ class BankPolicy
      */
     public function view(User $user, Bank $bank): bool
     {
-        return $user->can('view_support_acbank');
+        return $user->can('view_support_bank');
     }
 
     /**
@@ -55,7 +55,7 @@ class BankPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_suppbank');
+        return $user->can('delete_any_support_bank');
     }
 
     /**
@@ -63,7 +63,7 @@ class BankPolicy
      */
     public function forceDelete(User $user, Bank $bank): bool
     {
-        return $user->can('force_delete_subank');
+        return $user->can('force_delete_support_bank');
     }
 
     /**
@@ -71,7 +71,7 @@ class BankPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_anbank');
+        return $user->can('force_delete_any_support_bank');
     }
 
     /**
@@ -79,7 +79,7 @@ class BankPolicy
      */
     public function restore(User $user, Bank $bank): bool
     {
-        return $user->can('restore_supportbank');
+        return $user->can('restore_support_bank');
     }
 
     /**
@@ -87,7 +87,7 @@ class BankPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_supbank');
+        return $user->can('restore_any_support_bank');
     }
 
     /**
@@ -95,6 +95,6 @@ class BankPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_supportbank');
+        return $user->can('reorder_support_bank');
     }
 }

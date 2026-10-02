@@ -58,7 +58,7 @@ it('forbids listing banks without permission', function () {
 });
 
 it('lists banks for authorized users', function () {
-    actingAsBankApiUser(['view_any_supporbank']);
+    actingAsBankApiUser(['view_any_support_bank']);
 
     Bank::factory()->count(2)->create();
 
@@ -97,7 +97,7 @@ it('validates required fields when creating a bank', function () {
 });
 
 it('shows a bank for authorized users', function () {
-    actingAsBankApiUser(['view_support_acbank']);
+    actingAsBankApiUser(['view_support_bank']);
 
     $bank = Bank::factory()->create();
 
@@ -108,7 +108,7 @@ it('shows a bank for authorized users', function () {
 });
 
 it('returns 404 for a non-existent bank', function () {
-    actingAsBankApiUser(['view_support_acbank']);
+    actingAsBankApiUser(['view_support_bank']);
 
     $this->getJson(bankRoute('show', 999999))
         ->assertNotFound();
@@ -144,7 +144,7 @@ it('deletes a bank for authorized users', function () {
 });
 
 it('restores a soft deleted bank for authorized users', function () {
-    actingAsBankApiUser(['restore_supportbank']);
+    actingAsBankApiUser(['restore_support_bank']);
 
     $bank = Bank::factory()->create();
     $bank->delete();
@@ -160,7 +160,7 @@ it('restores a soft deleted bank for authorized users', function () {
 });
 
 it('force deletes a bank for authorized users', function () {
-    actingAsBankApiUser(['force_delete_subank']);
+    actingAsBankApiUser(['force_delete_support_bank']);
 
     $bank = Bank::factory()->create();
     $bank->delete();

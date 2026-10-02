@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -26,10 +27,14 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->trustProxies(at: '*');
+
+        $middleware->redirectGuestsTo(fn (Request $request) => $request->is('api/*', 'admin/api/*')
+            ? null
+            : route('filament.admin.auth.login'));
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (MissingJournalException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => $e->getMessage(),
                 ], 422);
@@ -46,7 +51,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (ValidationException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => $e->getMessage(),
                     'errors'  => $e->errors(),
@@ -55,7 +60,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AuthenticationException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => 'Unauthenticated.',
                 ], 401);
@@ -63,7 +68,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AuthorizationException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => 'This action is unauthorized.',
                 ], 403);
@@ -71,7 +76,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AccessDeniedHttpException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => 'This action is unauthorized.',
                 ], 403);
@@ -79,7 +84,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (ModelNotFoundException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => 'Resource not found.',
                 ], 404);
@@ -87,7 +92,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (NotFoundHttpException $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 return response()->json([
                     'message' => 'The requested resource was not found.',
                 ], 404);
@@ -95,7 +100,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (Throwable $e, $request) {
-            if ($request->is('api/*') || $request->expectsJson()) {
+            if ($request->is('api/*', 'admin/api/*') || $request->expectsJson()) {
                 $statusCode = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
 
                 if ($statusCode === 500) {

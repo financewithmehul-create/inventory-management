@@ -74,6 +74,14 @@ class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAp
 
     protected $guard_name = ['web', 'sanctum'];
 
+    /**
+     * Roles and permissions are managed on the web guard, so API (Sanctum) requests check against them too.
+     */
+    protected function getDefaultGuardName(): string
+    {
+        return 'web';
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->is_active;
