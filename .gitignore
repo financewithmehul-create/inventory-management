@@ -34,3 +34,10 @@ opencode.json
 
 # Credential files (keystores, private keys, etc.)
 /credentials/
+
+# Local secrets: environment files and MCP client config (may hold Supabase project refs or tokens)
+.env.*
+!.env.example
+!.env.pgtest
+.mcp.json
+supabase/.temp
