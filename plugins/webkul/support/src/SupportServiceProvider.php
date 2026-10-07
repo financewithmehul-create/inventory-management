@@ -17,12 +17,17 @@ use Webkul\PluginManager\PackageServiceProvider;
 use Webkul\Security\Livewire\AcceptInvitation;
 use Webkul\Security\Models\Role;
 use Webkul\Security\Policies\RolePolicy;
+use Webkul\Support\Console\Commands\LicenseIssue;
+use Webkul\Support\Console\Commands\LicenseKeygen;
+use Webkul\Support\Console\Commands\LicenseStatus;
 use Webkul\Support\Database\Dialects\DatabaseDialect;
 use Webkul\Support\Database\Dialects\MySqlDialect;
 use Webkul\Support\Database\Dialects\PostgresDialect;
 use Webkul\Support\Http\Controllers\CompanyContextController;
 use Webkul\Support\Livewire\QuickNavigation;
 use Webkul\Support\Services\CompanyContext;
+use Webkul\Support\Services\LicenseGuard;
+use Webkul\Support\Services\LicenseService;
 use Webkul\Support\Traits\HasFilamentDefaults;
 use Webkul\Support\Traits\HasRouterMacros;
 use Webkul\Support\Traits\HasRtlSupport;
@@ -86,8 +91,14 @@ class SupportServiceProvider extends PackageServiceProvider
                 '2026_06_12_000001_create_brand_settings',
                 '2026_10_08_000001_add_brand_name_and_default_theme',
                 '2026_10_08_000002_create_onboarding_settings',
+                '2026_10_08_000003_create_license_settings',
             ])
             ->runsSettings()
+            ->hasCommands([
+                LicenseIssue::class,
+                LicenseKeygen::class,
+                LicenseStatus::class,
+            ])
             ->hasSeeder('Webkul\\Support\\Database\\Seeders\\DatabaseSeeder');
     }
 
@@ -104,6 +115,13 @@ class SupportServiceProvider extends PackageServiceProvider
 
             return null;
         });
+
+        $this->app->make(LicenseGuard::class)->register();
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::CONTENT_START,
+            fn (): string => view('support::license-banner', ['status' => app(LicenseService::class)->status()])->render(),
+        );
 
         Livewire::component('accept-invitation', AcceptInvitation::class);
 
@@ -165,6 +183,8 @@ class SupportServiceProvider extends PackageServiceProvider
         });
 
         $this->app->scoped(CompanyContext::class);
+
+        $this->app->singleton(LicenseService::class);
 
         $this->registerLanguageSwitch();
 
