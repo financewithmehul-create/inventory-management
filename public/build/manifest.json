@@ -1,0 +1,24 @@
+{
+  "plugins/webkul/barcode/resources/dist/barcode.css": {
+    "file": "assets/barcode-BVDr_q2i.css",
+    "src": "plugins/webkul/barcode/resources/dist/barcode.css",
+    "isEntry": true
+  },
+  "plugins/webkul/barcode/resources/dist/barcode.js": {
+    "file": "assets/barcode-BbEpvw-Z.js",
+    "name": "barcode",
+    "src": "plugins/webkul/barcode/resources/dist/barcode.js",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-scXIUgeM.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-C0G0cght.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

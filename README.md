@@ -196,6 +196,8 @@ php artisan serve
 
 Visit `http://localhost:8000` and log in with your admin credentials!
 
+> **Step-by-step guides:** [Run and test locally](docs/LOCAL_SETUP.md) · [Deploy on Hostinger (app + MySQL)](docs/DEPLOY_HOSTINGER.md)
+
 ---
 
 ## ☁️ AureusERP Cloud Hosting
