@@ -91,6 +91,8 @@ return [
     |
     */
 
+    'api_rate_limit' => (int) env('API_RATE_LIMIT', 120),
+
     'onboarding_enabled' => env('ONBOARDING_ENABLED', true),
 
     /*

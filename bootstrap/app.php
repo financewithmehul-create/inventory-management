@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\SecurityHeaders;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\ThrottleApi;
 use Filament\Notifications\Notification;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -26,7 +28,9 @@ return Application::configure(basePath: dirname(__DIR__))
             SetLocale::class,
         ]);
 
-        $middleware->trustProxies(at: '*');
+        $middleware->append([SecurityHeaders::class, ThrottleApi::class]);
+
+        $middleware->trustProxies(at: env('TRUSTED_PROXIES') === '*' ? '*' : array_filter(explode(',', (string) env('TRUSTED_PROXIES'))));
 
         $middleware->redirectGuestsTo(fn (Request $request) => $request->is('api/*', 'admin/api/*')
             ? null

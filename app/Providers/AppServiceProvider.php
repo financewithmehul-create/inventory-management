@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 use Livewire\Livewire;
 use Webkul\Security\Models\User;
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
         }
+
+        Password::defaults(fn (): Password => app()->environment('production')
+            ? Password::min(10)->mixedCase()->numbers()->uncompromised()
+            : Password::min(8));
 
         on('dehydrate', function (Component $component): void {
             if (! Livewire::isLivewireRequest()) {
