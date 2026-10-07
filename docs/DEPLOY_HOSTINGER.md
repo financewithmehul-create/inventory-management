@@ -14,6 +14,35 @@ database, the domain, SSL, backups and scheduled jobs. No Supabase or other paid
 
 ---
 
+## Quick path (recommended): subdomain + one command
+
+This is how the demo at `inventory.creativebee.app` (and every customer site) is set up. Parts 1 to 8 below
+explain each step in detail; the installer script does Parts 4, 6 and 7 for you.
+
+1. **Create the subdomain.** hPanel → **Websites → Add website → Empty PHP/HTML website**, choose **Use a
+   subdomain** (or **Domains → Subdomains → Create**), enter `inventory` under `creativebee.app`. Hostinger
+   creates `~/domains/inventory.creativebee.app/public_html`.
+2. **PHP 8.3 and extensions, SSL**: Part 1 below. Turn on **Force HTTPS**.
+3. **Database**: Part 2 below (one new database per site, never shared).
+4. **SSH in** (Part 3) and run:
+
+```bash
+cd ~/domains/inventory.creativebee.app
+git clone https://github.com/financewithmehul-create/inventory-management.git erp
+cd erp && git checkout claude/zen-curie-pt2356
+bash scripts/hostinger/install.sh
+```
+
+   It checks PHP, installs packages, asks for the site address, database details and the administrator, writes a
+   locked-down `.env`, installs the ERP and prints the last hPanel steps.
+5. **Point the site at the app** and add the two **cron jobs** as printed by the script (Parts 5 and 8).
+6. Open `https://inventory.creativebee.app`. You are sent to the **setup wizard** (company, logo, colours,
+   light/dark, modules). Settings can be changed later under **Settings → Branding**.
+
+Update later with `bash scripts/hostinger/update.sh` (it makes a database backup first).
+
+---
+
 ## Part 1: Prepare the website in hPanel
 
 1. Log in to **hPanel** and open **Websites → Manage** next to the client's domain.
@@ -170,6 +199,10 @@ Find your exact home path with `pwd` after logging in over SSH.
 - **Hostinger backups:** open **Files → Backups** to see automatic backups and restore them.
 - **Database export:** open **Databases → phpMyAdmin → Enter phpMyAdmin**, choose the database, then
   **Export → Quick → SQL**. Do this before every update and store the file somewhere safe.
+- **Automatic daily copy:** the app saves a compressed database copy to `storage/app/backups` every night at
+  02:30 (needs the cron job in Part 8) and keeps 14 days. Run one now with `php artisan erp:backup`. These files
+  are not reachable from the web. Download them over SFTP now and then.
+- **Restore:** `gunzip -c storage/app/backups/FILE.sql.gz | mysql -u USER -p DATABASE`.
 - Back up `~/domains/example.com/erp/.env` and the `storage/app` folder (uploaded files) too.
 
 ## Part 10: Updating the app later
@@ -201,6 +234,57 @@ Export the database from phpMyAdmin first.
 | Pages load without styling | `public/build` is missing. It is committed in the repository; run `git status` and `git pull`. |
 | Logo or uploads missing | Run `php artisan storage:link` again. |
 | Jobs and emails never run | Check the two cron jobs in Part 8 and the paths in them. |
+
+## Licensing: 14-day trial and license keys
+
+Every new install gets a **14-day free trial**. After that the workspace becomes **read-only** (people can sign
+in and see everything, nothing can be added or changed, nothing is ever deleted) until a license key is entered
+under **Settings → License**. A banner shows the days left.
+
+You (the vendor) create keys. Customers cannot make or extend them.
+
+1. **Once, on your own computer** (not on a customer server): `php artisan license:keygen`. Save the
+   **private key** in a password manager. Put the **public key** in `LICENSE_PUBLIC_KEY` in each customer's `.env`
+   (the install script asks for it).
+2. **For each sale:**
+
+```bash
+php artisan license:issue --to="Acme Traders" --domain=acme.com --until=2027-10-31
+# add --users=10 to record a user limit; leave out --until for a lifetime key
+```
+
+   It asks for your private key (hidden, never stored; or set `LICENSE_PRIVATE_KEY` for the command only) and
+   prints a key starting `AUR1.`. Send it to the customer. It only works on that domain (subdomains included).
+3. The customer pastes it under **Settings → License → Activate**. `php artisan license:status` shows the state.
+
+To turn licensing off for your own demo, set `LICENSE_ENFORCE=false` in `.env`.
+
+## Selling it to a client
+
+**The client buys:** a domain and a Hostinger **Business** web hosting plan (this gives each client their own
+database, so customers are fully separated from each other and cost you nothing to host).
+
+**You do (about 30 minutes per client):**
+
+1. Ask the client to add you to their Hostinger account (or share SSH details), or do it on a call.
+2. Follow the **Quick path** above on their domain, using their own database and an administrator email they own.
+3. Issue their license key (above) and give it to them after the trial or at handover.
+4. Show them the setup wizard: company, logo, colours, modules, then **Settings → Users** to invite staff and
+   assign roles (Inventory Manager, Warehouse Staff, Viewer and more, each with its own avatar).
+
+**Per-customer checklist:** PHP 8.3 and extensions · SSL + Force HTTPS · own database · `.env` with
+`APP_DEBUG=false` · cron jobs added · admin password changed and two-factor sign-in enabled (profile) ·
+license public key set · key issued · first backup taken (`php artisan erp:backup`).
+
+## Security notes
+
+- Production `.env` uses `APP_DEBUG=false`, encrypted sessions, secure cookies and warning-level logs
+  (the install script sets these). Keep `.env` at `chmod 600`.
+- The app sends security headers (clickjacking, MIME sniffing, referrer policy, HSTS on HTTPS) and limits the
+  REST API (120 calls a minute per person, `API_RATE_LIMIT`).
+- Passwords: at least 10 characters with upper and lower case letters and a number, and not found in known
+  breaches (checked in production).
+- Staff can turn on authenticator-app two-factor sign-in from their profile.
 
 ## Costs recap
 
