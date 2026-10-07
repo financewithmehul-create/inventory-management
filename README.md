@@ -196,7 +196,7 @@ php artisan serve
 
 Visit `http://localhost:8000` and log in with your admin credentials!
 
-> **Step-by-step guides:** [Run and test locally](docs/LOCAL_SETUP.md) · [Deploy on Hostinger (app + MySQL)](docs/DEPLOY_HOSTINGER.md)
+> **Step-by-step guides:** [Run and test locally](docs/LOCAL_SETUP.md) · [Windows one-click setup + cheat sheet](docs/WINDOWS_CHEATSHEET.md) · [Deploy on Hostinger (app + MySQL)](docs/DEPLOY_HOSTINGER.md)
 
 ---
 

@@ -160,7 +160,7 @@ The ERP sends notifications and runs background work through Laravel's scheduler
 3. Add a second job, also every minute, for the queue:
 
 ```
-/usr/bin/php /home/u123456789/domains/example.com/erp/artisan queue:work --stop-when-empty --max-time=55 >> /dev/null 2>&1
+/usr/bin/php /home/u123456789/domains/example.com/erp/artisan queue:work --stop-when-empty --max-time=55 --memory=512 >> /dev/null 2>&1
 ```
 
 Find your exact home path with `pwd` after logging in over SSH.

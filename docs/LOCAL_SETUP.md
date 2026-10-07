@@ -113,7 +113,9 @@ Open **http://127.0.0.1:8000/admin** and sign in with the email and password fro
 composer run dev
 ```
 
-Use this while changing the code. Stop it with `Ctrl+C`.
+Use this while changing the code. Stop it with `Ctrl+C`. (On Windows the log viewer is not supported; use `scripts\windows\start.ps1 -Dev` instead, see [the Windows cheat sheet](WINDOWS_CHEATSHEET.md).)
+
+If you start the queue worker by hand, give it more memory than Laravel's default, or it stops itself: `php artisan queue:listen --tries=1 --memory=512`.
 
 If you use Laravel Herd, put the project folder in Herd's sites and open `http://inventory-management.test/admin`
 instead.
