@@ -67,6 +67,10 @@ else
   php artisan key:generate --force
 fi
 
+say "Checking the database connection"
+php artisan db:show >/dev/null 2>&1 \
+  || fail "Cannot connect to the database. Open .env (nano .env) and set APP_URL, DB_HOST=localhost, DB_DATABASE, DB_USERNAME and DB_PASSWORD from hPanel > Databases, then run this script again."
+
 say "Installing the ERP (this wipes an empty database and builds all tables)"
 adminname=$(ask "Administrator name [Admin]:" "Admin")
 adminemail=$(ask "Administrator email:")
