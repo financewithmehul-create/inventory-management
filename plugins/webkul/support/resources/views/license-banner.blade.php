@@ -4,12 +4,11 @@
 @endphp
 
 @if ($show && auth()->check() && ! request()->routeIs('filament.*.pages.onboarding'))
+    @php($tone = $expired ? 'danger' : 'warning')
+
     <div
-        @class([
-            'mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg px-4 py-3 text-sm ring-1',
-            'bg-danger-50 text-danger-700 ring-danger-600/20 dark:bg-danger-400/10 dark:text-danger-400 dark:ring-danger-400/30' => $expired,
-            'bg-warning-50 text-warning-700 ring-warning-600/20 dark:bg-warning-400/10 dark:text-warning-400 dark:ring-warning-400/30' => ! $expired,
-        ])
+        class="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg px-4 py-3 text-sm"
+        style="background: color-mix(in oklab, var(--{{ $tone }}-500) 12%, transparent); color: var(--{{ $tone }}-600); border: 1px solid color-mix(in oklab, var(--{{ $tone }}-500) 30%, transparent)"
     >
         <span>
             @if ($expired)

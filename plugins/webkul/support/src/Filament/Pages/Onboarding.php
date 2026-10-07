@@ -379,6 +379,10 @@ class Onboarding extends Page
             ->success()
             ->send();
 
+        if (in_array($state['default_theme'] ?? null, ['light', 'dark', 'system'], true)) {
+            $this->js('localStorage.setItem(\'theme\', '.json_encode($state['default_theme']).')');
+        }
+
         $this->redirect(filament()->getUrl());
     }
 
@@ -424,6 +428,10 @@ class Onboarding extends Page
             $value = $state[$field] ?? null;
 
             $brand->{$field} = is_array($value) ? (array_values($value)[0] ?? null) : ($value ?: $brand->{$field});
+        }
+
+        if (blank($state['dark_logo'] ?? null) && filled($state['light_logo'] ?? null)) {
+            $brand->dark_logo = $brand->light_logo;
         }
 
         $brand->save();
