@@ -71,6 +71,8 @@ say "Checking the database connection"
 php artisan db:show >/dev/null 2>&1 \
   || fail "Cannot connect to the database. Open .env (nano .env) and set APP_URL, DB_HOST=localhost, DB_DATABASE, DB_USERNAME and DB_PASSWORD from hPanel > Databases, then run this script again."
 
+[ -e public/storage ] || ln -s ../storage/app/public public/storage
+
 say "Installing the ERP (this wipes an empty database and builds all tables)"
 adminname=$(ask "Administrator name [Admin]:" "Admin")
 adminemail=$(ask "Administrator email:")
@@ -81,7 +83,6 @@ adminpass=$(askhidden "Administrator password (min 10 characters, hidden):")
 php artisan erp:install --force --no-interaction --country=IN --currency=INR \
   --admin-name="$adminname" --admin-email="$adminemail" --admin-password="$adminpass"
 
-php artisan storage:link || true
 php artisan optimize
 chmod -R 775 storage bootstrap/cache
 

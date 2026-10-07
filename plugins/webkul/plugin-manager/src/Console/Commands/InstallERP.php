@@ -657,6 +657,12 @@ class InstallERP extends Command
             return;
         }
 
+        if (! function_exists('symlink') && ! function_exists('exec')) {
+            $this->warn('⚠️ This server blocks symbolic links. Create the storage link by hand: ln -s ../storage/app/public public/storage');
+
+            return;
+        }
+
         $this->info('🔗 Linking storage directory...');
 
         Artisan::call('storage:link', [], $this->getOutput());
