@@ -17,8 +17,9 @@ say "Checking the server"
 command -v php >/dev/null || fail "php not found"
 php -r 'exit(version_compare(PHP_VERSION, "8.3.0", ">=") ? 0 : 1);' \
   || fail "PHP 8.3 is required (found $(php -r 'echo PHP_VERSION;')). In hPanel: Advanced > PHP Configuration > PHP 8.3."
+modules=$(php -m)
 for ext in bcmath ctype curl dom fileinfo gd intl mbstring openssl pdo_mysql tokenizer xml zip sodium; do
-  php -m | grep -qix "$ext" || fail "PHP extension '$ext' is missing. Tick it in hPanel > PHP Configuration > PHP Extensions."
+  printf '%s\n' "$modules" | grep -qix "$ext" || fail "PHP extension '$ext' is missing. Tick it in hPanel > PHP Configuration > PHP Extensions."
 done
 command -v composer >/dev/null || fail "composer not found"
 
