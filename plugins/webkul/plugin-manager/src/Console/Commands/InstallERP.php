@@ -76,6 +76,8 @@ class InstallERP extends Command
 
         $this->generateRolesAndPermissions();
 
+        $this->syncDefaultRoles();
+
         $this->storageLink();
 
         $this->resolveLocalisation();
@@ -86,6 +88,8 @@ class InstallERP extends Command
 
         $this->createAdminUser();
 
+        $this->resetOnboarding();
+
         $this->markAsInstalled();
 
         Event::dispatch('aureus.installed');
@@ -93,6 +97,25 @@ class InstallERP extends Command
         $this->warnOnEnvCurrencyMismatch();
 
         $this->info('🎉 ERP System installation completed successfully!');
+    }
+
+    /**
+     * Create the built-in roles from config/roles.php.
+     */
+    protected function syncDefaultRoles(): void
+    {
+        $this->call('erp:roles:sync');
+    }
+
+    /**
+     * A new installation starts with the first-run setup wizard.
+     */
+    protected function resetOnboarding(): void
+    {
+        DB::table('settings')
+            ->where('group', 'onboarding')
+            ->whereIn('name', ['completed_at', 'completed_by'])
+            ->update(['payload' => json_encode(null)]);
     }
 
     /**

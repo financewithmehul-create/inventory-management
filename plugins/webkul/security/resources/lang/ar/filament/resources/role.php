@@ -3,8 +3,10 @@
 return [
     'form' => [
         'fields' => [
-            'web'     => 'ويب',
-            'sanctum' => 'Sanctum',
+            'avatar'        => 'Role picture',
+            'avatar-helper' => 'Shown next to everyone with this role who has no photo of their own.',
+            'web'           => 'ويب',
+            'sanctum'       => 'Sanctum',
         ],
     ],
 

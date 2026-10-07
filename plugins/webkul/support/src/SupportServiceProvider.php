@@ -84,6 +84,8 @@ class SupportServiceProvider extends PackageServiceProvider
             ->runsMigrations()
             ->hasSettings([
                 '2026_06_12_000001_create_brand_settings',
+                '2026_10_08_000001_add_brand_name_and_default_theme',
+                '2026_10_08_000002_create_onboarding_settings',
             ])
             ->runsSettings()
             ->hasSeeder('Webkul\\Support\\Database\\Seeders\\DatabaseSeeder');

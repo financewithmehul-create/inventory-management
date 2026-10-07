@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Filament\Enums\ThemeMode;
 use Filament\Facades\Filament;
 use Filament\Support\Colors\Color;
 use Filament\Support\Colors\ColorManager;
@@ -96,6 +97,12 @@ class ApplyBrandSettings
             if (! empty($brand->favicon)) {
                 $panel->favicon($this->assetUrl($brand->favicon));
             }
+
+            if (! empty($brand->brand_name)) {
+                $panel->brandName($brand->brand_name);
+            }
+
+            $panel->defaultThemeMode(ThemeMode::tryFrom((string) $brand->default_theme) ?? ThemeMode::System);
 
             if (! empty($brand->logo_height)) {
                 $panel->brandLogoHeight($brand->logo_height);

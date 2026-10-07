@@ -4,6 +4,7 @@ namespace Webkul\Security\Filament\Resources\RoleResource\Schemas;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Facades\Filament;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -189,6 +190,17 @@ JS,
                                     ->options(fn (): Arrayable => Utils::getTenantModel() ? Utils::getTenantModel()::pluck('name', 'id') : collect())
                                     ->hidden(fn (): bool => ! (RoleResource::shield()->isCentralApp() && Utils::isTenancyEnabled()))
                                     ->dehydrated(fn (): bool => ! (RoleResource::shield()->isCentralApp() && Utils::isTenancyEnabled())),
+                                FileUpload::make('avatar')
+                                    ->label(__('security::filament/resources/role.form.fields.avatar'))
+                                    ->helperText(__('security::filament/resources/role.form.fields.avatar-helper'))
+                                    ->avatar()
+                                    ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])
+                                    ->maxSize(1024)
+                                    ->disk('public')
+                                    ->directory('role-avatars')
+                                    ->visibility('public'),
+
                                 Hidden::make('permissions_sync_mode')
                                     ->default('manual'),
                                 static::getSelectAllFormComponent(),

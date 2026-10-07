@@ -10,6 +10,7 @@ use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthenticationRecovery;
 use Filament\Auth\MultiFactor\Email\Concerns\InteractsWithEmailAuthentication;
 use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -28,7 +29,7 @@ use Webkul\Security\Traits\HasOwnershipScope;
 use Webkul\Support\Models\Company;
 use Webkul\Support\Models\Scopes\CompanyScope;
 
-class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAppAuthenticationRecovery, HasEmailAuthentication
+class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAppAuthenticationRecovery, HasAvatar, HasEmailAuthentication
 {
     use HasOwnershipScope,
         HasRoles,
@@ -95,6 +96,29 @@ class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAp
     public function getAvatarUrlAttribute()
     {
         return $this->partner?->avatar_url;
+    }
+
+    /**
+     * Own photo first, then the picture of the person's most senior role, otherwise Filament's initials.
+     */
+    public function getFilamentAvatarUrl(): ?string
+    {
+        if ($this->avatar_url) {
+            return $this->avatar_url;
+        }
+
+        return $this->roles
+            ->sortBy(fn (Role $role) => $this->rolePriority($role))
+            ->map(fn (Role $role) => $role->avatar_url)
+            ->filter()
+            ->first();
+    }
+
+    protected function rolePriority(Role $role): int
+    {
+        $position = array_search($role->name, config('roles.priority', []), true);
+
+        return $position === false ? PHP_INT_MAX : $position;
     }
 
     public function teams(): BelongsToMany

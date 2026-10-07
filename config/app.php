@@ -83,6 +83,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | First-run onboarding
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, a freshly installed ERP sends its first administrator through the
+    | setup wizard (company, branding, modules) before anything else can be used.
+    |
+    */
+
+    'onboarding_enabled' => env('ONBOARDING_ENABLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |

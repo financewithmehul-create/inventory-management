@@ -453,6 +453,8 @@ class InstallCommand extends Command
 
             $this->createMissingPolicyPermissions();
 
+            $this->call('erp:roles:sync');
+
             $role = Role::first();
 
             if (! $role) {

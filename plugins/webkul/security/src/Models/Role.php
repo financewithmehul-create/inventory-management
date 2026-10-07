@@ -6,6 +6,7 @@ use BezhanSalleh\FilamentShield\Support\Utils;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role as BaseRole;
 use Spatie\Permission\PermissionRegistrar;
@@ -16,6 +17,21 @@ class Role extends BaseRole
         'admin',
         'super_admin',
     ];
+
+    /**
+     * The picture shown for people holding this role: an uploaded one, else the bundled default for the
+     * role name (public/images/roles/{slug}.png), else nothing.
+     */
+    public function getAvatarUrlAttribute(): ?string
+    {
+        if (! empty($this->attributes['avatar'])) {
+            return Storage::disk('public')->url($this->attributes['avatar']);
+        }
+
+        $default = 'images/roles/'.Str::slug($this->name).'.png';
+
+        return file_exists(public_path($default)) ? asset($default) : null;
+    }
 
     public function getNameAttribute(string $value): string
     {

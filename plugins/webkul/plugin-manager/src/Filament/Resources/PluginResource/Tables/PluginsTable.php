@@ -19,12 +19,12 @@ use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema as DBSchema;
-use RuntimeException;
 use Throwable;
 use Webkul\PluginManager\Console\Commands\UninstallCommand;
 use Webkul\PluginManager\Filament\Resources\PluginResource;
 use Webkul\PluginManager\Models\Plugin;
 use Webkul\PluginManager\Package;
+use Webkul\PluginManager\Services\PluginInstaller;
 
 class PluginsTable
 {
@@ -118,39 +118,7 @@ class PluginsTable
                             DB::beginTransaction();
 
                             try {
-                                $phpPath = static::getPhpExecutablePath();
-
-                                $php = escapeshellarg($phpPath);
-
-                                $artisan = escapeshellarg(base_path('artisan'));
-
-                                $commandName = escapeshellarg("{$record->name}:install");
-
-                                $cmd = static::buildTimeoutCommand(300, "$php $artisan $commandName --no-interaction 2>&1");
-
-                                $output = [];
-
-                                $exitCode = 0;
-
-                                exec($cmd, $output, $exitCode);
-
-                                if ($exitCode === 124) {
-                                    throw new RuntimeException('Installation timed out after 5 minutes.');
-                                }
-
-                                if ($exitCode !== 0) {
-                                    $errorOutput = implode(PHP_EOL, array_slice($output, -10));
-
-                                    throw new RuntimeException(
-                                        "Installation failed with exit code {$exitCode}.".
-                                            ($errorOutput ? " Last output: {$errorOutput}" : '')
-                                    );
-                                }
-
-                                $record->update([
-                                    'is_installed' => true,
-                                    'is_active'    => true,
-                                ]);
+                                app(PluginInstaller::class)->install($record);
 
                                 DB::commit();
 

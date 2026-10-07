@@ -6,6 +6,10 @@ use Spatie\LaravelSettings\Settings;
 
 class BrandSettings extends Settings
 {
+    public ?string $brand_name;
+
+    public string $default_theme;
+
     public ?string $primary_color;
 
     public ?string $gray_color;

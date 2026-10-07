@@ -6,6 +6,7 @@ use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Actions\Action;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Section;
@@ -13,6 +14,7 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Colors\Color;
 use Webkul\Support\Filament\Clusters\Settings;
+use Webkul\Support\Filament\Pages\Onboarding;
 use Webkul\Support\Settings\BrandSettings;
 
 class ManageBranding extends SettingsPage
@@ -54,10 +56,41 @@ class ManageBranding extends SettingsPage
         return __('support::filament/clusters/manage-branding.title');
     }
 
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('rerunSetup')
+                ->label(__('support::filament/clusters/manage-branding.actions.rerun-setup.label'))
+                ->icon('heroicon-o-rocket-launch')
+                ->color('gray')
+                ->visible(fn (): bool => Onboarding::canAccess())
+                ->url(fn (): string => Onboarding::getUrl()),
+        ];
+    }
+
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
+                Section::make(__('support::filament/clusters/manage-branding.form.sections.identity.title'))
+                    ->description(__('support::filament/clusters/manage-branding.form.sections.identity.description'))
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('brand_name')
+                            ->label(__('support::filament/clusters/manage-branding.form.fields.brand-name'))
+                            ->helperText(__('support::filament/clusters/manage-branding.form.fields.brand-name-helper'))
+                            ->maxLength(60),
+                        Select::make('default_theme')
+                            ->label(__('support::filament/clusters/manage-branding.form.fields.default-theme'))
+                            ->helperText(__('support::filament/clusters/manage-branding.form.fields.default-theme-helper'))
+                            ->options([
+                                'system' => __('support::filament/clusters/manage-branding.form.fields.theme-system'),
+                                'light'  => __('support::filament/clusters/manage-branding.form.fields.theme-light'),
+                                'dark'   => __('support::filament/clusters/manage-branding.form.fields.theme-dark'),
+                            ])
+                            ->native(false)
+                            ->required(),
+                    ]),
                 Section::make(__('support::filament/clusters/manage-branding.form.sections.logo.title'))
                     ->description(__('support::filament/clusters/manage-branding.form.sections.logo.description'))
                     ->columns(2)
@@ -66,6 +99,7 @@ class ManageBranding extends SettingsPage
                             ->label(__('support::filament/clusters/manage-branding.form.fields.light-logo'))
                             ->helperText(__('support::filament/clusters/manage-branding.form.fields.light-logo-helper'))
                             ->image()
+                            ->maxSize(2048)
                             ->acceptedFileTypes([
                                 'image/jpeg',
                                 'image/png',
@@ -80,6 +114,7 @@ class ManageBranding extends SettingsPage
                             ->label(__('support::filament/clusters/manage-branding.form.fields.dark-logo'))
                             ->helperText(__('support::filament/clusters/manage-branding.form.fields.dark-logo-helper'))
                             ->image()
+                            ->maxSize(2048)
                             ->acceptedFileTypes([
                                 'image/jpeg',
                                 'image/png',
@@ -94,6 +129,7 @@ class ManageBranding extends SettingsPage
                             ->label(__('support::filament/clusters/manage-branding.form.fields.favicon'))
                             ->helperText(__('support::filament/clusters/manage-branding.form.fields.favicon-helper'))
                             ->image()
+                            ->maxSize(2048)
                             ->acceptedFileTypes([
                                 'image/jpeg',
                                 'image/png',

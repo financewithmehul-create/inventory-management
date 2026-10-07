@@ -30,7 +30,7 @@ class CustomerPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->favicon(asset('images/favicon.ico'))
             ->brandLogo(asset('images/logo.svg'))
-            ->darkMode(false)
+            ->darkMode()
             ->brandLogoHeight('2rem')
             ->colors([
                 'primary' => Color::Blue,

@@ -11,6 +11,10 @@ return [
 
     'form' => [
         'sections' => [
+            'identity' => [
+                'title'       => 'Name & Theme',
+                'description' => 'The name shown in the app and the theme everyone sees first. Each person can still switch between light and dark mode.',
+            ],
             'logo' => [
                 'title'       => 'الشعار والأيقونة المفضلة',
                 'description' => 'تجاوز الشعارات والأيقونة المفضلة وارتفاع الشعار المستخدمة في لوحتي المشرف والعميل. اترك الحقل فارغًا للإبقاء على الإعداد الافتراضي.',
@@ -21,24 +25,34 @@ return [
             ],
         ],
         'fields' => [
-            'light-logo'         => 'الشعار الفاتح',
-            'light-logo-helper'  => 'يظهر على الخلفيات الفاتحة. يحل محل الشعار الافتراضي.',
-            'dark-logo'          => 'الشعار الداكن',
-            'dark-logo-helper'   => 'يظهر عند تفعيل الوضع الداكن.',
-            'favicon'            => 'الأيقونة المفضلة',
-            'favicon-helper'     => 'أيقونة علامة تبويب المتصفح.',
-            'logo-height'        => 'ارتفاع الشعار',
-            'logo-height-helper' => 'قيمة ارتفاع CSS، مثل 2rem أو 40px.',
-            'primary-color'      => 'أساسي',
-            'gray-color'         => 'رمادي',
-            'danger-color'       => 'خطر',
-            'info-color'         => 'معلومات',
-            'success-color'      => 'نجاح',
-            'warning-color'      => 'تحذير',
+            'brand-name'           => 'Brand Name',
+            'brand-name-helper'    => 'Shown in the browser tab and wherever the app names itself.',
+            'default-theme'        => 'Default Theme',
+            'default-theme-helper' => 'Used until a person picks their own.',
+            'theme-system'         => 'Follow the device',
+            'theme-light'          => 'Light',
+            'theme-dark'           => 'Dark',
+            'light-logo'           => 'الشعار الفاتح',
+            'light-logo-helper'    => 'يظهر على الخلفيات الفاتحة. يحل محل الشعار الافتراضي.',
+            'dark-logo'            => 'الشعار الداكن',
+            'dark-logo-helper'     => 'يظهر عند تفعيل الوضع الداكن.',
+            'favicon'              => 'الأيقونة المفضلة',
+            'favicon-helper'       => 'أيقونة علامة تبويب المتصفح.',
+            'logo-height'          => 'ارتفاع الشعار',
+            'logo-height-helper'   => 'قيمة ارتفاع CSS، مثل 2rem أو 40px.',
+            'primary-color'        => 'أساسي',
+            'gray-color'           => 'رمادي',
+            'danger-color'         => 'خطر',
+            'info-color'           => 'معلومات',
+            'success-color'        => 'نجاح',
+            'warning-color'        => 'تحذير',
         ],
     ],
 
     'actions' => [
+        'rerun-setup' => [
+            'label' => 'Run setup wizard again',
+        ],
         'reset' => [
             'label' => 'إعادة التعيين إلى الافتراضي',
         ],

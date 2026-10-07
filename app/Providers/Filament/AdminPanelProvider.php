@@ -27,6 +27,7 @@ use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Webkul\Support\Enums\NavigationGroup;
 use Webkul\Support\Filament\Pages\Profile;
 use Webkul\Support\GlobalSearchProvider;
+use Webkul\Support\Http\Middleware\EnsureOnboardingCompleted;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -105,6 +106,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                EnsureOnboardingCompleted::class,
             ])
             ->multiFactorAuthentication([
                 AppAuthentication::make()
