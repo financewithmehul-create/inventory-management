@@ -451,6 +451,8 @@ class InstallCommand extends Command
                 throw new RuntimeException("Failed to generate admin panel permissions. Error: {$errorOutput}");
             }
 
+            $this->createMissingPolicyPermissions();
+
             $role = Role::first();
 
             if (! $role) {
@@ -466,6 +468,22 @@ class InstallCommand extends Command
             $this->info('✅ Admin panel permissions refreshed successfully.');
         } catch (Throwable $e) {
             $this->warn("⚠️  Permission refresh failed: {$e->getMessage()}");
+        }
+    }
+
+    /**
+     * Some models (for example the inventory and product tags) are managed through the REST API only, so no
+     * Filament resource exists and Shield never generates their permissions. Create every permission that a
+     * plugin policy checks for so those endpoints can be granted to roles.
+     */
+    protected function createMissingPolicyPermissions(): void
+    {
+        foreach (glob(base_path('plugins/webkul/*/src/Policies/*.php')) ?: [] as $policyFile) {
+            preg_match_all("/->can\\('([^']+)'\\)/", (string) file_get_contents($policyFile), $matches);
+
+            foreach (array_unique($matches[1]) as $permissionName) {
+                Permission::findOrCreate($permissionName, 'web');
+            }
         }
     }
 
