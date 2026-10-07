@@ -164,7 +164,7 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
             $this->commands($this->package->commands);
         }
 
-        if (! empty($this->package->consoleCommands) && $this->app->runningInConsole()) {
+        if (! empty($this->package->consoleCommands)) {
             $this->commands($this->package->consoleCommands);
         }
 
