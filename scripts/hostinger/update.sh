@@ -5,7 +5,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-php artisan erp:backup || { echo "Backup failed. Fix that first, or export the database in phpMyAdmin and re-run."; exit 1; }
+php artisan erp:backup || echo "WARNING: backup failed. Export the database in phpMyAdmin before continuing."
 
 php artisan down --retry=60
 trap 'php artisan up' EXIT

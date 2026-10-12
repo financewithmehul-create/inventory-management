@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -49,7 +50,17 @@ class BackupDatabase extends Command
 
         $plain = substr($file, 0, -3);
 
-        exec($command.' > '.escapeshellarg($plain), $output, $status);
+        $status = 1;
+
+        if ($this->canRunShell()) {
+            exec($command.' > '.escapeshellarg($plain), $output, $status);
+        }
+
+        if ($status !== 0 && in_array($connection->getDriverName(), ['mysql', 'mariadb'], true)) {
+            $this->line('mysqldump is not available here, using the built-in PHP backup.');
+
+            $status = $this->dumpWithPhp($connection, $plain) ? 0 : 1;
+        }
 
         if ($status === 0 && File::exists($plain) && File::size($plain) > 100) {
             $source = fopen($plain, 'rb');
@@ -81,5 +92,66 @@ class BackupDatabase extends Command
         $this->info('Backup saved: '.$file);
 
         return self::SUCCESS;
+    }
+
+    protected function canRunShell(): bool
+    {
+        if (! function_exists('exec')) {
+            return false;
+        }
+
+        return ! in_array('exec', array_map('trim', explode(',', (string) ini_get('disable_functions'))), true);
+    }
+
+    /**
+     * Plain-PHP MySQL/MariaDB dump for hosts without exec() or mysqldump.
+     */
+    protected function dumpWithPhp(ConnectionInterface $connection, string $path): bool
+    {
+        $pdo = $connection->getPdo();
+
+        $handle = fopen($path, 'wb');
+
+        if ($handle === false) {
+            return false;
+        }
+
+        fwrite($handle, "SET FOREIGN_KEY_CHECKS=0;\nSET NAMES utf8mb4;\n\n");
+
+        $tables = array_map(
+            fn ($row) => (string) array_values((array) $row)[0],
+            $connection->select('SHOW FULL TABLES WHERE Table_type = \'BASE TABLE\'')
+        );
+
+        foreach ($tables as $table) {
+            $quoted = '`'.str_replace('`', '``', $table).'`';
+
+            $create = (array) $connection->selectOne("SHOW CREATE TABLE {$quoted}");
+
+            fwrite($handle, "DROP TABLE IF EXISTS {$quoted};\n".array_values($create)[1].";\n\n");
+
+            $statement = $pdo->query("SELECT * FROM {$quoted}", \PDO::FETCH_NUM);
+
+            $batch = [];
+
+            while (($row = $statement->fetch()) !== false) {
+                $batch[] = '('.implode(',', array_map(fn ($value) => $value === null ? 'NULL' : $pdo->quote((string) $value), $row)).')';
+
+                if (count($batch) >= 200) {
+                    fwrite($handle, "INSERT INTO {$quoted} VALUES ".implode(",\n", $batch).";\n");
+                    $batch = [];
+                }
+            }
+
+            if ($batch !== []) {
+                fwrite($handle, "INSERT INTO {$quoted} VALUES ".implode(",\n", $batch).";\n");
+            }
+
+            fwrite($handle, "\n");
+        }
+
+        fwrite($handle, "SET FOREIGN_KEY_CHECKS=1;\n");
+
+        return fclose($handle);
     }
 }
