@@ -65,11 +65,6 @@ class Onboarding extends Page
         'Teal'    => '#0d9488',
     ];
 
-    /**
-     * Modules selected by default (when still installable).
-     *
-     * @var array<int, string>
-     */
     /** @var array<string, mixed> */
     public ?array $data = [];
 
