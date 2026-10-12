@@ -91,6 +91,8 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
                 : resource_path('lang/'.$langPath);
         }
 
+        $this->registerMigrationPaths();
+
         if ($this->app->runningInConsole()) {
             foreach ($this->package->configFileNames as $configFileName) {
                 $this->publishes([
@@ -127,13 +129,6 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
                     ),
                 ], "{$this->package->shortName()}-migrations");
 
-                if ($this->package->runsMigrations) {
-                    if ($this->package->isCore) {
-                        $this->loadMigrationsFrom($filePath);
-                    } elseif ($this->package->isInstalled()) {
-                        $this->loadMigrationsFrom($filePath);
-                    }
-                }
             }
 
             foreach ($this->package->settingFileNames as $settingFileName) {
@@ -150,13 +145,6 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
                     ),
                 ], "{$this->package->shortName()}-settings");
 
-                if ($this->package->runsSettings) {
-                    if ($this->package->isCore) {
-                        $this->loadMigrationsFrom($filePath);
-                    } elseif ($this->package->isInstalled()) {
-                        $this->loadMigrationsFrom($filePath);
-                    }
-                }
             }
         }
 
@@ -238,5 +226,41 @@ abstract class PackageServiceProvider extends BasePackageServiceProvider
         }
 
         return database_path($settingsPath.$now->format('Y_m_d_His').'_'.Str::of($settingFileName)->snake()->finish('.php'));
+    }
+
+    /**
+     * Make the package's migrations and settings migrations known to the migrator.
+     *
+     * This must also happen outside the console: shared hosts without exec() install modules from the web
+     * wizard through Artisan::call(), and without these paths that install would run no migrations at all.
+     */
+    protected function registerMigrationPaths(): void
+    {
+        $shouldLoad = $this->package->isCore || $this->package->isInstalled();
+
+        if (! $shouldLoad) {
+            return;
+        }
+
+        $groups = [
+            ['runs' => $this->package->runsMigrations, 'names' => $this->package->migrationFileNames, 'dir' => 'migrations'],
+            ['runs' => $this->package->runsSettings, 'names' => $this->package->settingFileNames, 'dir' => 'settings'],
+        ];
+
+        foreach ($groups as $group) {
+            if (! $group['runs']) {
+                continue;
+            }
+
+            foreach ($group['names'] as $name) {
+                $filePath = $this->package->basePath("/../database/{$group['dir']}/{$name}.php");
+
+                if (! file_exists($filePath)) {
+                    $filePath .= '.stub';
+                }
+
+                $this->loadMigrationsFrom($filePath);
+            }
+        }
     }
 }
