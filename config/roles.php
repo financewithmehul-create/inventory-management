@@ -34,7 +34,8 @@ return [
 
     'definitions' => [
         'Inventory Manager' => [
-            ['full', ['inventory', 'product', 'barcode']],
+            ['full', ['inventory', 'barcode']],
+            ['staff', ['product']],
             ['view', ['partner', 'contact', 'purchase', 'sale', 'manufacturing']],
         ],
         'Warehouse Staff' => [
@@ -44,12 +45,12 @@ return [
         'Purchase Manager' => [
             ['full', ['purchase', 'partner', 'contact']],
             ['staff', ['product']],
-            ['view', ['inventory', 'account', 'accounting', 'invoice']],
+            ['view', ['inventory', 'invoice']],
         ],
         'Sales Manager' => [
             ['full', ['sale', 'partner', 'contact']],
             ['staff', ['product']],
-            ['view', ['inventory', 'account', 'accounting', 'invoice']],
+            ['view', ['inventory', 'invoice']],
         ],
         'Accountant' => [
             ['full', ['account', 'accounting', 'invoice', 'payment']],

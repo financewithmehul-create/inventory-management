@@ -98,7 +98,7 @@ class UserForm
                                                 ? __('security::filament/resources/user.form.sections.permissions.fields.resource-permission-self-change-disabled')
                                                 : null)
                                             ->preload()
-                                            ->default(PermissionType::GLOBAL->value)
+                                            ->default(PermissionType::INDIVIDUAL->value)
                                             ->afterStateUpdated(function (Get $get, Set $set) {
                                                 if ($get('resource_permission') != PermissionType::GROUP) {
                                                     $set('teams', []);

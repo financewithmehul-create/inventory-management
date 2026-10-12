@@ -70,8 +70,6 @@ class Onboarding extends Page
      *
      * @var array<int, string>
      */
-    protected const DEFAULT_MODULES = ['products', 'inventories', 'contacts'];
-
     /** @var array<string, mixed> */
     public ?array $data = [];
 
@@ -114,10 +112,7 @@ class Onboarding extends Page
             'brand_name'    => $brand->brand_name ?: $company?->name,
             'primary_color' => $brand->primary_color ?: self::PRESET_COLORS['Blue'],
             'default_theme' => $brand->default_theme ?: 'system',
-            'modules'       => array_values(array_unique(array_merge(
-                array_intersect(self::DEFAULT_MODULES, $this->installableModules()->pluck('name')->all()),
-                $this->installedModuleNames(),
-            ))),
+            'modules'       => Plugin::query()->orderBy('sort')->pluck('name')->all(),
         ]);
     }
 
