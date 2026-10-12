@@ -114,7 +114,10 @@ class Onboarding extends Page
             'brand_name'    => $brand->brand_name ?: $company?->name,
             'primary_color' => $brand->primary_color ?: self::PRESET_COLORS['Blue'],
             'default_theme' => $brand->default_theme ?: 'system',
-            'modules'       => array_values(array_intersect(self::DEFAULT_MODULES, $this->installableModules()->pluck('name')->all())),
+            'modules'       => array_values(array_unique(array_merge(
+                array_intersect(self::DEFAULT_MODULES, $this->installableModules()->pluck('name')->all()),
+                $this->installedModuleNames(),
+            ))),
         ]);
     }
 
@@ -288,9 +291,11 @@ class Onboarding extends Page
                 CheckboxList::make('modules')
                     ->label(__('support::filament/pages/onboarding.fields.modules'))
                     ->helperText(__('support::filament/pages/onboarding.fields.modules-help'))
-                    ->options(fn () => $this->installableModules()
+                    ->options(fn () => Plugin::query()->orderBy('sort')->get()
                         ->mapWithKeys(fn (Plugin $plugin) => [
-                            $plugin->name => Str::headline($plugin->name).($plugin->summary ? ' — '.$plugin->summary : ''),
+                            $plugin->name => Str::headline($plugin->name)
+                                .($plugin->summary ? ' — '.$plugin->summary : '')
+                                .($plugin->is_installed ? ' ('.__('support::filament/pages/onboarding.modules.installed-tag').')' : ''),
                         ])
                         ->all())
                     ->columns(['default' => 1, 'md' => 2])
@@ -443,6 +448,14 @@ class Onboarding extends Page
     protected function company(): ?Company
     {
         return Company::query()->withoutGlobalScopes()->orderBy('id')->first();
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    protected function installedModuleNames(): array
+    {
+        return Plugin::query()->where('is_installed', true)->pluck('name')->all();
     }
 
     protected function installableModules()

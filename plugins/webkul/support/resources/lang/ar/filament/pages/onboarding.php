@@ -14,8 +14,8 @@ return [
             'description' => 'Logo, name and colours',
         ],
         'modules' => [
-            'label'       => 'Modules',
-            'description' => 'Choose what you need',
+            'label'         => 'Modules',
+            'description'   => 'Choose what you need',
         ],
         'finish' => [
             'label'       => 'Finish',
@@ -57,6 +57,7 @@ return [
     ],
 
     'modules' => [
+        'installed-tag'      => 'installed',
         'install'            => 'Install selected modules',
         'installing'         => 'Installing :name…',
         'done'               => 'Installed',
