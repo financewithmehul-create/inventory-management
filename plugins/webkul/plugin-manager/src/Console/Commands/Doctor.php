@@ -5,6 +5,7 @@ namespace Webkul\PluginManager\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelSettings\Support\SettingsCacheFactory;
 use Spatie\Permission\Models\Permission;
 use Throwable;
 use Webkul\PluginManager\Models\Plugin;
@@ -78,7 +79,9 @@ class Doctor extends Command
 
         Artisan::call('migrate', ['--force' => true], $this->getOutput());
         Artisan::call('erp:permissions:refresh', [], $this->getOutput());
-        Artisan::call('settings:clear-cache');
+        foreach (app(SettingsCacheFactory::class)->all() as $settingsCache) {
+            $settingsCache->clear();
+        }
 
         $this->info('Done. Run erp:doctor again to confirm.');
 

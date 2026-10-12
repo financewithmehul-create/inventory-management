@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use RuntimeException;
+use Spatie\LaravelSettings\Support\SettingsCacheFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Throwable;
@@ -300,7 +301,9 @@ class InstallCommand extends Command
                 throw new RuntimeException("The settings migrations of {$this->package->shortName()} failed, so the module was not installed.");
             }
 
-            $this->callSilently('settings:clear-cache');
+            foreach (app(SettingsCacheFactory::class)->all() as $settingsCache) {
+                $settingsCache->clear();
+            }
 
             $this->info("✅ Settings migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
 

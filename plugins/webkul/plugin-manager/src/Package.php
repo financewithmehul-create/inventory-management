@@ -213,7 +213,10 @@ class Package extends BasePackage
 
     protected static function rebuildCachesInBackground(): void
     {
-        if (! app()->isProduction() || PHP_OS_FAMILY === 'Windows') {
+        $execDisabled = ! function_exists('exec')
+            || in_array('exec', array_map('trim', explode(',', (string) ini_get('disable_functions'))), true);
+
+        if (! app()->isProduction() || PHP_OS_FAMILY === 'Windows' || $execDisabled) {
             return;
         }
 
