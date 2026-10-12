@@ -235,30 +235,6 @@ Export the database from phpMyAdmin first.
 | Logo or uploads missing | Run `php artisan storage:link` again. |
 | Jobs and emails never run | Check the two cron jobs in Part 8 and the paths in them. |
 
-## Licensing: 14-day trial and license keys
-
-Every new install gets a **14-day free trial**. After that the workspace becomes **read-only** (people can sign
-in and see everything, nothing can be added or changed, nothing is ever deleted) until a license key is entered
-under **Settings → License**. A banner shows the days left.
-
-You (the vendor) create keys. Customers cannot make or extend them.
-
-1. **Once, on your own computer** (not on a customer server): `php artisan license:keygen`. Save the
-   **private key** in a password manager. Put the **public key** in `LICENSE_PUBLIC_KEY` in each customer's `.env`
-   (the install script asks for it).
-2. **For each sale:**
-
-```bash
-php artisan license:issue --to="Acme Traders" --domain=acme.com --until=2027-10-31
-# add --users=10 to record a user limit; leave out --until for a lifetime key
-```
-
-   It asks for your private key (hidden, never stored; or set `LICENSE_PRIVATE_KEY` for the command only) and
-   prints a key starting `AUR1.`. Send it to the customer. It only works on that domain (subdomains included).
-3. The customer pastes it under **Settings → License → Activate**. `php artisan license:status` shows the state.
-
-To turn licensing off for your own demo, set `LICENSE_ENFORCE=false` in `.env`.
-
 ## Selling it to a client
 
 **The client buys:** a domain and a Hostinger **Business** web hosting plan (this gives each client their own
@@ -268,13 +244,13 @@ database, so customers are fully separated from each other and cost you nothing 
 
 1. Ask the client to add you to their Hostinger account (or share SSH details), or do it on a call.
 2. Follow the **Quick path** above on their domain, using their own database and an administrator email they own.
-3. Issue their license key (above) and give it to them after the trial or at handover.
+3. Hand over the admin login. The product is free: there is no trial or license key.
 4. Show them the setup wizard: company, logo, colours, modules, then **Settings → Users** to invite staff and
    assign roles (Inventory Manager, Warehouse Staff, Viewer and more, each with its own avatar).
 
 **Per-customer checklist:** PHP 8.3 and extensions · SSL + Force HTTPS · own database · `.env` with
 `APP_DEBUG=false` · cron jobs added · admin password changed and two-factor sign-in enabled (profile) ·
-license public key set · key issued · first backup taken (`php artisan erp:backup`).
+first backup taken (`php artisan erp:backup`).
 
 ## Security notes
 

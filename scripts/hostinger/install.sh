@@ -37,7 +37,6 @@ else
   dbpass=$(askhidden "Database password (hidden):")
   appname=$(ask "Product / company name shown in the app [ERP]:" "ERP")
   tz=$(ask "Time zone [Asia/Kolkata]:" "Asia/Kolkata")
-  pubkey=$(ask "License PUBLIC key (leave empty to skip for now):")
 
   cp .env.example .env
   set_env() { # key value
@@ -62,8 +61,6 @@ else
   set_env QUEUE_CONNECTION database
   set_env FILESYSTEM_DISK public
   set_env LOG_LEVEL warning
-  set_env LICENSE_ENFORCE true
-  [ -z "$pubkey" ] || set_env LICENSE_PUBLIC_KEY "$pubkey"
   chmod 600 .env
   php artisan key:generate --force
 fi
@@ -98,6 +95,5 @@ Done. Next steps in hPanel:
        $(command -v php) $root/artisan schedule:run >> /dev/null 2>&1
        $(command -v php) $root/artisan queue:work --stop-when-empty --max-time=55 --memory=512 >> /dev/null 2>&1
   4. Open the site and sign in. The setup wizard (company, logo, colours, modules) starts automatically.
-     The free trial runs 14 days from now; add a license key under Settings > License.
 
 DONE
