@@ -7,6 +7,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Gate;
 use Webkul\PluginManager\Package;
 use Webkul\PluginManager\PackageServiceProvider;
+use Webkul\Security\Console\Commands\ResetAdmin;
 use Webkul\Security\Console\Commands\SyncDefaultRoles;
 use Webkul\Security\Facades\Bouncer as BouncerFacade;
 
@@ -44,6 +45,7 @@ class SecurityServiceProvider extends PackageServiceProvider
             ])
             ->runsSettings()
             ->hasCommands([
+                ResetAdmin::class,
                 SyncDefaultRoles::class,
             ]);
     }
