@@ -7,6 +7,7 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Event;
 use Webkul\PluginManager\Console\Commands\Doctor;
+use Webkul\PluginManager\Console\Commands\EnableFeatures;
 use Webkul\PluginManager\Console\Commands\FindMissingTranslations;
 use Webkul\PluginManager\Console\Commands\InstallERP;
 use Webkul\PluginManager\Console\Commands\RefreshPermissions;
@@ -31,6 +32,7 @@ class PluginManagerServiceProvider extends PackageServiceProvider
             ->runsSeeders()
             ->hasCommands([
                 Doctor::class,
+                EnableFeatures::class,
                 InstallERP::class,
                 RefreshPermissions::class,
                 FindMissingTranslations::class,

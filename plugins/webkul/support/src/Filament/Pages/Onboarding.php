@@ -363,6 +363,8 @@ class Onboarding extends Page
 
         Artisan::call('erp:permissions:refresh');
 
+        Artisan::call('erp:features:enable');
+
         DB::transaction(function () use ($state): void {
             $this->saveCompany($state);
 
