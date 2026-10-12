@@ -61,6 +61,12 @@ class ManageUsers extends SettingsPage
                     ->label(__('security::filament/clusters/manage-users.form.enable-reset-password.label'))
                     ->helperText(__('security::filament/clusters/manage-users.form.enable-reset-password.helper-text'))
                     ->required(),
+                Toggle::make('allow_registration')
+                    ->label(__('security::filament/clusters/manage-users.form.allow-registration.label'))
+                    ->helperText(__('security::filament/clusters/manage-users.form.allow-registration.helper-text')),
+                Toggle::make('registration_requires_approval')
+                    ->label(__('security::filament/clusters/manage-users.form.registration-requires-approval.label'))
+                    ->helperText(__('security::filament/clusters/manage-users.form.registration-requires-approval.helper-text')),
                 Select::make('default_role_id')
                     ->label(__('security::filament/clusters/manage-users.form.default-role.label'))
                     ->helperText(__('security::filament/clusters/manage-users.form.default-role.helper-text'))

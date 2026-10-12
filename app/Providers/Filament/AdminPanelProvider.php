@@ -24,6 +24,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
+use Webkul\Security\Filament\Pages\Register;
 use Webkul\Support\Enums\NavigationGroup;
 use Webkul\Support\Filament\Pages\Profile;
 use Webkul\Support\GlobalSearchProvider;
@@ -40,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->registration(Register::class)
             ->favicon(asset('images/favicon.ico'))
             ->brandLogo(asset('images/logo.svg'))
             ->brandLogoHeight('2rem')

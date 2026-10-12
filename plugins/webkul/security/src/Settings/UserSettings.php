@@ -10,6 +10,10 @@ class UserSettings extends Settings
 
     public bool $enable_reset_password;
 
+    public bool $allow_registration = true;
+
+    public bool $registration_requires_approval = false;
+
     public ?int $default_role_id;
 
     public ?int $default_company_id;

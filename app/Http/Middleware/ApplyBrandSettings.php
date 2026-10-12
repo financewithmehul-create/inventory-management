@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use Webkul\Security\Settings\UserSettings;
 use Webkul\Support\Settings\BrandSettings;
 
 class ApplyBrandSettings
@@ -100,6 +101,10 @@ class ApplyBrandSettings
 
             if (! empty($brand->brand_name)) {
                 $panel->brandName($brand->brand_name);
+            }
+
+            if (! settings(UserSettings::class)->allow_registration) {
+                $panel->registration(null);
             }
 
             $panel->defaultThemeMode(ThemeMode::tryFrom((string) $brand->default_theme) ?? ThemeMode::System);
