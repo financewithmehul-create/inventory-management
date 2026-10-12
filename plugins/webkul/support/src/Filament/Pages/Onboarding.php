@@ -23,6 +23,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
@@ -362,6 +363,8 @@ class Onboarding extends Page
     public function finish(): void
     {
         $state = $this->content->getState();
+
+        Artisan::call('erp:permissions:refresh');
 
         DB::transaction(function () use ($state): void {
             $this->saveCompany($state);
