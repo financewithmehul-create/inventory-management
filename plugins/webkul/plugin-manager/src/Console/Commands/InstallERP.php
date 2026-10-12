@@ -178,7 +178,7 @@ class InstallERP extends Command
         $this->info('🗑️  Wiping database...');
 
         try {
-            Artisan::call('migrate:fresh', [], $this->getOutput());
+            Artisan::call('migrate:fresh', ['--force' => true], $this->getOutput());
             $this->info('✅ Database wiped successfully.');
         } catch (Exception $e) {
             $this->error('❌ Failed to wipe database: '.$e->getMessage());
@@ -223,7 +223,7 @@ class InstallERP extends Command
     {
         $this->info('⚙️ Running database migrations...');
 
-        Artisan::call('migrate', [], $this->getOutput());
+        Artisan::call('migrate', ['--force' => true], $this->getOutput());
 
         $this->info('✅ Migrations completed successfully.');
     }
@@ -235,7 +235,7 @@ class InstallERP extends Command
     {
         $this->info('⚙️ Running database seeders...');
 
-        Artisan::call('db:seed', [], $this->getOutput());
+        Artisan::call('db:seed', ['--force' => true], $this->getOutput());
 
         Package::syncPostgresSequences();
 

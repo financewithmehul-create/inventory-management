@@ -260,9 +260,14 @@ class InstallCommand extends Command
         if (! $migrationsToRun->isEmpty()) {
             $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> database migrations...");
 
-            $this->call('migrate', [
-                '--path' => $migrationsToRun->toArray(),
+            $exitCode = $this->call('migrate', [
+                '--path'  => $migrationsToRun->toArray(),
+                '--force' => true,
             ]);
+
+            if ($exitCode !== self::SUCCESS) {
+                throw new RuntimeException("The database migrations of {$this->package->shortName()} failed, so the module was not installed.");
+            }
 
             $this->info("✅ Migrations <comment>{$this->package->shortName()}</comment> completed successfully.");
 
@@ -286,10 +291,14 @@ class InstallCommand extends Command
         if (! $settingsToRun->isEmpty()) {
             $this->info("⚙️ Running <comment>{$this->package->shortName()}</comment> settings database migrations...");
 
-            $this->call('migrate', [
+            $exitCode = $this->call('migrate', [
                 '--path'  => $settingsToRun->toArray(),
                 '--force' => true,
             ]);
+
+            if ($exitCode !== self::SUCCESS) {
+                throw new RuntimeException("The settings migrations of {$this->package->shortName()} failed, so the module was not installed.");
+            }
 
             $this->callSilently('settings:clear-cache');
 
@@ -332,6 +341,7 @@ class InstallCommand extends Command
         foreach ($this->package->seederClasses as $seeder) {
             $this->call('db:seed', [
                 '--class' => $seeder,
+                '--force' => true,
             ]);
         }
 
