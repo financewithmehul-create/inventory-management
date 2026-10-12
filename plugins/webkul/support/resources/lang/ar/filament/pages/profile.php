@@ -28,11 +28,13 @@ return [
     ],
 
     'fields' => [
-        'avatar'          => 'صورة الملف الشخصي',
-        'name'            => 'الاسم',
-        'email'           => 'البريد الإلكتروني',
-        'language'        => 'اللغة المفضلة',
-        'language_helper' => 'ستظهر واجهة الإدارة بهذه اللغة.',
+        'avatar'             => 'صورة الملف الشخصي',
+        'avatar_preset'      => 'Pick a character',
+        'avatar_preset_help' => 'Choose a ready-made picture, or upload your own photo below. Your photo takes priority when both are set.',
+        'name'               => 'الاسم',
+        'email'              => 'البريد الإلكتروني',
+        'language'           => 'اللغة المفضلة',
+        'language_helper'    => 'ستظهر واجهة الإدارة بهذه اللغة.',
     ],
 
     'password' => [

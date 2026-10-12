@@ -26,6 +26,7 @@ use Webkul\Partner\Models\Partner;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Support\OwnerSource;
 use Webkul\Security\Traits\HasOwnershipScope;
+use Webkul\Support\Filament\Forms\Components\AvatarPicker;
 use Webkul\Support\Models\Company;
 use Webkul\Support\Models\Scopes\CompanyScope;
 
@@ -48,6 +49,7 @@ class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAp
             'default_company_id',
             'resource_permission',
             'is_default',
+            'avatar_preset',
         ]);
 
         $this->mergeCasts([
@@ -105,6 +107,10 @@ class User extends BaseUser implements FilamentUser, HasAppAuthentication, HasAp
     {
         if ($this->avatar_url) {
             return $this->avatar_url;
+        }
+
+        if (AvatarPicker::isValidSlug($this->avatar_preset)) {
+            return asset("images/roles/{$this->avatar_preset}.png");
         }
 
         return $this->roles

@@ -28,11 +28,13 @@ return [
     ],
 
     'fields' => [
-        'avatar'          => 'Foto do perfil',
-        'name'            => 'Nome',
-        'email'           => 'E-mail',
-        'language'        => 'Idioma preferido',
-        'language_helper' => 'A interface administrativa será exibida neste idioma.',
+        'avatar'             => 'Foto do perfil',
+        'avatar_preset'      => 'Pick a character',
+        'avatar_preset_help' => 'Choose a ready-made picture, or upload your own photo below. Your photo takes priority when both are set.',
+        'name'               => 'Nome',
+        'email'              => 'E-mail',
+        'language'           => 'Idioma preferido',
+        'language_helper'    => 'A interface administrativa será exibida neste idioma.',
     ],
 
     'password' => [

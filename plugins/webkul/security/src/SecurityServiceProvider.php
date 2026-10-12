@@ -38,6 +38,7 @@ class SecurityServiceProvider extends PackageServiceProvider
                 '2025_08_21_101646_alter_users_table',
                 '2026_01_23_074142_add_multi_factor_auth_columns_in_users_table',
                 '2026_10_08_000001_add_avatar_to_roles_table',
+                '2026_10_12_000002_add_avatar_preset_to_users_table',
             ])
             ->hasSettings([
                 '2024_11_05_042358_create_user_settings',

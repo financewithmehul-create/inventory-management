@@ -85,3 +85,17 @@ it('shows the avatar of the most senior role when the user has no photo', functi
 
     expect($user->fresh()->load('roles')->getFilamentAvatarUrl())->toContain('admin.png');
 });
+
+it('shows the avatar the user picked instead of the role avatar', function () {
+    app(DefaultRoleSynchronizer::class)->sync();
+
+    $user = User::factory()->create();
+    $user->assignRole('Viewer');
+    $user->forceFill(['avatar_preset' => 'accountant'])->saveQuietly();
+
+    expect($user->fresh()->load('roles')->getFilamentAvatarUrl())->toContain('accountant.png');
+
+    $user->forceFill(['avatar_preset' => '../../evil'])->saveQuietly();
+
+    expect($user->fresh()->load('roles')->getFilamentAvatarUrl())->toContain('viewer.png');
+});

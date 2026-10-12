@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Webkul\Support\Filament\Clusters\Settings;
+use Webkul\Support\Filament\Forms\Components\AvatarPicker;
 
 class Profile extends Page implements HasForms
 {
@@ -74,8 +75,17 @@ class Profile extends Page implements HasForms
                     ->description(__('support::filament/pages/profile.information_description'))
                     ->icon('heroicon-o-user')
                     ->schema([
+                        AvatarPicker::make('avatar_preset')
+                            ->label(__('support::filament/pages/profile.fields.avatar_preset'))
+                            ->helperText(__('support::filament/pages/profile.fields.avatar_preset_help'))
+                            ->live()
+                            ->afterStateUpdated(fn ($state, Set $set) => filled($state) ? $set('avatar', null) : null)
+                            ->columnSpanFull(),
+
                         FileUpload::make('avatar')
                             ->label(__('support::filament/pages/profile.fields.avatar'))
+                            ->live()
+                            ->afterStateUpdated(fn ($state, Set $set) => filled($state) ? $set('avatar_preset', null) : null)
                             ->avatar()
                             ->directory('users/avatars')
                             ->visibility('public')
@@ -196,6 +206,9 @@ class Profile extends Page implements HasForms
 
             $data = $this->editProfileForm->getState();
             $user = $this->getUser();
+
+            $user->avatar_preset = AvatarPicker::isValidSlug($data['avatar_preset'] ?? null) ? $data['avatar_preset'] : null;
+            $user->save();
 
             $previousLanguage = $user->language ?? app()->getLocale();
 
@@ -337,7 +350,7 @@ class Profile extends Page implements HasForms
     {
         $user = $this->getUser();
 
-        $userData = $user->only(['name', 'email', 'avatar', 'language']);
+        $userData = $user->only(['name', 'email', 'avatar', 'language', 'avatar_preset']);
 
         $userData['avatar'] = $user->partner->avatar;
 
