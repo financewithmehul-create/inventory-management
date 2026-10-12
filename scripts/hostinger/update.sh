@@ -13,6 +13,7 @@ trap 'php artisan up' EXIT
 git pull --ff-only
 composer install --no-dev --optimize-autoloader --no-interaction
 php artisan migrate --force
+php artisan erp:doctor --fix
 php artisan erp:roles:sync
 php artisan optimize:clear
 php artisan optimize

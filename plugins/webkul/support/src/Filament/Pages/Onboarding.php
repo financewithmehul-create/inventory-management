@@ -369,6 +369,8 @@ class Onboarding extends Page
     {
         $state = $this->content->getState();
 
+        Artisan::call('erp:doctor', ['--fix' => true]);
+
         Artisan::call('erp:permissions:refresh');
 
         DB::transaction(function () use ($state): void {
