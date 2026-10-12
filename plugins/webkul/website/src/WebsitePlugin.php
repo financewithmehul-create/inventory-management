@@ -9,6 +9,7 @@ use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
 use Webkul\PluginManager\Package;
 use Webkul\Website\Filament\Customer\Auth\Login;
 use Webkul\Website\Filament\Customer\Auth\PasswordReset\RequestPasswordReset;
@@ -124,6 +125,10 @@ class WebsitePlugin implements Plugin
     protected function getNavigationItems(): Collection
     {
         $navigationItems = new Collection;
+
+        if (! Schema::hasTable((new Page)->getTable())) {
+            return $navigationItems;
+        }
 
         $pages = Page::where([
             'is_header_visible' => true,
