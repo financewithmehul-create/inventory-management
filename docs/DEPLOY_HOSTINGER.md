@@ -221,6 +221,30 @@ Export the database from phpMyAdmin first.
 
 ---
 
+## Health check and repair
+
+Run this any time something looks wrong (a page shows "Error while loading", a module has no data):
+
+```bash
+php artisan erp:doctor          # reports missing tables / permissions
+php artisan erp:doctor --fix    # repairs them
+php artisan erp:features:enable # switches on every optional feature (lots, packages, routes, work orders ...)
+php artisan erp:admin:reset you@example.com   # forgot the admin password, or no admin exists
+```
+
+The setup wizard and `scripts/hostinger/update.sh` already run the repair for you.
+
+## People, sign-up and roles
+
+- **Sign-up:** `https://your-site/admin/register` (a "Create account" link is on the sign-in page). New accounts get the
+  default role from **Settings → Users** (Viewer if none is set) and only see their own records. In the same place you
+  can switch sign-up off or require administrator approval.
+- **Adding people yourself:** **Settings → Users → Create**: pick one or more roles and who they can see
+  (own records / their team / everyone).
+- **Roles:** Admin, Inventory Manager, Warehouse Staff, Purchase Manager, Sales Manager, Accountant, HR Manager,
+  Employee, Project Manager, Manufacturing Manager, Maintenance Technician, Viewer. Each has its own avatar, and
+  people can pick a character on **Settings → Profile**.
+
 ## Troubleshooting
 
 | What you see | What to do |
@@ -233,6 +257,7 @@ Export the database from phpMyAdmin first.
 | **File permission errors** | `chmod -R 775 storage bootstrap/cache` |
 | Pages load without styling | `public/build` is missing. It is committed in the repository; run `git status` and `git pull`. |
 | Logo or uploads missing | Run `php artisan storage:link` again. |
+| Dashboard shows *Error while loading page* | Run `php artisan erp:doctor --fix` (a module's tables or permissions are missing). |
 | Jobs and emails never run | Check the two cron jobs in Part 8 and the paths in them. |
 
 ## Selling it to a client
