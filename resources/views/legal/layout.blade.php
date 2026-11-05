@@ -1,13 +1,3 @@
-@php
-    try {
-        $company = \Webkul\Support\Models\Company::query()->withoutGlobalScopes()->orderBy('id')->first();
-    } catch (\Throwable) {
-        $company = null;
-    }
-
-    $businessName = $company?->name ?: config('app.name');
-    $contactEmail = $company?->email;
-@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>

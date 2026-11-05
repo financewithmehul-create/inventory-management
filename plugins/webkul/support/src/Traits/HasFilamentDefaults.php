@@ -7,10 +7,7 @@ use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filament\Support\Facades\FilamentView;
 use Filament\Tables\Table;
-use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
 
 trait HasFilamentDefaults
 {
@@ -25,6 +22,7 @@ trait HasFilamentDefaults
         Table::configureUsing(fn (Table $table) => $table
             ->defaultCurrency(fn (): string => default_currency_code())
             ->emptyStateHeading('Nothing here yet')
+            ->emptyStateIcon('heroicon-o-inbox')
             ->emptyStateDescription('Use the button at the top of the page to add the first one.'));
 
         FileUpload::configureUsing(fn (FileUpload $upload) => $upload->maxSize(5120));

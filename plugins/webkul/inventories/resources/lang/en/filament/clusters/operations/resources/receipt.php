@@ -7,7 +7,7 @@ return [
     ],
 
     'global-search' => [
-        'partner' => 'Partner',
+        'partner' => 'Customer or supplier',
         'origin'  => 'Origin',
     ],
 

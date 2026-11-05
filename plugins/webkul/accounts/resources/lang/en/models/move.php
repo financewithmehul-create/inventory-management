@@ -24,7 +24,7 @@ return [
         'is-move-sent'          => 'Is Move Sent',
         'invoice-origin'        => 'Invoice Origin',
         'currency'              => 'Currency',
-        'partner'               => 'Partner',
+        'partner'               => 'Customer or supplier',
         'partner-bank'          => 'Partner Bank',
         'invoice-user'          => 'Invoice User',
         'fiscal-position'       => 'Fiscal Position',

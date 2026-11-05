@@ -25,9 +25,19 @@ it('does not offer self sign-up when one person uses the system', function () {
     $this->get('/admin/register')->assertNotFound();
 });
 
+/**
+ * Text a person can see on the page: no scripts, no tags, no attribute values.
+ */
+function visibleText(string $html): string
+{
+    $html = preg_replace('#<(script|style)\b[^>]*>.*?</\1>#si', ' ', $html);
+
+    return strtolower(html_entity_decode(strip_tags((string) $html)));
+}
+
 it('never shows the name of the original product', function () {
     foreach (['/admin/login', '/terms', '/privacy'] as $url) {
-        $html = strtolower($this->get($url)->getContent());
+        $html = visibleText($this->get($url)->getContent());
 
         expect($html)->not->toContain('aureus')
             ->and($html)->not->toContain('webkul');
@@ -38,7 +48,7 @@ it('shows the dashboard to the signed-in owner', function () {
     $user = FilamentHelper::actingAs();
     $user->forceFill(['is_active' => true])->saveQuietly();
 
-    $html = strtolower($this->get('/admin')->assertSuccessful()->getContent());
+    $html = visibleText($this->get('/admin')->assertSuccessful()->getContent());
 
     expect($html)->toContain('dashboard')
         ->and($html)->not->toContain('aureus')

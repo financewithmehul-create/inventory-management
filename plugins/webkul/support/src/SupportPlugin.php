@@ -3,10 +3,8 @@
 namespace Webkul\Support;
 
 use Filament\Contracts\Plugin;
-use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 
 class SupportPlugin implements Plugin

@@ -13,7 +13,7 @@ return [
         'fields' => [
             'variants'                      => 'Variants',
             'variants-help'                 => 'Allow products to have multiple variants',
-            'uom'                           => 'Unit of Measure',
+            'uom'                           => 'Unit',
             'uom-help'                      => 'Allow products to have a unit of measure',
             'packagings'                    => 'Packagings',
             'packagings-help'               => 'Allow products to have multiple packagings',

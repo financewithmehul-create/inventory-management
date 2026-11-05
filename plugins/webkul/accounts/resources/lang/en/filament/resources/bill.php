@@ -9,7 +9,7 @@ return [
     ],
 
     'global-search' => [
-        'vendor'   => 'Vendor',
+        'vendor'   => 'Supplier',
         'date'     => 'Date',
         'due-date' => 'Due Date',
     ],
@@ -19,15 +19,15 @@ return [
             'general' => [
                 'title'  => 'General',
                 'fields' => [
-                    'vendor-bill'       => 'Vendor Bill',
-                    'vendor'            => 'Vendor',
+                    'vendor-bill'       => 'Bill',
+                    'vendor'            => 'Supplier',
                     'bill-date'         => 'Bill Date',
                     'bill-reference'    => 'Bill Reference',
                     'accounting-date'   => 'Accounting Date',
                     'payment-reference' => 'Payment Reference',
                     'recipient-bank'    => 'Recipient Bank',
                     'due-date'          => 'Due Date',
-                    'payment-term'      => 'Payment Term',
+                    'payment-term'      => 'Payment terms',
                     'journal'           => 'Journal',
                     'currency'          => 'Currency',
                 ],
@@ -67,7 +67,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
 
                 'fieldset' => [
                     'accounting' => [
@@ -105,9 +105,9 @@ return [
             'checked'          => 'Checked',
             'accounting-date'  => 'Accounting',
             'due-date'         => 'Due Date',
-            'source-document'  => 'Source Document',
+            'source-document'  => 'Reference',
             'reference'        => 'Reference',
-            'sales-person'     => 'Sales Person',
+            'sales-person'     => 'Salesperson',
             'tax-excluded'     => 'Tax Excluded',
             'tax'              => 'Tax',
             'total'            => 'Total',
@@ -127,7 +127,7 @@ return [
             'date'                         => 'Date',
             'bill-due-date'                => 'Bill Due Date',
             'bill-origin'                  => 'Bill Origin',
-            'sales-person'                 => 'Sales Person',
+            'sales-person'                 => 'Salesperson',
             'currency'                     => 'Currency',
             'created-at'                   => 'Created At',
             'updated-at'                   => 'Updated At',
@@ -142,14 +142,14 @@ return [
             'reference'                 => 'Reference',
             'payment-reference'         => 'Payment Reference',
             'narration'                 => 'Narration',
-            'partner'                   => 'Partner',
+            'partner'                   => 'Customer or supplier',
             'journal'                   => 'Journal',
             'fiscal-position'           => 'Fiscal Position',
             'currency'                  => 'Currency',
             'company'                   => 'Company',
             'date'                      => 'Accounting Date',
             'delivery-date'             => 'Delivery Date',
-            'amount-untaxed'            => 'Untaxed Amount',
+            'amount-untaxed'            => 'Amount before tax',
             'amount-tax'                => 'Tax Amount',
             'amount-total'              => 'Total Amount',
             'amount-residual'           => 'Amount Due',
@@ -192,14 +192,14 @@ return [
 
                 'entries' => [
                     'vendor-invoice'    => 'Vendor Invoice',
-                    'vendor'            => 'Vendor',
+                    'vendor'            => 'Supplier',
                     'bill-date'         => 'Bill Date',
                     'bill-reference'    => 'Bill Reference',
                     'accounting-date'   => 'Accounting Date',
                     'payment-reference' => 'Payment Reference',
                     'recipient-bank'    => 'Recipient Bank',
                     'due-date'          => 'Due Date',
-                    'payment-term'      => 'Payment Term',
+                    'payment-term'      => 'Payment terms',
                     'journal'           => 'Journal',
                     'currency'          => 'Currency',
                 ],
@@ -229,7 +229,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
                 'fieldset' => [
                     'accounting' => [
                         'title' => 'Accounting',
@@ -258,7 +258,7 @@ return [
                 'repeater' => [
                     'entries' => [
                         'account'  => 'Account',
-                        'partner'  => 'Partner',
+                        'partner'  => 'Customer or supplier',
                         'label'    => 'Label',
                         'due-date' => 'Due Date',
                         'currency' => 'Currency',

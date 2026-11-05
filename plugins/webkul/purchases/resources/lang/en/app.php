@@ -23,7 +23,7 @@ return [
         'tax'                   => 'Tax',
         'taxes'                 => 'Taxes',
         'amount'                => 'Amount',
-        'untaxed-amount'        => 'Untaxed Amount',
+        'untaxed-amount'        => 'Amount before tax',
         'total'                 => 'Total',
         'quotation-valid-until' => 'Quotation Valid Until:',
         'payment-terms'         => 'Payment Terms:',

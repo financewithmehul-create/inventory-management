@@ -7,7 +7,7 @@ return [
         'columns' => [
             'product'         => 'Product',
             'quantity'        => 'Quantity',
-            'unit-of-measure' => 'Unit of Measure',
+            'unit-of-measure' => 'Unit',
         ],
     ],
 ];

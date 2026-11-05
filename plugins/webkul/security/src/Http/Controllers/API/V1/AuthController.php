@@ -2,8 +2,8 @@
 
 namespace Webkul\Security\Http\Controllers\API\V1;
 
-use Illuminate\Http\Request;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;

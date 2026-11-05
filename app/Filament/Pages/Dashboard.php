@@ -8,6 +8,9 @@ use App\Filament\Widgets\LatestSales;
 use App\Support\AppNavigation;
 use Filament\Actions\Action;
 use Filament\Pages\Dashboard as BaseDashboard;
+use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
+use Webkul\Invoice\Filament\Clusters\Customers\Resources\InvoiceResource;
+use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
 
 /**
  * Home screen: the numbers that matter today and one-click buttons for the most common jobs.
@@ -38,10 +41,10 @@ class Dashboard extends BaseDashboard
     protected function getHeaderActions(): array
     {
         $actions = [
-            ['new-sale', 'New quote', \Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource::class],
+            ['new-sale', 'New quote', QuotationResource::class],
             ['new-purchase', 'New purchase', \Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource::class],
-            ['new-invoice', 'New invoice', \Webkul\Invoice\Filament\Clusters\Customers\Resources\InvoiceResource::class],
-            ['new-product', 'Add product', \Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource::class],
+            ['new-invoice', 'New invoice', InvoiceResource::class],
+            ['new-product', 'Add product', ProductResource::class],
         ];
 
         $buttons = [];

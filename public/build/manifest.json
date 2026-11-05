@@ -11,8 +11,13 @@
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-scXIUgeM.css",
+    "file": "assets/app-BogukJqK.css",
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-DkrGuVj-.css",
+    "src": "resources/css/filament/admin/theme.css",
     "isEntry": true
   },
   "resources/js/app.js": {

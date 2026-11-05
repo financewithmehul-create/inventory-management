@@ -2,7 +2,6 @@
 
 namespace Webkul\Security\Livewire;
 
-use Livewire\Attributes\Locked;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\TextInput;
@@ -11,6 +10,7 @@ use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Filament\Schemas\Schema;
 use Illuminate\Validation\Rules\Password;
+use Livewire\Attributes\Locked;
 use Webkul\Project\Filament\Pages\Dashboard;
 use Webkul\Security\Models\Invitation;
 use Webkul\Security\Models\User;

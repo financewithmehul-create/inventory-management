@@ -87,12 +87,10 @@ class ApplyBrandSettings
                 FilamentColor::register($brandColors);
             }
 
-            if (! empty($brand->light_logo)) {
+            // The built-in mark is only a fallback icon; without an uploaded logo the business name is shown.
+            if (! empty($brand->light_logo) && $brand->light_logo !== 'images/logo.svg') {
                 $panel->brandLogo($this->assetUrl($brand->light_logo));
-            }
-
-            if (! empty($brand->dark_logo)) {
-                $panel->darkModeBrandLogo($this->assetUrl($brand->dark_logo));
+                $panel->darkModeBrandLogo($this->assetUrl($brand->light_logo));
             }
 
             if (! empty($brand->favicon)) {

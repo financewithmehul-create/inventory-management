@@ -5,7 +5,7 @@ return [
         'invoice-date' => 'Invoice Date',
         'date'         => 'Date',
         'number'       => 'Number',
-        'partner'      => 'Partner',
+        'partner'      => 'Customer or supplier',
         'reference'    => 'Reference',
         'journal'      => 'Journal',
         'company'      => 'Company',

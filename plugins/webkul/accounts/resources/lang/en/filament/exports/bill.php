@@ -14,9 +14,9 @@ return [
         'payment-state'   => 'Payment State',
         'checked'         => 'Checked',
         'accounting-date' => 'Accounting Date',
-        'source-document' => 'Source Document',
+        'source-document' => 'Reference',
         'reference'       => 'Reference',
-        'sales-person'    => 'Sales Person',
+        'sales-person'    => 'Salesperson',
         'bill-currency'   => 'Bill Currency',
     ],
 

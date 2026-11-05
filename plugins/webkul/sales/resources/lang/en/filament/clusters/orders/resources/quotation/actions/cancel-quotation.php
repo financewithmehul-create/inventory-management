@@ -37,7 +37,7 @@ return [
 
     'form' => [
         'fields' => [
-            'partner'             => 'Partner',
+            'partner'             => 'Customer or supplier',
             'subject'             => 'Subject',
             'subject-placeholder' => 'Subject',
             'subject-default'     => 'Quotation :name has been cancelled for Sales Order #:id',

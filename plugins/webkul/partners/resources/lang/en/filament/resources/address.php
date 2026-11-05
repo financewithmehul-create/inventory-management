@@ -2,7 +2,7 @@
 
 return [
     'form' => [
-        'partner' => 'Partner',
+        'partner' => 'Customer or supplier',
         'name'    => 'Name',
         'email'   => 'Email',
         'phone'   => 'Phone',

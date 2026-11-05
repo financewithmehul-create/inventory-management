@@ -131,7 +131,6 @@ class SupportServiceProvider extends PackageServiceProvider
 
         Gate::policy(Role::class, RolePolicy::class);
 
-
         FilamentAsset::register([
             Css::make('support', __DIR__.'/../resources/dist/support.css'),
         ], 'support');

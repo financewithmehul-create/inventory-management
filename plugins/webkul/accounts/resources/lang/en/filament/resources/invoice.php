@@ -24,7 +24,7 @@ return [
                     'customer'         => 'Customer',
                     'invoice-date'     => 'Invoice Date',
                     'due-date'         => 'Due Date',
-                    'payment-term'     => 'Payment Term',
+                    'payment-term'     => 'Payment terms',
                     'journal'          => 'Journal',
                     'currency'         => 'Currency',
                 ],
@@ -64,7 +64,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
 
                 'fieldset' => [
                     'invoice' => [
@@ -72,7 +72,7 @@ return [
 
                         'fields' => [
                             'customer-reference' => 'Customer Reference',
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'payment-reference'  => 'Payment Reference',
                             'recipient-bank'     => 'Recipient Bank',
                             'delivery-date'      => 'Delivery Date',
@@ -115,9 +115,9 @@ return [
             'checked'          => 'Checked',
             'accounting-date'  => 'Accounting',
             'due-date'         => 'Due Date',
-            'source-document'  => 'Source Document',
+            'source-document'  => 'Reference',
             'reference'        => 'Reference',
-            'sales-person'     => 'Sales Person',
+            'sales-person'     => 'Salesperson',
             'tax-excluded'     => 'Tax Excluded',
             'tax'              => 'Tax',
             'total'            => 'Total',
@@ -137,7 +137,7 @@ return [
             'date'                         => 'Date',
             'invoice-due-date'             => 'Invoice Due Date',
             'invoice-origin'               => 'Invoice Origin',
-            'sales-person'                 => 'Sales Person',
+            'sales-person'                 => 'Salesperson',
             'currency'                     => 'Currency',
             'created-at'                   => 'Created At',
             'updated-at'                   => 'Updated At',
@@ -152,14 +152,14 @@ return [
             'reference'                    => 'Reference',
             'payment-reference'            => 'Payment Reference',
             'narration'                    => 'Narration',
-            'partner'                      => 'Partner',
+            'partner'                      => 'Customer or supplier',
             'journal'                      => 'Journal',
             'fiscal-position'              => 'Fiscal Position',
             'currency'                     => 'Currency',
             'company'                      => 'Company',
             'date'                         => 'Accounting Date',
             'delivery-date'                => 'Delivery Date',
-            'amount-untaxed'               => 'Untaxed Amount',
+            'amount-untaxed'               => 'Amount before tax',
             'amount-tax'                   => 'Tax Amount',
             'amount-total'                 => 'Total Amount',
             'amount-residual'              => 'Amount Due',
@@ -204,7 +204,7 @@ return [
                     'customer'         => 'Customer',
                     'invoice-date'     => 'Invoice Date',
                     'due-date'         => 'Due Date',
-                    'payment-term'     => 'Payment Term',
+                    'payment-term'     => 'Payment terms',
                     'journal'          => 'Journal',
                     'currency'         => 'Currency',
                 ],
@@ -232,7 +232,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
 
                 'fieldset' => [
                     'invoice' => [
@@ -240,7 +240,7 @@ return [
 
                         'entries' => [
                             'customer-reference' => 'Customer Reference',
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'payment-reference'  => 'Payment Reference',
                             'recipient-bank'     => 'Recipient Bank',
                             'delivery-date'      => 'Delivery Date',
@@ -274,7 +274,7 @@ return [
                 'repeater' => [
                     'entries' => [
                         'account'  => 'Account',
-                        'partner'  => 'Partner',
+                        'partner'  => 'Customer or supplier',
                         'label'    => 'Label',
                         'currency' => 'Currency',
                         'due-date' => 'Due Date',

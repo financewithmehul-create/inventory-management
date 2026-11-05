@@ -10,7 +10,7 @@ return [
         'memo'              => 'Memo',
         'payment-reference' => 'Payment Reference',
         'amount'            => 'Amount',
-        'partner'           => 'Partner',
+        'partner'           => 'Customer or supplier',
         'partner-bank'      => 'Partner Bank',
         'payment-method'    => 'Payment Method',
         'currency'          => 'Currency',

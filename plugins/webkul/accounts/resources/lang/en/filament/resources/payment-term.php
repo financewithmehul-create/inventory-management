@@ -4,7 +4,7 @@ return [
     'form' => [
         'sections' => [
             'fields' => [
-                'payment-term'         => 'Payment Term',
+                'payment-term'         => 'Payment terms',
                 'company'              => 'Company',
                 'company-placeholder'  => 'All Companies',
                 'early-discount'       => 'Early Discount',
@@ -37,7 +37,7 @@ return [
 
     'table' => [
         'columns' => [
-            'payment-term' => 'Payment Term',
+            'payment-term' => 'Payment terms',
             'company'      => 'Company',
             'created-at'   => 'Created At',
             'updated-at'   => 'Updated At',
@@ -47,7 +47,7 @@ return [
             'company-name'        => 'Company Name',
             'discount-days'       => 'Discount Days',
             'early-pay-discount'  => 'Early Pay Discount',
-            'payment-term'        => 'Payment Term',
+            'payment-term'        => 'Payment terms',
             'display-on-invoice'  => 'Display on Invoice',
             'early-discount'      => 'Early Discount',
             'discount-percentage' => 'Discount Percentage',
@@ -117,7 +117,7 @@ return [
     'infolist' => [
         'sections' => [
             'entries' => [
-                'payment-term'         => 'Payment Term',
+                'payment-term'         => 'Payment terms',
                 'early-discount'       => 'Early Discount',
                 'discount-percentage'  => 'Discount Percentage',
                 'discount-days-prefix' => 'if paid within',

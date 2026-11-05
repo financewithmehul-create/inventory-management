@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'title' => 'Entries',
+    'title' => 'Entry',
 
     'navigation' => [
-        'title' => 'Journal Entries',
+        'title' => 'Entries',
     ],
 
     'record-sub-navigation' => [
@@ -13,7 +13,7 @@ return [
 
     'global-search' => [
         'number'   => 'Number',
-        'partner'  => 'Partner',
+        'partner'  => 'Customer or supplier',
         'date'     => 'Invoice Date',
         'due-date' => 'Invoice Due Date',
     ],
@@ -41,7 +41,7 @@ return [
 
                     'columns' => [
                         'account'                  => 'Account',
-                        'partner'                  => 'Partner',
+                        'partner'                  => 'Customer or supplier',
                         'label'                    => 'Label',
                         'amount-currency'          => 'Amount (Currency)',
                         'currency'                 => 'Currency',
@@ -53,7 +53,7 @@ return [
 
                     'fields' => [
                         'account'                  => 'Account',
-                        'partner'                  => 'Partner',
+                        'partner'                  => 'Customer or supplier',
                         'label'                    => 'Label',
                         'amount-currency'          => 'Amount (Currency)',
                         'currency'                 => 'Currency',
@@ -66,7 +66,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
 
                 'fields' => [
                     'checked'                 => 'Checked',
@@ -88,7 +88,7 @@ return [
             'invoice-date' => 'Invoice Date',
             'date'         => 'Date',
             'number'       => 'Number',
-            'partner'      => 'Partner',
+            'partner'      => 'Customer or supplier',
             'reference'    => 'Reference',
             'journal'      => 'Journal',
             'company'      => 'Company',
@@ -102,7 +102,7 @@ return [
         ],
 
         'groups' => [
-            'partner'        => 'Partner',
+            'partner'        => 'Customer or supplier',
             'journal'        => 'Journal',
             'state'          => 'State',
             'payment-method' => 'Payment Method',
@@ -167,7 +167,7 @@ return [
                 'repeater' => [
                     'entries' => [
                         'account'  => 'Account',
-                        'partner'  => 'Partner',
+                        'partner'  => 'Customer or supplier',
                         'label'    => 'Label',
                         'currency' => 'Currency',
                         'taxes'    => 'Taxes',
@@ -178,7 +178,7 @@ return [
             ],
 
             'other-information' => [
-                'title' => 'Other Information',
+                'title' => 'More details',
 
                 'fieldset' => [
                     'accounting' => [

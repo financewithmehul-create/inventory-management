@@ -6,7 +6,7 @@ return [
     'tax'          => 'Tax',
     'discount'     => 'Discount',
     'rounding'     => 'Rounding',
-    'payment_term' => 'Payment Term',
+    'payment_term' => 'Payment terms',
     'line_section' => 'Section',
     'line_note'    => 'Note',
     'epd'          => 'Early Payment Discount',

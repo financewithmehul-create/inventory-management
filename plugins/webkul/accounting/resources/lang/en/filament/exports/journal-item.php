@@ -5,7 +5,7 @@ return [
         'number'           => 'Number',
         'date'             => 'Date',
         'account'          => 'Account',
-        'partner'          => 'Partner',
+        'partner'          => 'Customer or supplier',
         'label'            => 'Label',
         'reference'        => 'Reference',
         'journal'          => 'Journal',

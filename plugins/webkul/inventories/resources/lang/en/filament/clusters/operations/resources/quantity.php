@@ -57,7 +57,7 @@ return [
 
         'filters' => [
             'product'             => 'Product',
-            'uom'                 => 'Unit of Measure',
+            'uom'                 => 'Unit',
             'product-category'    => 'Product Category',
             'location'            => 'Location',
             'storage-category'    => 'Storage Category',

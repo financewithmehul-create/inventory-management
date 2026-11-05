@@ -4,11 +4,14 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 use Livewire\Livewire;
+use Throwable;
 use Webkul\Security\Models\User;
+use Webkul\Support\Models\Company;
 
 use function Livewire\on;
 use function Livewire\store;
@@ -22,6 +25,19 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        View::composer('legal.*', function ($view): void {
+            try {
+                $company = Company::query()->withoutGlobalScopes()->orderBy('id')->first();
+            } catch (Throwable) {
+                $company = null;
+            }
+
+            $view->with([
+                'businessName' => $company?->name ?: config('app.name'),
+                'contactEmail' => $company?->email,
+            ]);
+        });
+
         if (app()->environment('production') && str_starts_with((string) config('app.url'), 'https://')) {
             URL::forceScheme('https');
         }

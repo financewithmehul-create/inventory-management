@@ -5,7 +5,7 @@ return [
 
     'navigation' => [
         'title' => 'Tag',
-        'group' => 'Sales Orders',
+        'group' => 'Sales orders',
     ],
 
     'form' => [

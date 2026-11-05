@@ -14,14 +14,14 @@ return [
                 'title'  => 'General',
                 'fields' => [
                     'vendor-credit-note' => 'Vendor Credit Note',
-                    'vendor'             => 'Vendor',
+                    'vendor'             => 'Supplier',
                     'bill-date'          => 'Bill Date',
                     'bill-reference'     => 'Bill Reference',
                     'accounting-date'    => 'Accounting Date',
                     'payment-reference'  => 'Payment Reference',
                     'recipient-bank'     => 'Recipient Bank',
                     'due-date'           => 'Due Date',
-                    'payment-term'       => 'Payment Term',
+                    'payment-term'       => 'Payment terms',
                 ],
             ],
         ],
@@ -49,7 +49,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
                 'fieldset' => [
                     'accounting' => [
                         'title' => 'Accounting',
@@ -91,14 +91,14 @@ return [
                 'title'   => 'General',
                 'entries' => [
                     'vendor-invoice'    => 'Vendor Invoice',
-                    'vendor'            => 'Vendor',
+                    'vendor'            => 'Supplier',
                     'bill-date'         => 'Bill Date',
                     'bill-reference'    => 'Bill Reference',
                     'accounting-date'   => 'Accounting Date',
                     'payment-reference' => 'Payment Reference',
                     'recipient-bank'    => 'Recipient Bank',
                     'due-date'          => 'Due Date',
-                    'payment-term'      => 'Payment Term',
+                    'payment-term'      => 'Payment terms',
                 ],
             ],
         ],
@@ -126,7 +126,7 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
                 'fieldset' => [
                     'accounting' => [
                         'title' => 'Accounting',

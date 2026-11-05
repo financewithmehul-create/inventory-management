@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Vendors',
+    'title' => 'Suppliers',
 
     'table' => [
         'header-actions' => [

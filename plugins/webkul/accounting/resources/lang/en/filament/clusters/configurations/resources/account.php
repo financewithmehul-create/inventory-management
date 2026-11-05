@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'model-label' => 'Accounts list',
+    'model-label' => 'Account',
 
     'navigation' => [
         'title' => 'Chart of Accounts',

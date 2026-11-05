@@ -7,7 +7,7 @@ return [
     ],
 
     'global-search' => [
-        'vendor' => 'Vendor',
+        'vendor' => 'Supplier',
         'type'   => 'Type',
     ],
 
@@ -17,7 +17,7 @@ return [
                 'title' => 'General',
 
                 'fields' => [
-                    'vendor'                => 'Vendor',
+                    'vendor'                => 'Supplier',
                     'valid-from'            => 'Valid From',
                     'valid-to'              => 'Valid Until',
                     'buyer'                 => 'Buyer',
@@ -38,7 +38,7 @@ return [
                     'product'    => 'Product',
                     'quantity'   => 'Quantity',
                     'ordered'    => 'Ordered',
-                    'uom'        => 'Unit of Measure',
+                    'uom'        => 'Unit',
                     'unit-price' => 'Unit Price',
                 ],
 
@@ -46,7 +46,7 @@ return [
                     'product'    => 'Product',
                     'quantity'   => 'Quantity',
                     'ordered'    => 'Ordered',
-                    'uom'        => 'Unit of Measure',
+                    'uom'        => 'Unit',
                     'unit-price' => 'Unit Price',
                 ],
             ],
@@ -64,7 +64,7 @@ return [
     'table' => [
         'columns' => [
             'agreement'      => 'Agreement',
-            'vendor'         => 'Vendor',
+            'vendor'         => 'Supplier',
             'agreement-type' => 'Agreement Type',
             'buyer'          => 'Buyer',
             'company'        => 'Company',
@@ -76,7 +76,7 @@ return [
 
         'groups' => [
             'agreement-type' => 'Agreement Type',
-            'vendor'         => 'Vendor',
+            'vendor'         => 'Supplier',
             'state'          => 'State',
             'created-at'     => 'Created At',
             'updated-at'     => 'Updated At',
@@ -84,7 +84,7 @@ return [
 
         'filters' => [
             'agreement'      => 'Agreement',
-            'vendor'         => 'Vendor',
+            'vendor'         => 'Supplier',
             'agreement-type' => 'Agreement Type',
             'buyer'          => 'Buyer',
             'company'        => 'Company',
@@ -173,7 +173,7 @@ return [
                 'title' => 'General',
 
                 'entries' => [
-                    'vendor'                => 'Vendor',
+                    'vendor'                => 'Supplier',
                     'valid-from'            => 'Valid From',
                     'valid-to'              => 'Valid Until',
                     'buyer'                 => 'Buyer',
@@ -204,7 +204,7 @@ return [
                     'product'    => 'Product',
                     'quantity'   => 'Quantity',
                     'ordered'    => 'Ordered',
-                    'uom'        => 'Unit of Measure',
+                    'uom'        => 'Unit',
                     'unit-price' => 'Unit Price',
                 ],
             ],

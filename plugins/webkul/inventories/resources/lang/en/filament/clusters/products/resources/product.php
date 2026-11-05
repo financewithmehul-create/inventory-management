@@ -3,13 +3,13 @@
 return [
     'table' => [
         'columns' => [
-            'on-hand'    => 'On Hand',
-            'forecasted' => 'Forecasted',
+            'on-hand'    => 'In stock',
+            'forecasted' => 'Expected stock',
         ],
     ],
 
     'navigation' => [
-        'title' => 'Products',
+        'title' => 'Product',
         'group' => 'Inventory',
     ],
 
@@ -44,7 +44,7 @@ return [
                         'title' => 'Logistics',
 
                         'fields' => [
-                            'responsible'              => 'Responsible',
+                            'responsible'              => 'Handled by',
                             'responsible-hint-tooltip' => 'Delivery lead time (in days) represents the promised duration between sales order confirmation and product delivery.',
                             'weight'                   => 'Weight',
                             'volume'                   => 'Volume',
@@ -107,7 +107,7 @@ return [
                         'title' => 'Logistics',
 
                         'entries' => [
-                            'responsible' => 'Responsible',
+                            'responsible' => 'Handled by',
                             'weight'      => 'Weight',
                             'volume'      => 'Volume',
                             'sale-delay'  => 'Customer Lead Time (Days)',

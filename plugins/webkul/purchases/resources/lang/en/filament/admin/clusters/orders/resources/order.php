@@ -2,7 +2,7 @@
 
 return [
     'global-search' => [
-        'vendor'    => 'Vendor',
+        'vendor'    => 'Supplier',
         'reference' => 'Reference',
         'amount'    => 'Amount',
     ],
@@ -13,7 +13,7 @@ return [
                 'title' => 'General',
 
                 'fields' => [
-                    'vendor'                   => 'Vendor',
+                    'vendor'                   => 'Supplier',
                     'vendor-reference'         => 'Vendor Reference',
                     'vendor-reference-tooltip' => 'The reference number of the sales order or bid provided by the vendor. It is used for matching when receiving products, as this reference is typically included in the vendor\'s delivery order.',
                     'agreement'                => 'Agreement',
@@ -112,11 +112,11 @@ return [
                 'fields' => [
                     'buyer'             => 'Buyer',
                     'company'           => 'Company',
-                    'source-document'   => 'Source Document',
+                    'source-document'   => 'Reference',
                     'incoterm'          => 'Incoterm',
                     'incoterm-tooltip'  => 'International Commercial Terms (Incoterms) are a set of standardized trade terms used in global transactions to define responsibilities between buyers and sellers.',
                     'incoterm-location' => 'Incoterm Location',
-                    'payment-term'      => 'Payment Term',
+                    'payment-term'      => 'Payment terms',
                     'fiscal-position'   => 'Fiscal Position',
                 ],
             ],
@@ -133,12 +133,12 @@ return [
             'priority'         => 'Priority',
             'vendor-reference' => 'Vendor Reference',
             'reference'        => 'Reference',
-            'vendor'           => 'Vendor',
+            'vendor'           => 'Supplier',
             'buyer'            => 'Buyer',
             'company'          => 'Company',
             'order-deadline'   => 'Order Deadline',
-            'source-document'  => 'Source Document',
-            'untaxed-amount'   => 'Untaxed Amount',
+            'source-document'  => 'Reference',
+            'untaxed-amount'   => 'Amount before tax',
             'total-amount'     => 'Total Amount',
             'status'           => 'Status',
             'billing-status'   => 'Billing Status',
@@ -147,7 +147,7 @@ return [
         ],
 
         'groups' => [
-            'vendor'     => 'Vendor',
+            'vendor'     => 'Supplier',
             'buyer'      => 'Buyer',
             'state'      => 'State',
             'created-at' => 'Created At',
@@ -158,13 +158,13 @@ return [
             'status'           => 'Status',
             'vendor-reference' => 'Vendor Reference',
             'reference'        => 'Reference',
-            'untaxed-amount'   => 'Untaxed Amount',
+            'untaxed-amount'   => 'Amount before tax',
             'total-amount'     => 'Total Amount',
             'order-deadline'   => 'Order Deadline',
-            'vendor'           => 'Vendor',
+            'vendor'           => 'Supplier',
             'buyer'            => 'Buyer',
             'company'          => 'Company',
-            'payment-term'     => 'Payment Term',
+            'payment-term'     => 'Payment terms',
             'incoterm'         => 'Incoterm',
             'status'           => 'Status',
             'created-at'       => 'Created At',
@@ -214,8 +214,8 @@ return [
                 'title' => 'General',
 
                 'entries' => [
-                    'purchase-order'           => 'Purchase Order',
-                    'vendor'                   => 'Vendor',
+                    'purchase-order'           => 'Purchase order',
+                    'vendor'                   => 'Supplier',
                     'vendor-reference'         => 'Vendor Reference',
                     'vendor-reference-tooltip' => 'The reference number of the sales order or bid provided by the vendor. It is used for matching when receiving products, as this reference is typically included in the vendor\'s delivery order.',
                     'agreement'                => 'Agreement',
@@ -269,11 +269,11 @@ return [
                 'entries' => [
                     'buyer'             => 'Buyer',
                     'company'           => 'Company',
-                    'source-document'   => 'Source Document',
+                    'source-document'   => 'Reference',
                     'incoterm'          => 'Incoterm',
                     'incoterm-tooltip'  => 'International Commercial Terms (Incoterms) are a set of standardized trade terms used in global transactions to define responsibilities between buyers and sellers.',
                     'incoterm-location' => 'Incoterm Location',
-                    'payment-term'      => 'Payment Term',
+                    'payment-term'      => 'Payment terms',
                     'fiscal-position'   => 'Fiscal Position',
                 ],
             ],

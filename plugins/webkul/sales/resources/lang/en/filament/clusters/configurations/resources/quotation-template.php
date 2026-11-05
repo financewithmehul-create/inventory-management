@@ -5,7 +5,7 @@ return [
 
     'navigation' => [
         'title'  => 'Quotation Template',
-        'group'  => 'Sales Orders',
+        'group'  => 'Sales orders',
     ],
 
     'form' => [
@@ -20,7 +20,7 @@ return [
             ],
 
             'terms-and-conditions' => [
-                'title'  => 'Terms & Conditions',
+                'title'  => 'Terms',
                 'fields' => [
                     'note-placeholder' => 'Write your terms and conditions for the quotations.',
                 ],
@@ -98,7 +98,7 @@ return [
                 'title' => 'Products',
             ],
             'terms-and-conditions' => [
-                'title' => 'Terms & Conditions',
+                'title' => 'Terms',
             ],
         ],
         'sections' => [

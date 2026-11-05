@@ -6,9 +6,9 @@ return [
     'table' => [
         'columns' => [
             'product'         => 'Product',
-            'lot'             => 'Lot/Serial Number',
+            'lot'             => 'Batch / serial number',
             'quantity'        => 'Quantity',
-            'unit-of-measure' => 'Unit of Measure',
+            'unit-of-measure' => 'Unit',
         ],
     ],
 ];

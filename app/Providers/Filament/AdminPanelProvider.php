@@ -63,6 +63,7 @@ class AdminPanelProvider extends PanelProvider
                 'info'    => Color::hex('#2f5a7a'),
             ])
             ->unsavedChangesAlerts()
+            ->breadcrumbs(false)
             ->maxContentWidth(Width::SevenExtraLarge)
             ->pages([Dashboard::class])
             ->navigation(fn (NavigationBuilder $builder): NavigationBuilder => AppNavigation::build($builder))

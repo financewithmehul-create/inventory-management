@@ -73,7 +73,7 @@ return [
             'images'      => 'Images',
             'type'        => 'Type',
             'reference'   => 'Reference',
-            'responsible' => 'Responsible',
+            'responsible' => 'Handled by',
             'barcode'     => 'Barcode',
             'category'    => 'Category',
             'company'     => 'Company',
@@ -104,7 +104,7 @@ return [
             'weight'      => 'Weight',
             'volume'      => 'Volume',
             'tags'        => 'Tags',
-            'responsible' => 'Responsible',
+            'responsible' => 'Handled by',
             'created-at'  => 'Created At',
             'updated-at'  => 'Updated At',
             'creator'     => 'Creator',
@@ -225,7 +225,7 @@ return [
                         'title' => 'Logistics',
 
                         'entries' => [
-                            'responsible' => 'Responsible',
+                            'responsible' => 'Handled by',
                             'weight'      => 'Weight',
                             'volume'      => 'Volume',
                             'sale-delay'  => 'Customer Lead Time (Days)',

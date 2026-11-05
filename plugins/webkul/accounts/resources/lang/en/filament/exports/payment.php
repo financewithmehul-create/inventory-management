@@ -6,7 +6,7 @@ return [
         'name'            => 'Name',
         'journal'         => 'Journal',
         'payment-method'  => 'Payment Method',
-        'partner'         => 'Partner',
+        'partner'         => 'Customer or supplier',
         'amount-currency' => 'Amount Currency',
         'amount'          => 'Amount',
         'state'           => 'State',

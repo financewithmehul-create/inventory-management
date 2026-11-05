@@ -14,7 +14,7 @@ return [
         'uom'                           => 'UOM',
         'lot'                           => 'Lot',
         'package'                       => 'Package',
-        'partner'                       => 'Partner',
+        'partner'                       => 'Customer or supplier',
         'operation'                     => 'Operation',
         'source-location'               => 'Source Location',
         'destination-location'          => 'Destination Location',

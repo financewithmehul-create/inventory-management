@@ -8,7 +8,7 @@ return [
     ],
 
     'global-search' => [
-        'vendor'   => 'Vendor',
+        'vendor'   => 'Supplier',
         'date'     => 'Date',
         'due-date' => 'Due Date',
         'amount'   => 'Amount',

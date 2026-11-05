@@ -11,7 +11,7 @@ return [
         'account'                  => 'Account',
         'date'                     => 'Date',
         'communication'            => 'Communication',
-        'partner'                  => 'Partner',
+        'partner'                  => 'Customer or supplier',
         'journal'                  => 'Journal',
         'invoice-date'             => 'Invoice Date',
         'due-date'                 => 'Due Date',

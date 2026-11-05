@@ -49,7 +49,7 @@ return [
                 'title' => 'Sales and Purchases',
 
                 'fields' => [
-                    'responsible'           => 'Responsible',
+                    'responsible'           => 'Handled by',
                     'responsible-hint-text' => 'This is internal salesperson responsible for this customer',
                     'company-id'            => 'Company ID',
                     'company-id-hint-text'  => 'The company\'s registry number, used if different from the Tax ID. It must be unique among all partners within the same country.',
@@ -87,7 +87,7 @@ return [
             'job-title'        => 'Job Title',
             'website'          => 'Website',
             'company-registry' => 'Company Registry',
-            'responsible'      => 'Responsible',
+            'responsible'      => 'Handled by',
             'reference'        => 'Reference',
             'parent'           => 'Parent',
             'creator'          => 'Creator',
@@ -206,7 +206,7 @@ return [
                 'title' => 'Sales and Purchases',
 
                 'fields' => [
-                    'responsible'           => 'Responsible',
+                    'responsible'           => 'Handled by',
                     'responsible-hint-text' => 'This is internal salesperson responsible for this customer',
                     'company-id'            => 'Company ID',
                     'company-id-hint-text'  => 'The registry number of the company. Use it if it is different from the Tax ID. It must be unique across all partners of a same country',

@@ -15,7 +15,7 @@ return [
                         'title' => 'Sales',
 
                         'fields' => [
-                            'sales-person'   => 'Sales Person',
+                            'sales-person'   => 'Salesperson',
                             'payment-terms'  => 'Payment Terms',
                             'payment-method' => 'Payment Method',
                         ],
@@ -45,7 +45,7 @@ return [
 
                 'fieldsets' => [
                     'customer-invoices' => [
-                        'title' => 'Customer Invoices',
+                        'title' => 'Customer invoices',
 
                         'fields' => [
                             'invoice-sending-method'   => 'Invoice Sending Method',
@@ -91,7 +91,7 @@ return [
                         'title' => 'Sales',
 
                         'entries' => [
-                            'sales-person'   => 'Sales Person',
+                            'sales-person'   => 'Salesperson',
                             'payment-terms'  => 'Payment Terms',
                             'payment-method' => 'Payment Method',
                         ],
@@ -121,7 +121,7 @@ return [
 
                 'fieldsets' => [
                     'customer-invoices' => [
-                        'title' => 'Customer Invoices',
+                        'title' => 'Customer invoices',
 
                         'entries' => [
                             'invoice-sending-method'   => 'Invoice Sending Method',

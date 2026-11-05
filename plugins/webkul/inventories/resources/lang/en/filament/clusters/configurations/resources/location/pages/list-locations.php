@@ -6,7 +6,7 @@ return [
         'internal'   => 'Internal',
         'customer'   => 'Customer',
         'production' => 'Production',
-        'vendor'     => 'Vendor',
+        'vendor'     => 'Supplier',
         'archived'   => 'Archived',
     ],
 

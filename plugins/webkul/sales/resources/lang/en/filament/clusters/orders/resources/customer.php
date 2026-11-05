@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Customers',
+    'title' => 'Customer',
 
     'navigation' => [
         'title' => 'Customers',

@@ -3,7 +3,7 @@
 return [
     'tabs' => [
         'all'        => 'All',
-        'receipts'   => 'Receipts',
+        'receipts'   => 'Goods in',
         'deliveries' => 'Delivery Orders',
         'internal'   => 'Internal Transfers',
     ],

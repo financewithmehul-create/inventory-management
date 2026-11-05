@@ -30,7 +30,7 @@ it('sends admins to the setup wizard until it is finished', function () {
 
     setOnboardingCompleted(true);
 
-    expect($this->get('/admin')->headers->get('Location'))->not->toContain('onboarding');
+    $this->get('/admin')->assertSuccessful();
 });
 
 it('lets non admins see a waiting message instead of the app while setup is unfinished', function () {

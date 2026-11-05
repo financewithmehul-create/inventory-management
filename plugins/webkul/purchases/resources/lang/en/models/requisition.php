@@ -8,7 +8,7 @@ return [
         'reference' => 'Reference',
         'starts-at' => 'Start Date',
         'ends-at'   => 'End Date',
-        'partner'   => 'Vendor',
+        'partner'   => 'Supplier',
         'buyer'     => 'Buyer',
     ],
 ];

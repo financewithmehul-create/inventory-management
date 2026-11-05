@@ -5,6 +5,6 @@ return [
 
     'navigation' => [
         'title' => 'Currencies',
-        'group' => 'Sales Orders',
+        'group' => 'Sales orders',
     ],
 ];

@@ -25,7 +25,7 @@ return [
         'unit'                => 'Unit',
         'barcode'             => 'Barcode',
         'product-barcode'     => 'Product Barcode',
-        'lot-serial-number'   => 'Lot/Serial Number',
+        'lot-serial-number'   => 'Batch / serial number',
         'lot-serial'          => 'Lot/Serial:',
     ],
 ];

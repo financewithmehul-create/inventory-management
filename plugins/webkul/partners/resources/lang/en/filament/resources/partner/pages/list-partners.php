@@ -14,7 +14,7 @@ return [
         'companies'   => 'Companies',
         'employees'   => 'Employees',
         'customers'   => 'Customers',
-        'vendors'     => 'Vendors',
+        'vendors'     => 'Suppliers',
         'archived'    => 'Archived',
     ],
 ];

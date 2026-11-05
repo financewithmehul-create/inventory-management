@@ -5,7 +5,7 @@ return [
 
     'navigation' => [
         'title' => 'Order Template Products',
-        'group' => 'Sales Orders',
+        'group' => 'Sales orders',
     ],
 
     'global-search' => [

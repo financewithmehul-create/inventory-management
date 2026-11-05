@@ -69,7 +69,7 @@ return [
                 'confirmation-date'     => 'Confirmation Date',
                 'receipt-date'          => 'Receipt Date',
                 'products'              => 'Products',
-                'untaxed-amount'        => 'Untaxed Amount',
+                'untaxed-amount'        => 'Amount before tax',
                 'tax-amount'            => 'Tax Amount',
                 'total'                 => 'Total',
                 'communication-history' => 'Communication History',

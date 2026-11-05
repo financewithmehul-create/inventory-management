@@ -5,7 +5,6 @@ namespace Webkul\PluginManager;
 use Filament\Panel;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Support\Facades\Event;
 use Webkul\PluginManager\Console\Commands\Doctor;
 use Webkul\PluginManager\Console\Commands\EnableFeatures;
 use Webkul\PluginManager\Console\Commands\FindMissingTranslations;

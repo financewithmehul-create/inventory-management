@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'title' => 'Quotes',
+    'title' => 'Quote',
 
     'navigation' => [
-        'title' => 'Quotations',
+        'title' => 'Quotes',
     ],
 
     'global-search' => [
@@ -19,10 +19,10 @@ return [
                 'title'  => 'General',
                 'fields' => [
                     'customer'       => 'Customer',
-                    'expiration'     => 'Expiration',
-                    'quotation-date' => 'Quotation Date',
+                    'expiration'     => 'Valid until',
+                    'quotation-date' => 'Quote date',
                     'order-date'     => 'Order Date',
-                    'payment-term'   => 'Payment Term',
+                    'payment-term'   => 'Payment terms',
                     'price-list'     => 'Price List',
                 ],
             ],
@@ -30,7 +30,7 @@ return [
 
         'tabs' => [
             'order-line' => [
-                'title' => 'Order Line',
+                'title' => 'Items',
 
                 'repeater' => [
                     'products' => [
@@ -100,7 +100,7 @@ return [
                     ],
 
                     'product-optional' => [
-                        'title'       => 'Optional Products',
+                        'title'       => 'Extra items',
                         'add-product' => 'Add Product',
 
                         'columns' => [
@@ -152,14 +152,14 @@ return [
                 ],
             ],
             'other-information' => [
-                'title' => 'Other Information',
+                'title' => 'More details',
 
                 'fieldset' => [
                     'sales' => [
                         'title' => 'Sales',
 
                         'fields' => [
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'customer-reference' => 'Customer Reference',
                             'tags'               => 'Tags',
                         ],
@@ -176,7 +176,7 @@ return [
                     'tracking' => [
                         'title'  => 'Tracking',
                         'fields' => [
-                            'source-document' => 'Source Document',
+                            'source-document' => 'Reference',
                             'medium'          => 'Medium',
                             'source'          => 'Source',
                             'campaign'        => 'Campaign',
@@ -195,7 +195,7 @@ return [
             ],
 
             'term-and-conditions' => [
-                'title' => 'Terms & Conditions',
+                'title' => 'Terms',
             ],
         ],
     ],
@@ -210,9 +210,9 @@ return [
             'commitment-date'    => 'Commitment Date',
             'expected-date'      => 'Expected Date',
             'customer'           => 'Customer',
-            'sales-person'       => 'Sales Person',
+            'sales-person'       => 'Salesperson',
             'sales-team'         => 'Sales Team',
-            'untaxed-amount'     => 'Untaxed Amount',
+            'untaxed-amount'     => 'Amount before tax',
             'amount-tax'         => 'Amount Tax',
             'amount-total'       => 'Amount Total',
             'customer-reference' => 'Customer Reference',
@@ -225,7 +225,7 @@ return [
         ],
 
         'filters' => [
-            'sales-person'     => 'Sales Person',
+            'sales-person'     => 'Salesperson',
             'utm-source'       => 'UTM Source',
             'company'          => 'Company',
             'customer'         => 'Customer',
@@ -233,7 +233,7 @@ return [
             'invoice-address'  => 'Invoice Address',
             'shipping-address' => 'Shipping Address',
             'fiscal-position'  => 'Fiscal Position',
-            'payment-term'     => 'Payment Term',
+            'payment-term'     => 'Payment terms',
             'currency'         => 'Currency',
             'created-at'       => 'Created At',
             'updated-at'       => 'Updated At',
@@ -243,11 +243,11 @@ return [
             'medium'          => 'Medium',
             'source'          => 'Source',
             'team'            => 'Team',
-            'sales-person'    => 'Sales Person',
+            'sales-person'    => 'Salesperson',
             'currency'        => 'Currency',
             'company'         => 'Company',
             'customer'        => 'Customer',
-            'quotation-date'  => 'Quotation Date',
+            'quotation-date'  => 'Quote date',
             'commitment-date' => 'Commitment Date',
         ],
 
@@ -312,18 +312,18 @@ return [
             'general' => [
                 'title'   => 'General',
                 'entries' => [
-                    'sale-order'     => 'Sales Order',
+                    'sale-order'     => 'Sales order',
                     'customer'       => 'Customer',
-                    'expiration'     => 'Expiration',
-                    'quotation-date' => 'Quotation Date',
-                    'payment-term'   => 'Payment Term',
+                    'expiration'     => 'Valid until',
+                    'quotation-date' => 'Quote date',
+                    'payment-term'   => 'Payment terms',
                 ],
             ],
         ],
 
         'tabs' => [
             'order-line' => [
-                'title' => 'Order Line',
+                'title' => 'Items',
 
                 'repeater' => [
                     'products' => [
@@ -352,7 +352,7 @@ return [
                     ],
 
                     'product-optional' => [
-                        'title'       => 'Optional Products',
+                        'title'       => 'Extra items',
                         'add-product' => 'Add Product',
                         'entries'     => [
                             'product'             => 'Product',
@@ -380,14 +380,14 @@ return [
                 ],
             ],
             'other-information' => [
-                'title' => 'Other Information',
+                'title' => 'More details',
 
                 'fieldset' => [
                     'sales' => [
                         'title' => 'Sales',
 
                         'entries' => [
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'customer-reference' => 'Customer Reference',
                             'tags'               => 'Tags',
                         ],
@@ -403,7 +403,7 @@ return [
                     'tracking' => [
                         'title'   => 'Tracking',
                         'entries' => [
-                            'source-document' => 'Source Document',
+                            'source-document' => 'Reference',
                             'medium'          => 'Medium',
                             'source'          => 'Source',
                             'campaign'        => 'Campaign',
@@ -422,7 +422,7 @@ return [
             ],
 
             'term-and-conditions' => [
-                'title' => 'Terms & Conditions',
+                'title' => 'Terms',
             ],
         ],
     ],

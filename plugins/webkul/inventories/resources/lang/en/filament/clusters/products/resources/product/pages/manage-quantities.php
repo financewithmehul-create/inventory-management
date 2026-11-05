@@ -6,7 +6,7 @@ return [
     'tabs' => [
         'internal-locations' => 'Internal Locations',
         'transit-locations'  => 'Transit Locations',
-        'on-hand'            => 'On Hand',
+        'on-hand'            => 'In stock',
         'to-count'           => 'To Count',
         'to-apply'           => 'To Apply',
     ],

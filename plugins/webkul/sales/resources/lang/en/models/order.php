@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title'          => 'Sales Order',
+    'title'          => 'Sales order',
 
     'titles'         => [
-        'quotation'   => 'Quotation',
-        'sales-order' => 'Sales Order',
+        'quotation'   => 'Quote',
+        'sales-order' => 'Sales order',
     ],
 
     'log-attributes' => [
@@ -14,9 +14,9 @@ return [
         'amount-untaxed'  => 'Amount Untaxed',
         'amount-total'    => 'Amount Total',
         'partner'         => 'Customer',
-        'sales-person'    => 'Sales Person',
+        'sales-person'    => 'Salesperson',
         'sales-team'      => 'Sales Team',
-        'payment-term'    => 'Payment Term',
+        'payment-term'    => 'Payment terms',
         'fiscal-position' => 'Fiscal Position',
     ],
 ];

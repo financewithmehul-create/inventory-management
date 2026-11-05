@@ -8,7 +8,7 @@ return [
         'delay-type'             => 'Delay Type',
         'days-on-the-next-month' => 'Days on the next month',
         'days'                   => 'Days',
-        'payment-term'           => 'Payment Term',
+        'payment-term'           => 'Payment terms',
     ],
 
     'table' => [

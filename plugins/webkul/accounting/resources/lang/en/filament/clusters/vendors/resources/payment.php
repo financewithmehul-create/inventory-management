@@ -9,6 +9,6 @@ return [
     ],
 
     'record-sub-navigation' => [
-        'journal-entry' => 'Journal Entry',
+        'journal-entry' => 'Entry',
     ],
 ];

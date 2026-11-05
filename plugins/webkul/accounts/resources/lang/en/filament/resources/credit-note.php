@@ -17,7 +17,7 @@ return [
                     'customer'         => 'Customer',
                     'invoice-date'     => 'Invoice Date',
                     'due-date'         => 'Due Date',
-                    'payment-term'     => 'Payment Term',
+                    'payment-term'     => 'Payment terms',
                 ],
             ],
         ],
@@ -45,13 +45,13 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
                 'fieldset' => [
                     'invoice' => [
                         'title'  => 'Invoice',
                         'fields' => [
                             'customer-reference' => 'Customer Reference',
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'payment-reference'  => 'Payment Reference',
                             'recipient-bank'     => 'Recipient Bank',
                             'delivery-date'      => 'Delivery Date',
@@ -104,7 +104,7 @@ return [
                     'customer'         => 'Customer',
                     'invoice-date'     => 'Invoice Date',
                     'due-date'         => 'Due Date',
-                    'payment-term'     => 'Payment Term',
+                    'payment-term'     => 'Payment terms',
                 ],
             ],
         ],
@@ -130,13 +130,13 @@ return [
             ],
 
             'other-information' => [
-                'title'    => 'Other Information',
+                'title'    => 'More details',
                 'fieldset' => [
                     'invoice' => [
                         'title'   => 'Invoice',
                         'entries' => [
                             'customer-reference' => 'Customer Reference',
-                            'sales-person'       => 'Sales Person',
+                            'sales-person'       => 'Salesperson',
                             'payment-reference'  => 'Payment Reference',
                             'recipient-bank'     => 'Recipient Bank',
                             'delivery-date'      => 'Delivery Date',

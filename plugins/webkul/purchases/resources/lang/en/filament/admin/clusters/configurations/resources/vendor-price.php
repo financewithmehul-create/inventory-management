@@ -11,7 +11,7 @@ return [
                 'title'  => 'General',
 
                 'fields' => [
-                    'vendor'                      => 'Vendor',
+                    'vendor'                      => 'Supplier',
                     'vendor-product-name'         => 'Vendor Product Name',
                     'vendor-product-name-tooltip' => 'The vendor\'s product name will appear on the request for quotation. Leave it blank to use the internal product name.',
                     'vendor-product-code'         => 'Vendor Product Code',
@@ -42,7 +42,7 @@ return [
 
     'table' => [
         'columns' => [
-            'vendor'              => 'Vendor',
+            'vendor'              => 'Supplier',
             'vendor-product-name' => 'Vendor Product Name',
             'vendor-product-code' => 'Vendor Product Code',
             'delay'               => 'Delivery Lead Time (Days)',
@@ -74,7 +74,7 @@ return [
         ],
 
         'groups' => [
-            'vendor'     => 'Vendor',
+            'vendor'     => 'Supplier',
             'product'    => 'Product',
             'created-at' => 'Created At',
             'updated-at' => 'Updated At',
@@ -119,7 +119,7 @@ return [
                 'title'  => 'General',
 
                 'entries' => [
-                    'vendor'                      => 'Vendor',
+                    'vendor'                      => 'Supplier',
                     'vendor-product-name'         => 'Vendor Product Name',
                     'vendor-product-name-tooltip' => 'The vendor\'s product name will appear on the request for quotation. Leave it blank to use the internal product name.',
                     'vendor-product-code'         => 'Vendor Product Code',

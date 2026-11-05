@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Replenishment',
+    'title' => 'Reorder',
 
     'tabs' => [
         'trigger-manual'    => 'Trigger Manual',

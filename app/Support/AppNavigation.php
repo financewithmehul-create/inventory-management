@@ -8,6 +8,31 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
 use Illuminate\Support\Facades\Route;
 use Throwable;
+use Webkul\Accounting\Filament\Clusters\Accounting\Resources\JournalEntryResource;
+use Webkul\Accounting\Filament\Clusters\Configuration\Resources\AccountResource;
+use Webkul\Accounting\Filament\Clusters\Reporting\Pages\AgedPayable;
+use Webkul\Accounting\Filament\Clusters\Reporting\Pages\AgedReceivable;
+use Webkul\Accounting\Filament\Clusters\Reporting\Pages\BalanceSheet;
+use Webkul\Accounting\Filament\Clusters\Reporting\Pages\ProfitLoss;
+use Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource;
+use Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource;
+use Webkul\Inventory\Filament\Clusters\Operations\Resources\QuantityResource;
+use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource;
+use Webkul\Inventory\Filament\Clusters\Operations\Resources\ReplenishmentResource;
+use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource;
+use Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource;
+use Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource;
+use Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource;
+use Webkul\Invoice\Filament\Clusters\Customers\Resources\InvoiceResource;
+use Webkul\Invoice\Filament\Clusters\Customers\Resources\PaymentResource;
+use Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource;
+use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource;
+use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource;
+use Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource;
+use Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource;
+use Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource;
+use Webkul\Support\Filament\Clusters\Settings\Pages\ManageBranding;
+use Webkul\Support\Filament\Pages\Profile;
 
 /**
  * The whole menu, in plain words: Dashboard, Sales, Inventory, Purchase, Invoices, Accounting and Settings.
@@ -20,43 +45,43 @@ class AppNavigation
      */
     public const MENU = [
         'Sales' => [
-            ['Quotes', \Webkul\Sale\Filament\Clusters\Orders\Resources\QuotationResource::class, 'heroicon-o-document-text'],
-            ['Sales orders', \Webkul\Sale\Filament\Clusters\Orders\Resources\OrderResource::class, 'heroicon-o-shopping-cart'],
-            ['Customers', \Webkul\Sale\Filament\Clusters\Orders\Resources\CustomerResource::class, 'heroicon-o-user-group'],
+            ['Quotes', QuotationResource::class, 'heroicon-o-document-text'],
+            ['Sales orders', OrderResource::class, 'heroicon-o-shopping-cart'],
+            ['Customers', CustomerResource::class, 'heroicon-o-user-group'],
         ],
         'Inventory' => [
-            ['Products', \Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource::class, 'heroicon-o-cube'],
-            ['Stock on hand', \Webkul\Inventory\Filament\Clusters\Operations\Resources\QuantityResource::class, 'heroicon-o-archive-box'],
-            ['Goods in', \Webkul\Inventory\Filament\Clusters\Operations\Resources\ReceiptResource::class, 'heroicon-o-arrow-down-tray'],
-            ['Goods out', \Webkul\Inventory\Filament\Clusters\Operations\Resources\DeliveryResource::class, 'heroicon-o-arrow-up-tray'],
-            ['Reorder', \Webkul\Inventory\Filament\Clusters\Operations\Resources\ReplenishmentResource::class, 'heroicon-o-arrow-path'],
+            ['Products', ProductResource::class, 'heroicon-o-cube'],
+            ['Stock on hand', QuantityResource::class, 'heroicon-o-archive-box'],
+            ['Goods in', ReceiptResource::class, 'heroicon-o-arrow-down-tray'],
+            ['Goods out', DeliveryResource::class, 'heroicon-o-arrow-up-tray'],
+            ['Reorder', ReplenishmentResource::class, 'heroicon-o-arrow-path'],
         ],
         'Purchase' => [
             ['Price requests', \Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource::class, 'heroicon-o-document-text'],
-            ['Purchase orders', \Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResource::class, 'heroicon-o-truck'],
-            ['Suppliers', \Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource::class, 'heroicon-o-building-storefront'],
+            ['Purchase orders', PurchaseOrderResource::class, 'heroicon-o-truck'],
+            ['Suppliers', VendorResource::class, 'heroicon-o-building-storefront'],
         ],
         'Invoices' => [
-            ['Customer invoices', \Webkul\Invoice\Filament\Clusters\Customers\Resources\InvoiceResource::class, 'heroicon-o-document-currency-rupee'],
-            ['Money received', \Webkul\Invoice\Filament\Clusters\Customers\Resources\PaymentResource::class, 'heroicon-o-banknotes'],
-            ['Bills to pay', \Webkul\Invoice\Filament\Clusters\Vendors\Resources\BillResource::class, 'heroicon-o-receipt-percent'],
+            ['Customer invoices', InvoiceResource::class, 'heroicon-o-document-currency-rupee'],
+            ['Money received', PaymentResource::class, 'heroicon-o-banknotes'],
+            ['Bills to pay', BillResource::class, 'heroicon-o-receipt-percent'],
             ['Money paid', \Webkul\Invoice\Filament\Clusters\Vendors\Resources\PaymentResource::class, 'heroicon-o-credit-card'],
         ],
         'Accounting' => [
-            ['Entries', \Webkul\Accounting\Filament\Clusters\Accounting\Resources\JournalEntryResource::class, 'heroicon-o-book-open'],
-            ['Profit and loss', \Webkul\Accounting\Filament\Clusters\Reporting\Pages\ProfitLoss::class, 'heroicon-o-chart-bar'],
-            ['Balance sheet', \Webkul\Accounting\Filament\Clusters\Reporting\Pages\BalanceSheet::class, 'heroicon-o-scale'],
-            ['Who owes us', \Webkul\Accounting\Filament\Clusters\Reporting\Pages\AgedReceivable::class, 'heroicon-o-clock'],
-            ['What we owe', \Webkul\Accounting\Filament\Clusters\Reporting\Pages\AgedPayable::class, 'heroicon-o-clock'],
-            ['Accounts list', \Webkul\Accounting\Filament\Clusters\Configuration\Resources\AccountResource::class, 'heroicon-o-list-bullet'],
+            ['Entries', JournalEntryResource::class, 'heroicon-o-book-open'],
+            ['Profit and loss', ProfitLoss::class, 'heroicon-o-chart-bar'],
+            ['Balance sheet', BalanceSheet::class, 'heroicon-o-scale'],
+            ['Who owes us', AgedReceivable::class, 'heroicon-o-clock'],
+            ['What we owe', AgedPayable::class, 'heroicon-o-clock'],
+            ['Accounts list', AccountResource::class, 'heroicon-o-list-bullet'],
         ],
         'Settings' => [
-            ['Business and look', \Webkul\Support\Filament\Clusters\Settings\Pages\ManageBranding::class, 'heroicon-o-building-office'],
-            ['Taxes', \Webkul\Invoice\Filament\Clusters\Configuration\Resources\TaxResource::class, 'heroicon-o-percent-badge'],
-            ['Payment terms', \Webkul\Invoice\Filament\Clusters\Configuration\Resources\PaymentTermResource::class, 'heroicon-o-calendar-days'],
-            ['Bank accounts', \Webkul\Invoice\Filament\Clusters\Configuration\Resources\BankAccountResource::class, 'heroicon-o-building-library'],
-            ['Warehouse', \Webkul\Inventory\Filament\Clusters\Configurations\Resources\WarehouseResource::class, 'heroicon-o-home-modern'],
-            ['My profile', \Webkul\Support\Filament\Pages\Profile::class, 'heroicon-o-user-circle'],
+            ['Business and look', ManageBranding::class, 'heroicon-o-building-office'],
+            ['Taxes', TaxResource::class, 'heroicon-o-percent-badge'],
+            ['Payment terms', PaymentTermResource::class, 'heroicon-o-calendar-days'],
+            ['Bank accounts', BankAccountResource::class, 'heroicon-o-building-library'],
+            ['Warehouse', WarehouseResource::class, 'heroicon-o-home-modern'],
+            ['My profile', Profile::class, 'heroicon-o-user-circle'],
         ],
     ];
 

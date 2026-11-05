@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'title' => 'Receipts',
+    'title' => 'Goods in',
 
     'navigation' => [
-        'title' => 'Receipts',
+        'title' => 'Goods in',
     ],
 
     'form' => [

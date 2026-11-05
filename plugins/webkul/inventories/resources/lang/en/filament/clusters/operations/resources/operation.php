@@ -7,7 +7,7 @@ return [
     ],
 
     'global-search' => [
-        'partner' => 'Partner',
+        'partner' => 'Customer or supplier',
         'origin'  => 'Origin',
     ],
 
@@ -78,12 +78,12 @@ return [
                         ],
 
                         'fields' => [
-                            'lot'                => 'Lot/Serial Number',
+                            'lot'                => 'Batch / serial number',
                             'pick-from'          => 'Pick From',
                             'location'           => 'Store To',
                             'package'            => 'Destination Package',
                             'quantity'           => 'Quantity',
-                            'uom'                => 'Unit of Measure',
+                            'uom'                => 'Unit',
                             'first-lot'          => 'First Lot Number',
                             'quantity-per-lot'   => 'Quantity per Lot',
                             'quantity-received'  => 'Quantity Received',
@@ -99,12 +99,12 @@ return [
                 'title' => 'Additional',
 
                 'fields' => [
-                    'responsible'                  => 'Responsible',
+                    'responsible'                  => 'Handled by',
                     'shipping-policy'              => 'Shipping Policy',
                     'shipping-policy-hint-tooltip' => 'It defines whether goods should be delivered partially or all at once.',
                     'scheduled-at'                 => 'Scheduled At',
                     'scheduled-at-hint-tooltip'    => 'The scheduled time for processing the first part of the shipment. Manually setting a value here will apply it as the expected date for all stock moves.',
-                    'source-document'              => 'Source Document',
+                    'source-document'              => 'Reference',
                     'source-document-hint-tooltip' => 'Reference of the document',
                 ],
             ],
@@ -126,11 +126,11 @@ return [
             'from'            => 'From',
             'to'              => 'To',
             'contact'         => 'Contact',
-            'responsible'     => 'Responsible',
+            'responsible'     => 'Handled by',
             'scheduled-at'    => 'Scheduled At',
             'deadline'        => 'Deadline',
             'closed-at'       => 'Closed At',
-            'source-document' => 'Source Document',
+            'source-document' => 'Reference',
             'operation-type'  => 'Operation Type',
             'company'         => 'Company',
             'state'           => 'State',
@@ -141,7 +141,7 @@ return [
 
         'groups' => [
             'state'           => 'State',
-            'source-document' => 'Source Document',
+            'source-document' => 'Reference',
             'operation-type'  => 'Operation Type',
             'scheduled-at'    => 'Schedule At',
             'created-at'      => 'Created At',
@@ -151,8 +151,8 @@ return [
             'operation-type'       => 'Operation Type',
             'name'                 => 'Name',
             'state'                => 'State',
-            'partner'              => 'Partner',
-            'responsible'          => 'Responsible',
+            'partner'              => 'Customer or supplier',
+            'responsible'          => 'Handled by',
             'owner'                => 'Owner',
             'source-location'      => 'Source Location',
             'destination-location' => 'Destination Location',
@@ -198,10 +198,10 @@ return [
             'additional' => [
                 'title'   => 'Additional Information',
                 'entries' => [
-                    'responsible'     => 'Responsible',
+                    'responsible'     => 'Handled by',
                     'shipping-policy' => 'Shipping Policy',
                     'scheduled-at'    => 'Scheduled At',
-                    'source-document' => 'Source Document',
+                    'source-document' => 'Reference',
                 ],
             ],
             'note' => [

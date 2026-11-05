@@ -30,7 +30,7 @@ return [
         'destination-location'         => 'Destination Location',
         'back-order'                   => 'Back Order',
         'return'                       => 'Return',
-        'partner'                      => 'Partner',
+        'partner'                      => 'Customer or supplier',
         'company'                      => 'Company',
         'creator'                      => 'Creator',
     ],

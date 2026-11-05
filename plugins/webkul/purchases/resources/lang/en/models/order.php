@@ -4,18 +4,18 @@ return [
     'title'          => 'Order',
 
     'titles'         => [
-        'quotation'      => 'Request for Quotation',
-        'purchase-order' => 'Purchase Order',
+        'quotation'      => 'Price request',
+        'purchase-order' => 'Purchase order',
     ],
 
     'log-attributes' => [
         'state'             => 'Status',
-        'untaxed-amount'    => 'Untaxed Amount',
+        'untaxed-amount'    => 'Amount before tax',
         'partner-reference' => 'Vendor Reference',
-        'origin'            => 'Source Document',
-        'partner'           => 'Vendor',
+        'origin'            => 'Reference',
+        'partner'           => 'Supplier',
         'buyer'             => 'Buyer',
-        'payment-term'      => 'Payment Term',
+        'payment-term'      => 'Payment terms',
         'fiscal-position'   => 'Fiscal Position',
     ],
 ];

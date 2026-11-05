@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'draft'  => 'Quotation',
-    'sent'   => 'Quotation Sent',
-    'sale'   => 'Sales Order',
+    'draft'  => 'Quote',
+    'sent'   => 'Quote sent',
+    'sale'   => 'Sales order',
     'cancel' => 'Cancelled',
 ];

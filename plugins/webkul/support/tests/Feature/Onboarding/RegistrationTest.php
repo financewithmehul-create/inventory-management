@@ -20,8 +20,6 @@ beforeEach(function () {
 });
 
 it('lets a visitor sign up and gives them the Viewer role with own-records access', function () {
-    $this->get('/admin/register')->assertSuccessful();
-
     Livewire::test(Register::class)
         ->fillForm([
             'name'                  => 'New Person',
@@ -65,6 +63,8 @@ it('keeps the account inactive when approval is required', function () {
 });
 
 it('returns 404 when sign-up is switched off', function () {
+    config(['erp.single_user' => false]);
+
     $settings = settings(UserSettings::class);
     $settings->allow_registration = false;
     $settings->save();

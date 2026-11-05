@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Webkul\PluginManager\Package;
 use Webkul\PluginManager\PackageServiceProvider;
-use Webkul\Security\Bouncer;
 use Webkul\Security\Console\Commands\ResetAdmin;
-use Webkul\Security\Models\User;
 use Webkul\Security\Console\Commands\SyncDefaultRoles;
 use Webkul\Security\Facades\Bouncer as BouncerFacade;
+use Webkul\Security\Models\User;
 
 class SecurityServiceProvider extends PackageServiceProvider
 {

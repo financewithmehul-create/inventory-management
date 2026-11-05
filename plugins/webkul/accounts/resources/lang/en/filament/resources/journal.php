@@ -4,7 +4,7 @@ return [
     'form' => [
         'tabs' => [
             'journal-entries' => [
-                'title' => 'Journal Entries',
+                'title' => 'Entries',
 
                 'field-set' => [
                     'accounting-information' => [
@@ -127,7 +127,7 @@ return [
     'infolist' => [
         'tabs' => [
             'journal-entries' => [
-                'title' => 'Journal Entries',
+                'title' => 'Entries',
 
                 'field-set' => [
                     'accounting-information' => [
