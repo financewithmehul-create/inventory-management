@@ -40,7 +40,9 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        set_time_limit(300);
+        if (! app()->runningInConsole()) {
+            set_time_limit(300);
+        }
 
         $panel = $panel
             ->default()
