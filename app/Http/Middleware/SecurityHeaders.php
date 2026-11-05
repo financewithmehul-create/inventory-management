@@ -17,7 +17,20 @@ class SecurityHeaders
             'X-Content-Type-Options'  => 'nosniff',
             'Referrer-Policy'         => 'strict-origin-when-cross-origin',
             'Permissions-Policy'      => 'camera=(self), microphone=(), geolocation=(), payment=()',
-            'Content-Security-Policy' => "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'",
+            // Everything is served from this site. Inline scripts and eval stay allowed because Livewire and Alpine need them.
+            'Content-Security-Policy' => implode('; ', [
+                "default-src 'self'",
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+                "style-src 'self' 'unsafe-inline'",
+                "img-src 'self' data: blob:",
+                "font-src 'self' data:",
+                "connect-src 'self'",
+                "frame-src 'self' blob:",
+                "frame-ancestors 'self'",
+                "object-src 'none'",
+                "base-uri 'self'",
+                "form-action 'self'",
+            ]),
         ];
 
         if ($request->isSecure()) {

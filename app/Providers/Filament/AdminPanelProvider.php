@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\AvatarProviders\InitialsAvatarProvider;
 use App\Filament\Pages\Dashboard;
 use App\Http\Middleware\ApplyBrandSettings;
 use App\Http\Middleware\SetLocale;
@@ -52,6 +53,7 @@ class AdminPanelProvider extends PanelProvider
             ->emailVerification()
             ->profile()
             ->darkMode(false)
+            ->defaultAvatarProvider(InitialsAvatarProvider::class)
             ->font('IBM Plex Sans', provider: LocalFontProvider::class)
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([

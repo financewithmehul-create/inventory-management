@@ -42,7 +42,7 @@
     </x-filament::section>
 
     @assets
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+        <script src="{{ asset('js/chart.umd.min.js') }}"></script>
     @endassets
 
     @script
