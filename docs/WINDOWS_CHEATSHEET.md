@@ -79,7 +79,7 @@ Get-Content storage\logs\laravel.log -Tail 50
 powershell -ExecutionPolicy Bypass -File .\scripts\windows\setup.ps1 -Reinstall
 ```
 
-Your database password is saved in `C:\Users\<you>\aureus-erp-db.txt`. Do not share it.
+Your database password is saved in `C:\Users\<you>\inventory-db.txt`. Do not share it.
 
 ## 4. What to try first
 
@@ -96,7 +96,7 @@ Your database password is saved in `C:\Users\<you>\aureus-erp-db.txt`. Do not sh
 | `running scripts is disabled` | Always start the scripts with `powershell -ExecutionPolicy Bypass -File ...` as shown above. |
 | `winget is not recognized` | Install **App Installer** from the Microsoft Store, then try again. |
 | `git/php/node was installed but is not visible` | Close PowerShell, open a **new** administrator PowerShell, and run `setup.ps1` again. It continues where it stopped. |
-| `Access denied for user root` | The saved password does not match. Delete `aureus-erp-db.txt` from your user folder and run `setup.ps1` again; it asks for the MariaDB root password. |
+| `Access denied for user root` | The saved password does not match. Delete `inventory-db.txt` from your user folder and run `setup.ps1` again; it asks for the MariaDB root password. |
 | Page opens but looks unstyled | Run `npm run build` in the project folder. |
 | `port 8000 is already in use` | Use `start.ps1 -Port 8080` and open `http://127.0.0.1:8080/admin`. |
 | Anything else | Copy the red error text and send it to me. |

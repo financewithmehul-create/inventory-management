@@ -16,8 +16,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$ToolsDir    = Join-Path $env:USERPROFILE 'aureus-erp-tools'
-$SecretsFile = Join-Path $env:USERPROFILE 'aureus-erp-db.txt'
+$ToolsDir    = Join-Path $env:USERPROFILE 'inventory-tools'
+$SecretsFile = Join-Path $env:USERPROFILE 'inventory-db.txt'
 
 $Modules = @(
     'accounts', 'accounting', 'barcode', 'blogs', 'contacts', 'employees', 'inventories', 'invoices',

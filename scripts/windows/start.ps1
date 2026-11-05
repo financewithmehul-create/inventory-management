@@ -14,7 +14,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$ToolsDir    = Join-Path $env:USERPROFILE 'aureus-erp-tools'
+$ToolsDir    = Join-Path $env:USERPROFILE 'inventory-tools'
 
 $machine = [Environment]::GetEnvironmentVariable('Path', 'Machine')
 $user    = [Environment]::GetEnvironmentVariable('Path', 'User')

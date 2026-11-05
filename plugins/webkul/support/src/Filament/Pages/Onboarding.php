@@ -3,12 +3,10 @@
 namespace Webkul\Support\Filament\Pages;
 
 use Filament\Actions\Action;
-use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\ToggleButtons;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions;
@@ -39,7 +37,8 @@ use Webkul\Support\Settings\BrandSettings;
 use Webkul\Support\Settings\OnboardingSettings;
 
 /**
- * First-run setup wizard: company details, branding and the modules to install.
+ * First-run setup: company details and the look of the app. Any missing product module is installed first,
+ * one per request, so a slow host never hits its time limit.
  */
 class Onboarding extends Page
 {
@@ -47,32 +46,26 @@ class Onboarding extends Page
 
     protected static ?string $slug = 'onboarding';
 
-    protected Width|string|null $maxContentWidth = Width::FiveExtraLarge;
+    protected Width|string|null $maxContentWidth = Width::FourExtraLarge;
 
     /**
-     * Quick colour choices shown under the colour picker.
+     * Quick colour choices: calm, dark tones that read well on an off-white page.
      *
      * @var array<string, string>
      */
-    protected const PRESET_COLORS = [
-        'Blue'    => '#2563eb',
-        'Indigo'  => '#4f46e5',
-        'Violet'  => '#7c3aed',
-        'Pink'    => '#db2777',
-        'Red'     => '#dc2626',
-        'Orange'  => '#ea580c',
-        'Emerald' => '#059669',
-        'Teal'    => '#0d9488',
+    public const PRESET_COLORS = [
+        'Navy'     => '#1f3b57',
+        'Petrol'   => '#1d4e5f',
+        'Forest'   => '#2f5d3a',
+        'Graphite' => '#3a3f45',
+        'Brick'    => '#7a3b2e',
     ];
 
     /** @var array<string, mixed> */
     public ?array $data = [];
 
-    /** @var array<int, string> Modules waiting to be installed, one per request. */
+    /** @var array<int, string> Product modules still to install, one per request. */
     public array $installQueue = [];
-
-    /** @var array<int, string> */
-    public array $installedNow = [];
 
     /** @var array<string, string> */
     public array $installFailed = [];
@@ -93,11 +86,12 @@ class Onboarding extends Page
 
         $brand = settings(BrandSettings::class);
 
+        $this->installQueue = $this->missingModules();
+
         $this->content->fill([
             'company_name'  => $company?->name,
             'email'         => $company?->email,
             'phone'         => $company?->phone,
-            'website'       => $company?->website,
             'tax_id'        => $company?->tax_id,
             'street1'       => $company?->street1,
             'city'          => $company?->city,
@@ -105,9 +99,7 @@ class Onboarding extends Page
             'country_id'    => $company?->country_id,
             'state_id'      => $company?->state_id,
             'brand_name'    => $brand->brand_name ?: $company?->name,
-            'primary_color' => $brand->primary_color ?: self::PRESET_COLORS['Blue'],
-            'default_theme' => $brand->default_theme ?: 'system',
-            'modules'       => Plugin::query()->orderBy('sort')->pluck('name')->all(),
+            'primary_color' => $brand->primary_color ?: self::PRESET_COLORS['Navy'],
         ]);
     }
 
@@ -120,7 +112,6 @@ class Onboarding extends Page
                     Wizard::make([
                         $this->companyStep(),
                         $this->brandingStep(),
-                        $this->modulesStep(),
                         $this->finishStep(),
                     ])
                         ->submitAction(new HtmlString(Blade::render(
@@ -134,8 +125,18 @@ class Onboarding extends Page
     {
         return Step::make(__('support::filament/pages/onboarding.steps.company.label'))
             ->description(__('support::filament/pages/onboarding.steps.company.description'))
-            ->icon('heroicon-o-building-office')
+            ->afterValidation(function (): void {
+                if ($this->installQueue !== []) {
+                    Notification::make()
+                        ->title(__('support::filament/pages/onboarding.preparing.wait'))
+                        ->warning()
+                        ->send();
+
+                    throw new Halt;
+                }
+            })
             ->schema([
+                Html::make(fn (): HtmlString => $this->preparingHtml()),
                 Grid::make(['default' => 1, 'md' => 2])->schema([
                     TextInput::make('company_name')
                         ->label(__('support::filament/pages/onboarding.fields.company-name'))
@@ -152,10 +153,6 @@ class Onboarding extends Page
                         ->label(__('support::filament/pages/onboarding.fields.phone'))
                         ->tel()
                         ->maxLength(40),
-                    TextInput::make('website')
-                        ->label(__('support::filament/pages/onboarding.fields.website'))
-                        ->url()
-                        ->maxLength(150),
                     TextInput::make('street1')
                         ->label(__('support::filament/pages/onboarding.fields.street'))
                         ->maxLength(150),
@@ -187,7 +184,6 @@ class Onboarding extends Page
     {
         return Step::make(__('support::filament/pages/onboarding.steps.branding.label'))
             ->description(__('support::filament/pages/onboarding.steps.branding.description'))
-            ->icon('heroicon-o-swatch')
             ->schema([
                 Grid::make(['default' => 1, 'md' => 2])->schema([
                     TextInput::make('brand_name')
@@ -203,17 +199,9 @@ class Onboarding extends Page
                         ->live(),
                     FileUpload::make('light_logo')
                         ->label(__('support::filament/pages/onboarding.fields.light-logo'))
+                        ->helperText(__('support::filament/pages/onboarding.fields.logo-help'))
                         ->image()
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])
-                        ->maxSize(2048)
-                        ->disk('public')
-                        ->directory('branding')
-                        ->visibility('public'),
-                    FileUpload::make('dark_logo')
-                        ->label(__('support::filament/pages/onboarding.fields.dark-logo'))
-                        ->helperText(__('support::filament/pages/onboarding.fields.dark-logo-help'))
-                        ->image()
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                         ->maxSize(2048)
                         ->disk('public')
                         ->directory('branding')
@@ -221,33 +209,19 @@ class Onboarding extends Page
                     FileUpload::make('favicon')
                         ->label(__('support::filament/pages/onboarding.fields.favicon'))
                         ->image()
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])
+                        ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                         ->maxSize(512)
                         ->disk('public')
                         ->directory('branding')
                         ->visibility('public'),
-                    ToggleButtons::make('default_theme')
-                        ->label(__('support::filament/pages/onboarding.fields.default-theme'))
-                        ->options([
-                            'light'  => __('support::filament/pages/onboarding.fields.theme-light'),
-                            'dark'   => __('support::filament/pages/onboarding.fields.theme-dark'),
-                            'system' => __('support::filament/pages/onboarding.fields.theme-system'),
-                        ])
-                        ->icons([
-                            'light'  => 'heroicon-o-sun',
-                            'dark'   => 'heroicon-o-moon',
-                            'system' => 'heroicon-o-computer-desktop',
-                        ])
-                        ->inline()
-                        ->required(),
                 ]),
                 Actions::make(array_map(
                     fn (string $name, string $hex) => Action::make('preset_'.Str::slug($name))
                         ->label($name)
-                        ->size('xs')
+                        ->size('sm')
                         ->outlined()
-                        ->icon('heroicon-s-swatch')
-                        ->extraAttributes(['style' => 'color: '.$hex.'; border-color: '.$hex])
+                        ->color('gray')
+                        ->extraAttributes(['style' => 'border-left: 0; box-shadow: inset 0 -3px 0 '.$hex])
                         ->action(fn (Set $set) => $set('primary_color', $hex)),
                     array_keys(self::PRESET_COLORS),
                     array_values(self::PRESET_COLORS),
@@ -256,80 +230,22 @@ class Onboarding extends Page
             ]);
     }
 
-    protected function modulesStep(): Step
-    {
-        return Step::make(__('support::filament/pages/onboarding.steps.modules.label'))
-            ->description(__('support::filament/pages/onboarding.steps.modules.description'))
-            ->icon('heroicon-o-squares-plus')
-            ->afterValidation(function (): void {
-                $pending = Plugin::query()
-                    ->whereIn('name', $this->data['modules'] ?? [])
-                    ->where('is_installed', false)
-                    ->exists();
-
-                if ($pending || $this->installQueue !== []) {
-                    Notification::make()
-                        ->title(__('support::filament/pages/onboarding.modules.install-first'))
-                        ->body(__('support::filament/pages/onboarding.modules.install-first-body'))
-                        ->warning()
-                        ->send();
-
-                    throw new Halt;
-                }
-            })
-            ->schema([
-                CheckboxList::make('modules')
-                    ->label(__('support::filament/pages/onboarding.fields.modules'))
-                    ->helperText(__('support::filament/pages/onboarding.fields.modules-help'))
-                    ->options(fn () => Plugin::query()->orderBy('sort')->get()
-                        ->mapWithKeys(fn (Plugin $plugin) => [
-                            $plugin->name => Str::headline($plugin->name)
-                                .($plugin->summary ? ' — '.$plugin->summary : '')
-                                .($plugin->is_installed ? ' ('.__('support::filament/pages/onboarding.modules.installed-tag').')' : ''),
-                        ])
-                        ->all())
-                    ->columns(['default' => 1, 'md' => 2])
-                    ->bulkToggleable()
-                    ->searchable(),
-                Actions::make([
-                    Action::make('installModules')
-                        ->label(__('support::filament/pages/onboarding.modules.install'))
-                        ->icon('heroicon-o-arrow-down-tray')
-                        ->action(fn () => $this->startInstall()),
-                ]),
-                Html::make(fn (): HtmlString => $this->installProgressHtml()),
-            ]);
-    }
-
     protected function finishStep(): Step
     {
         return Step::make(__('support::filament/pages/onboarding.steps.finish.label'))
             ->description(__('support::filament/pages/onboarding.steps.finish.description'))
-            ->icon('heroicon-o-check-badge')
             ->schema([
                 Html::make(fn (Get $get): HtmlString => new HtmlString(
                     '<div class="space-y-1"><p class="text-lg font-semibold">'.e(__('support::filament/pages/onboarding.finish.heading')).'</p>'.
-                    '<p class="text-sm text-gray-500 dark:text-gray-400">'.e(__('support::filament/pages/onboarding.finish.description')).'</p>'.
+                    '<p class="text-sm text-gray-600">'.e(__('support::filament/pages/onboarding.finish.description')).'</p>'.
                     '<p class="pt-2 text-sm"><strong>'.e((string) $get('company_name')).'</strong></p></div>'
                 )),
             ]);
     }
 
     /**
-     * Install the selected modules one at a time, one request each, so a slow host never hits its time limit.
+     * Called by the progress block (wire:poll) until every product module is installed.
      */
-    public function startInstall(): void
-    {
-        $this->installFailed = [];
-
-        $this->installQueue = Plugin::query()
-            ->whereIn('name', $this->data['modules'] ?? [])
-            ->where('is_installed', false)
-            ->orderBy('sort')
-            ->pluck('name')
-            ->all();
-    }
-
     public function installNext(): void
     {
         $name = array_shift($this->installQueue);
@@ -346,10 +262,8 @@ class Onboarding extends Page
 
         try {
             app(PluginInstaller::class)->install($plugin);
-
-            $this->installedNow[] = $name;
         } catch (Throwable $e) {
-            logger()->error('Onboarding module installation failed', ['plugin' => $name, 'error' => $e->getMessage()]);
+            logger()->error('Setup could not install a module', ['plugin' => $name, 'error' => $e->getMessage()]);
 
             $this->installFailed[$name] = $e->getMessage();
         }
@@ -362,8 +276,6 @@ class Onboarding extends Page
         Artisan::call('erp:doctor', ['--fix' => true]);
 
         Artisan::call('erp:permissions:refresh');
-
-        Artisan::call('erp:features:enable');
 
         DB::transaction(function () use ($state): void {
             $this->saveCompany($state);
@@ -380,10 +292,6 @@ class Onboarding extends Page
             ->title(__('support::filament/pages/onboarding.notifications.completed'))
             ->success()
             ->send();
-
-        if (in_array($state['default_theme'] ?? null, ['light', 'dark', 'system'], true)) {
-            $this->js('localStorage.setItem(\'theme\', '.json_encode($state['default_theme']).')');
-        }
 
         $this->redirect(filament()->getUrl());
     }
@@ -403,7 +311,6 @@ class Onboarding extends Page
             'name'       => $state['company_name'],
             'email'      => $state['email'] ?? null,
             'phone'      => $state['phone'] ?? null,
-            'website'    => $state['website'] ?? null,
             'tax_id'     => $state['tax_id'] ?? null,
             'street1'    => $state['street1'] ?? null,
             'city'       => $state['city'] ?? null,
@@ -424,17 +331,15 @@ class Onboarding extends Page
 
         $brand->brand_name = $state['brand_name'];
         $brand->primary_color = $state['primary_color'];
-        $brand->default_theme = $state['default_theme'];
+        $brand->default_theme = 'light';
 
-        foreach (['light_logo', 'dark_logo', 'favicon'] as $field) {
+        foreach (['light_logo', 'favicon'] as $field) {
             $value = $state[$field] ?? null;
 
             $brand->{$field} = is_array($value) ? (array_values($value)[0] ?? null) : ($value ?: $brand->{$field});
         }
 
-        if (blank($state['dark_logo'] ?? null) && filled($state['light_logo'] ?? null)) {
-            $brand->dark_logo = $brand->light_logo;
-        }
+        $brand->dark_logo = $brand->light_logo;
 
         $brand->save();
     }
@@ -447,50 +352,51 @@ class Onboarding extends Page
     /**
      * @return array<int, string>
      */
-    protected function installedModuleNames(): array
+    protected function missingModules(): array
     {
-        return Plugin::query()->where('is_installed', true)->pluck('name')->all();
-    }
+        $installed = Plugin::query()->where('is_installed', true)->pluck('name')->all();
 
-    protected function installableModules()
-    {
-        return Plugin::query()->where('is_installed', false)->orderBy('sort')->get();
+        return array_values(array_filter(
+            config('erp.modules', []),
+            fn (string $name): bool => ! in_array($name, $installed, true) && Plugin::query()->where('name', $name)->exists(),
+        ));
     }
 
     protected function previewHtml(?string $name, ?string $color): HtmlString
     {
-        $color = preg_match('/^#[0-9a-fA-F]{6}$/', (string) $color) ? $color : self::PRESET_COLORS['Blue'];
+        $color = preg_match('/^#[0-9a-fA-F]{6}$/', (string) $color) ? $color : self::PRESET_COLORS['Navy'];
 
         return new HtmlString(
-            '<div class="rounded-xl border border-gray-200 p-4 dark:border-white/10">'.
-            '<p class="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">'.e(__('support::filament/pages/onboarding.preview.title')).'</p>'.
+            '<div style="border:1px solid #d8d6cf;border-radius:4px;padding:16px">'.
+            '<p class="mb-2 text-xs font-medium text-gray-600">'.e(__('support::filament/pages/onboarding.preview.title')).'</p>'.
             '<div class="flex items-center justify-between gap-4">'.
-            '<span class="text-lg font-semibold" style="color:'.e($color).'">'.e((string) ($name ?: '—')).'</span>'.
-            '<span class="rounded-lg px-4 py-2 text-sm font-medium text-white" style="background:'.e($color).'">'.e(__('support::filament/pages/onboarding.preview.button')).'</span>'.
+            '<span class="text-lg font-semibold" style="color:'.e($color).'">'.e((string) ($name ?: __('support::filament/pages/onboarding.preview.no-name'))).'</span>'.
+            '<span style="background:'.e($color).';color:#fff;border-radius:4px;padding:8px 16px;font-size:14px;font-weight:500">'.e(__('support::filament/pages/onboarding.preview.button')).'</span>'.
             '</div></div>'
         );
     }
 
-    protected function installProgressHtml(): HtmlString
+    protected function preparingHtml(): HtmlString
     {
-        $rows = '';
+        if ($this->installQueue === [] && $this->installFailed === []) {
+            return new HtmlString('');
+        }
 
-        foreach ($this->installedNow as $name) {
-            $rows .= '<li class="text-sm text-success-600">✓ '.e(Str::headline($name)).' — '.e(__('support::filament/pages/onboarding.modules.done')).'</li>';
+        $html = '';
+
+        if ($this->installQueue !== []) {
+            $total = count(config('erp.modules', []));
+            $done = max(0, $total - count($this->installQueue));
+
+            $html .= '<p class="text-sm text-gray-700" wire:poll.1s="installNext">'.
+                e(__('support::filament/pages/onboarding.preparing.progress', ['done' => $done, 'total' => $total])).'</p>';
         }
 
         foreach ($this->installFailed as $name => $message) {
-            $rows .= '<li class="text-sm text-danger-600">✗ '.e(Str::headline($name)).' — '.e(__('support::filament/pages/onboarding.modules.failed')).': '.e(Str::limit($message, 160)).'</li>';
+            $html .= '<p class="text-sm text-danger-700">'.
+                e(__('support::filament/pages/onboarding.preparing.failed', ['name' => Str::headline($name)])).' '.e(Str::limit($message, 160)).'</p>';
         }
 
-        $poll = '';
-
-        if ($this->installQueue !== []) {
-            $rows .= '<li class="text-sm text-gray-500">⏳ '.e(__('support::filament/pages/onboarding.modules.installing', ['name' => Str::headline($this->installQueue[0])])).'</li>';
-
-            $poll = ' wire:poll.1s="installNext"';
-        }
-
-        return new HtmlString('<ul class="mt-3 space-y-1"'.$poll.'>'.$rows.'</ul>');
+        return new HtmlString('<div style="border:1px solid #d8d6cf;border-radius:4px;padding:12px 16px" class="space-y-1">'.$html.'</div>');
     }
 }

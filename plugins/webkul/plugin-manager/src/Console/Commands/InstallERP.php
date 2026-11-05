@@ -92,11 +92,31 @@ class InstallERP extends Command
 
         $this->markAsInstalled();
 
-        Event::dispatch('aureus.installed');
+        $this->installProductModules();
 
         $this->warnOnEnvCurrencyMismatch();
 
         $this->info('🎉 ERP System installation completed successfully!');
+    }
+
+    /**
+     * Install the modules that make up the product (config/erp.php), then refresh permissions.
+     */
+    protected function installProductModules(): void
+    {
+        foreach (config('erp.modules', []) as $module) {
+            if (Package::isPluginInstalled($module)) {
+                continue;
+            }
+
+            $this->info("Setting up {$module}...");
+
+            Artisan::call("{$module}:install", ['--no-interaction' => true]);
+
+            Package::$plugins = [];
+        }
+
+        $this->call('erp:permissions:refresh');
     }
 
     /**
@@ -197,7 +217,7 @@ class InstallERP extends Command
         $filePath = storage_path('installed');
 
         $content = sprintf(
-            "AureusERP is successfully installed.\nInstalled at: %s",
+            "Installed at: %s",
             now()->toDateTimeString(),
         );
 
@@ -634,19 +654,6 @@ class InstallERP extends Command
         return strlen($password) >= 8 ? null : 'The password must be at least 8 characters long.';
     }
 
-    /**
-     * Ask the user to star the GitHub repository.
-     */
-    protected function askToStarGithubRepository(): void
-    {
-        if (! $this->confirm('Would you like to star our repo on GitHub?')) {
-            return;
-        }
-
-        $repoUrl = 'https://github.com/aureuserp/aureuserp';
-
-        Package::openInBrowser($repoUrl);
-    }
 
     /**
      * Storage link command to create a symbolic link from "public/storage" to "storage/app/public".

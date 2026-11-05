@@ -13,7 +13,7 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  aureus_playwright_test:
+  playwright_test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -50,10 +50,10 @@ jobs:
         image: ${{ matrix.db-image }}
         env:
           MYSQL_ROOT_PASSWORD: ${{ matrix.db-password }}
-          MYSQL_DATABASE: aureuserp
+          MYSQL_DATABASE: inventory
           POSTGRES_USER: ${{ matrix.db-user }}
           POSTGRES_PASSWORD: ${{ matrix.db-password }}
-          POSTGRES_DB: aureuserp
+          POSTGRES_DB: inventory
         ports:
           - ${{ matrix.db-port }}:${{ matrix.db-port }}
         options: >-
@@ -123,7 +123,7 @@ jobs:
           sed -i "s|^\(DB_CONNECTION=\s*\).*$|\1${{ matrix.db }}|" .env
           sed -i "s|^#\?\s*DB_PORT=.*|DB_PORT=${{ matrix.db-port }}|" .env
           sed -i "s|^#\?\s*DB_HOST=.*|DB_HOST=127.0.0.1|" .env
-          sed -i "s|^#\?\s*DB_DATABASE=.*|DB_DATABASE=aureuserp|" .env
+          sed -i "s|^#\?\s*DB_DATABASE=.*|DB_DATABASE=inventory|" .env
           sed -i "s|^#\?\s*DB_USERNAME=.*|DB_USERNAME=${{ matrix.db-user }}|" .env
           sed -i "s|^#\?\s*DB_PASSWORD=.*|DB_PASSWORD=${{ matrix.db-password }}|" .env
           sed -i "s|^\(APP_DEBUG=\s*\).*$|\1true|" .env
@@ -144,12 +144,12 @@ jobs:
           for i in {1..30}; do
             if [ "${{ matrix.db }}" = "mysql" ]; then
               mysqladmin ping -h 127.0.0.1 -P ${DB_PORT} -u root -proot --silent 2>/dev/null && READY=1 || READY=0
-              DSN="mysql:host=127.0.0.1;port=${DB_PORT};dbname=aureuserp"
+              DSN="mysql:host=127.0.0.1;port=${DB_PORT};dbname=inventory"
               PHP_USER="root"
               PHP_PASS="root"
             else
               PGPASSWORD=${{ matrix.db-password }} pg_isready -h 127.0.0.1 -p ${DB_PORT} -U ${{ matrix.db-user }} >/dev/null 2>&1 && READY=1 || READY=0
-              DSN="pgsql:host=127.0.0.1;port=${DB_PORT};dbname=aureuserp"
+              DSN="pgsql:host=127.0.0.1;port=${DB_PORT};dbname=inventory"
               PHP_USER="${{ matrix.db-user }}"
               PHP_PASS="${{ matrix.db-password }}"
             fi
@@ -163,7 +163,7 @@ jobs:
             sleep 3
           done
 
-      - name: Running Aureus Installer
+      - name: Running installer
         run: |
           php artisan erp:install \
             --force \
@@ -207,7 +207,7 @@ jobs:
   merge_playwright_reports:
     if: ${{ always() && !cancelled() }}
     needs:
-      - aureus_playwright_test
+      - playwright_test
     runs-on: ubuntu-latest
 
     strategy:

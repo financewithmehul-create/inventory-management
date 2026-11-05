@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title'            => 'AureusERP - Planificación de recursos empresariales',
-    'meta_description' => 'AureusERP - Sistema moderno de planificación de recursos empresariales',
+    'title'            => 'Planificación de recursos empresariales',
+    'meta_description' => 'Sistema moderno de planificación de recursos empresariales',
 
     'nav' => [
         'dashboard' => 'Panel',
@@ -11,7 +11,7 @@ return [
     ],
 
     'hero' => [
-        'title'         => 'Bienvenido a AureusERP',
+        'title'         => 'Bienvenido a this system',
         'subtitle'      => 'Una solución moderna de planificación de recursos empresariales',
         'description'   => 'Optimice las operaciones de su negocio con nuestro completo sistema ERP. Gestione ventas, compras, inventario, contabilidad y mucho más desde una única plataforma.',
         'cta_primary'   => 'Comenzar',
@@ -55,7 +55,7 @@ return [
 
     'cta' => [
         'title'       => '¿Listo para transformar su negocio?',
-        'description' => 'Únase a miles de empresas que confían en AureusERP para sus operaciones diarias.',
+        'description' => 'Únase a miles de empresas que confían en this system para sus operaciones diarias.',
         'button'      => 'Iniciar prueba gratuita',
     ],
 

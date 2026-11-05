@@ -81,7 +81,7 @@ class ListPlugins extends ListRecords
                     $plugin = Plugin::updateOrCreate(
                         ['name' => $name],
                         [
-                            'author'         => data_get($composer, 'authors.0.name', 'Webkul'),
+                            'author'         => data_get($composer, 'authors.0.name', ''),
                             'summary'        => data_get($composer, 'description', $package->description ?? ''),
                             'description'    => data_get($composer, 'description', $package->description ?? ''),
                             'latest_version' => data_get($composer, 'version', '1.0.0'),

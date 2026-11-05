@@ -130,10 +130,6 @@ class SupportServiceProvider extends PackageServiceProvider
 
         Gate::policy(Role::class, RolePolicy::class);
 
-        $this->app['router']->get('cache/{filename}', [
-            'uses' => 'Webkul\Support\Http\Controllers\ImageCacheController@getImage',
-            'as'   => 'image_cache',
-        ])->where(['filename' => '[ \w\\.\\/\\-\\@\(\)\=]+']);
 
         FilamentAsset::register([
             Css::make('support', __DIR__.'/../resources/dist/support.css'),

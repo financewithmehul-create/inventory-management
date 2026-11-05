@@ -10,6 +10,7 @@ use Webkul\PluginManager\Console\Commands\Doctor;
 use Webkul\PluginManager\Console\Commands\EnableFeatures;
 use Webkul\PluginManager\Console\Commands\FindMissingTranslations;
 use Webkul\PluginManager\Console\Commands\InstallERP;
+use Webkul\PluginManager\Console\Commands\PruneModules;
 use Webkul\PluginManager\Console\Commands\RefreshPermissions;
 
 class PluginManagerServiceProvider extends PackageServiceProvider
@@ -34,6 +35,7 @@ class PluginManagerServiceProvider extends PackageServiceProvider
                 Doctor::class,
                 EnableFeatures::class,
                 InstallERP::class,
+                PruneModules::class,
                 RefreshPermissions::class,
                 FindMissingTranslations::class,
             ]);
@@ -45,7 +47,6 @@ class PluginManagerServiceProvider extends PackageServiceProvider
 
         $this->app->make(PermissionManager::class)->managePermissions();
 
-        Event::listen('aureus.installed', 'Webkul\PluginManager\Listeners\Installer@installed');
     }
 
     public function packageRegistered(): void

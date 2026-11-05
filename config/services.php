@@ -37,7 +37,7 @@ return [
 
     'msg91' => [
         'auth_key'     => env('MSG91_AUTH_KEY'),
-        'sender_id'    => env('MSG91_SENDER_ID', 'AUREUS'),
+        'sender_id'    => env('MSG91_SENDER_ID'),
         'route'        => env('MSG91_ROUTE', '4'),
         'admin_mobile' => env('MSG91_ADMIN_MOBILE'),
     ],

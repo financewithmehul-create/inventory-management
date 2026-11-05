@@ -1,7 +1,7 @@
 {
     "name": "aureuserp/aureuserp",
     "type": "project",
-    "description": "Open Source ERP Solution built on Laravel for Small and Medium Enterprises (SMEs) and large-scale enterprises.",
+    "description": "Simple inventory, sales, purchase, invoicing and accounting system.",
     "keywords": [
         "erp",
         "laravel",
@@ -102,11 +102,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "support": {
-        "issues": "https://github.com/aureuserp/aureuserp/issues",
-        "forum": "https://forums.aureuserp.com",
-        "source": "https://github.com/aureuserp/aureuserp",
-        "docs": "https://devdocs.aureuserp.com"
-    }
+    "prefer-stable": true
 }

@@ -241,7 +241,7 @@ jobs:
           html_escape() { sed -e 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g'; }
 
           {
-            echo '<!-- aureus-playwright-report -->'
+            echo '<!-- playwright-report -->'
             echo "## ❌ Playwright tests failed — [run #${RUN_NUMBER}](${RUN_URL})"
             echo
             echo "Failure at \`${HEAD_SHA:0:7}\`."
@@ -323,7 +323,7 @@ jobs:
           # Find an existing report comment so we update it in place (one sticky
           # comment per PR) instead of posting a new one every run.
           COMMENT_ID="$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --paginate \
-            --jq '.[] | select(.body | startswith("<!-- aureus-playwright-report -->")) | .id' \
+            --jq '.[] | select(.body | startswith("<!-- playwright-report -->")) | .id' \
             2>/dev/null | head -n1 || true)"
 
           if [ -n "$COMMENT_ID" ]; then
