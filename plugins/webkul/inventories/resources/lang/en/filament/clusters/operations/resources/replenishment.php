@@ -2,7 +2,7 @@
 
 return [
     'navigation' => [
-        'title' => 'Replenishment',
+        'title' => 'Reorder',
         'group' => 'Procurement',
     ],
 

@@ -2,6 +2,7 @@
 
 namespace Webkul\Support\Traits;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -21,7 +22,12 @@ trait HasFilamentDefaults
 
         Section::configureUsing(fn (Section $section) => $section->columnSpanFull());
 
-        Table::configureUsing(fn (Table $table) => $table->defaultCurrency(fn (): string => default_currency_code()));
+        Table::configureUsing(fn (Table $table) => $table
+            ->defaultCurrency(fn (): string => default_currency_code())
+            ->emptyStateHeading('Nothing here yet')
+            ->emptyStateDescription('Use the button at the top of the page to add the first one.'));
+
+        FileUpload::configureUsing(fn (FileUpload $upload) => $upload->maxSize(5120));
 
         Schema::configureUsing(fn (Schema $schema) => $schema->defaultCurrency(fn (): string => default_currency_code()));
     }

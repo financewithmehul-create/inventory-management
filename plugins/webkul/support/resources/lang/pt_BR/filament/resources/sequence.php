@@ -13,7 +13,7 @@ return [
         'sections' => [
             'general' => [
                 'title'       => 'Geral',
-                'description' => 'As sequências de diários, armazéns e tipos de operação são criadas automaticamente quando esses registros são criados — edite-as aqui. A criação manual só é necessária para sequências personalizadas baseadas em código.',
+                'description' => 'As sequências de diários, armazéns e tipos de operação são criadas automaticamente quando esses registros são criados - edite-as aqui. A criação manual só é necessária para sequências personalizadas baseadas em código.',
 
                 'fields' => [
                     'name'      => 'Nome',

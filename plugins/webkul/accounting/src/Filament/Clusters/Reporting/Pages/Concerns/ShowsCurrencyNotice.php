@@ -20,7 +20,7 @@ trait ShowsCurrencyNotice
         return [
             'consolidated'      => ! $rateMap->isMonoCurrency(),
             'company_count'     => count($rateMap->companyIds()),
-            'currency'          => $currency?->name ?? $currency?->code ?? '—',
+            'currency'          => $currency?->name ?? $currency?->code ?? 'Not set',
             'missing_rates'     => $rateMap->hasMissingRates(),
             'missing_companies' => Company::query()
                 ->whereIn('id', $rateMap->missingRateCompanyIds())

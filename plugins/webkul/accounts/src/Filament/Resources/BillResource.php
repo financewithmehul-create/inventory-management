@@ -39,9 +39,9 @@ class BillResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('accounts::filament/resources/bill.global-search.vendor')   => $record->partner?->name ?? '—',
-            __('accounts::filament/resources/bill.global-search.date')     => $record?->invoice_date ?? '—',
-            __('accounts::filament/resources/bill.global-search.due-date') => $record?->invoice_date_due ?? '—',
+            __('accounts::filament/resources/bill.global-search.vendor')   => $record->partner?->name ?? 'Not set',
+            __('accounts::filament/resources/bill.global-search.date')     => $record?->invoice_date ?? 'Not set',
+            __('accounts::filament/resources/bill.global-search.due-date') => $record?->invoice_date_due ?? 'Not set',
         ];
     }
 

@@ -35,8 +35,8 @@ class OrderResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('purchases::filament/admin/clusters/orders/resources/order.global-search.vendor') => $record->partner?->name ?? '—',
-            __('purchases::filament/admin/clusters/orders/resources/order.global-search.amount') => money($record->total_amount ?? 0, $record->currency?->name) ?? '—',
+            __('purchases::filament/admin/clusters/orders/resources/order.global-search.vendor') => $record->partner?->name ?? 'Not set',
+            __('purchases::filament/admin/clusters/orders/resources/order.global-search.amount') => money($record->total_amount ?? 0, $record->currency?->name) ?? 'Not set',
         ];
     }
 

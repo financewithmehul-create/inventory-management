@@ -31,17 +31,17 @@ class PutawayRulesTable
                     ->sortable(),
                 TextColumn::make('product.name')
                     ->label(__('inventories::filament/clusters/configurations/resources/putaway-rule.table.columns.product'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('category.name')
                     ->label(__('inventories::filament/clusters/configurations/resources/putaway-rule.table.columns.category'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('storageCategory.name')
                     ->label(__('inventories::filament/clusters/configurations/resources/putaway-rule.table.columns.storage-category'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('outLocation.full_name')

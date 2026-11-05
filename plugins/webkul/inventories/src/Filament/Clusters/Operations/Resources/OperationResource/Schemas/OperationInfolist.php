@@ -47,7 +47,7 @@ class OperationInfolist
                                 TextEntry::make('partner.name')
                                     ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.sections.general.entries.contact'))
                                     ->icon('heroicon-o-user-group')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('operationType.name')
                                     ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.sections.general.entries.operation-type'))
@@ -129,22 +129,22 @@ class OperationInfolist
                                     ->schema([
                                         TextEntry::make('product.name'),
                                         TextEntry::make('finalLocation.full_name')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->visible(OperationResource::getWarehouseSettings()->enable_locations),
                                         TextEntry::make('description_picking')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('scheduled_at')
                                             ->date()
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('deadline')
                                             ->date()
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('productPackaging.name')
                                             ->visible(OperationResource::getProductSettings()->enable_packagings)
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('product_uom_qty'),
                                         TextEntry::make('quantity')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('uom.name')
                                             ->visible(OperationResource::getProductSettings()->enable_uom),
                                         IconEntry::make('is_picked'),
@@ -158,23 +158,23 @@ class OperationInfolist
                                         TextEntry::make('user.name')
                                             ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.tabs.additional.entries.responsible'))
                                             ->icon('heroicon-o-user')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('move_type')
                                             ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.tabs.additional.entries.shipping-policy'))
                                             ->icon('heroicon-o-truck')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('scheduled_at')
                                             ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.tabs.additional.entries.scheduled-at'))
                                             ->dateTime()
                                             ->icon('heroicon-o-calendar')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('origin')
                                             ->label(__('inventories::filament/clusters/operations/resources/operation.infolist.tabs.additional.entries.source-document'))
                                             ->icon('heroicon-o-document-text')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ]),
                             ]),
 
@@ -183,7 +183,7 @@ class OperationInfolist
                                 TextEntry::make('description')
                                     ->markdown()
                                     ->hiddenLabel()
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ]),
                     ]),
             ])

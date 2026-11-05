@@ -57,7 +57,7 @@ class CompanyResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('support::filament/resources/company.global-search.email') => $record->email ?? '—',
+            __('support::filament/resources/company.global-search.email') => $record->email ?? 'Not set',
         ];
     }
 

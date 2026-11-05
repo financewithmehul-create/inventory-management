@@ -18,10 +18,10 @@ class ActivityPlanInfolist
                         TextEntry::make('name')
                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan.infolist.sections.general.entries.name'))
                             ->icon('heroicon-o-briefcase')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                         TextEntry::make('company.name')
                             ->icon('heroicon-o-building-office')
-                            ->placeholder('—')
+                            ->placeholder('Not set')
                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan.infolist.sections.general.entries.company')),
                         IconEntry::make('is_active')
                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan.infolist.sections.general.entries.status'))

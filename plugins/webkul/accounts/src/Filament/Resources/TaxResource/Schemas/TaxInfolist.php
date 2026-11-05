@@ -27,19 +27,19 @@ class TaxInfolist
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-document-text')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.name'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('type_tax_use')
                                             ->icon('heroicon-o-calculator')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.tax-type'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('amount_type')
                                             ->icon('heroicon-o-calculator')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.tax-computation'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('tax_scope')
                                             ->icon('heroicon-o-globe-alt')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.tax-scope'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('amount')
                                             ->icon('heroicon-o-currency-dollar')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.amount'))
@@ -47,18 +47,18 @@ class TaxInfolist
                                                 ? current_company()?->currency?->symbol
                                                 : '%')
                                             ->visible(fn (Tax $record): bool => TaxResource::usesAmount($record->amount_type))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('formula')
                                             ->icon('heroicon-o-variable')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.formula'))
                                             ->visible(fn (Tax $record): bool => $record->amount_type === AmountType::CODE)
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('childrenTaxes.name')
                                             ->icon('heroicon-o-rectangle-stack')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.children-taxes'))
                                             ->badge()
                                             ->visible(fn (Tax $record): bool => $record->amount_type === AmountType::GROUP)
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         IconEntry::make('is_active')
                                             ->boolean()
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.entries.status')),
@@ -68,12 +68,12 @@ class TaxInfolist
                                         TextEntry::make('description')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.description-and-legal-notes.entries.description'))
                                             ->markdown()
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->columnSpanFull(),
                                         TextEntry::make('invoice_legal_notes')
                                             ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.description-and-legal-notes.entries.legal-notes'))
                                             ->markdown()
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->columnSpanFull(),
                                     ]),
                             ])->columnSpan(2),
@@ -82,13 +82,13 @@ class TaxInfolist
                                 ->schema([
                                     TextEntry::make('invoice_label')
                                         ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.advanced-options.entries.invoice-label'))
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                     TextEntry::make('taxGroup.name')
                                         ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.advanced-options.entries.tax-group'))
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                     TextEntry::make('country.name')
                                         ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.advanced-options.entries.country'))
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                     TextEntry::make('price_include_override')
                                         ->label(__('accounts::filament/resources/tax.infolist.sections.field-set.advanced-options.entries.include-in-price')),
                                     IconEntry::make('include_base_amount')

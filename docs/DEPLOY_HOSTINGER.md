@@ -154,26 +154,21 @@ password. Protect it with `chmod 600 .env`.
 Mail (for password resets and notifications): set `MAIL_MAILER=smtp` and the host, port, username and
 password of a mailbox created in hPanel under **Emails**.
 
-## Part 7: Install the ERP
+## Part 7: Install the system
 
 ```bash
 php artisan erp:install --force --country=IN --currency=INR \
-  --admin-name="Client Admin" --admin-email=admin@example.com --admin-password="ChooseAStrongPassword"
+  --admin-name="Owner" --admin-email=you@example.com --admin-password="ChooseAStrong1"
 
-for p in accounts accounting barcode blogs contacts employees inventories invoices maintenance \
-         manufacturing payments products projects purchases recruitments sales time-off timesheets website; do
-  php artisan $p:install --no-interaction
-done
-
-php artisan storage:link
+ln -s ../storage/app/public public/storage 2>/dev/null
 php artisan optimize
 ```
 
-`--force` wipes the database, so use it only on a brand-new database. Install only the modules the client
-wants if you prefer: the list above is every module.
+The installer sets up the six areas (sales, inventory, purchase, invoices, accounting and the dashboard) and the
+administrator account. `--force` wipes the database, so use it only on a brand-new database. The password must be
+at least 10 characters with upper and lower case letters and a number.
 
-Now open `https://example.com/admin` and log in with the admin email and password you chose. **Change the
-password** after the first login and give the client their own users under **Settings → Users**.
+Now open `https://example.com/admin` and sign in. A short setup asks for the business details, logo and colour.
 
 ## Part 8: Scheduled jobs (cron)
 
@@ -234,16 +229,28 @@ php artisan erp:admin:reset you@example.com   # forgot the admin password, or no
 
 The setup wizard and `scripts/hostinger/update.sh` already run the repair for you.
 
-## People, sign-up and roles
+## One person, six areas
 
-- **Sign-up:** `https://your-site/admin/register` (a "Create account" link is on the sign-in page). New accounts get the
-  default role from **Settings → Users** (Viewer if none is set) and only see their own records. In the same place you
-  can switch sign-up off or require administrator approval.
-- **Adding people yourself:** **Settings → Users → Create**: pick one or more roles and who they can see
-  (own records / their team / everyone).
-- **Roles:** Admin, Inventory Manager, Warehouse Staff, Purchase Manager, Sales Manager, Accountant, HR Manager,
-  Employee, Project Manager, Manufacturing Manager, Maintenance Technician, Viewer. Each has its own avatar, and
-  people can pick a character on **Settings → Profile**.
+The system is set up for **one person** who runs the business. There is no public sign-up and no user or role
+screens. The menu has only: **Dashboard, Sales, Inventory, Purchase, Invoices, Accounting** and **Settings**.
+
+- Forgot the password: `php artisan erp:admin:reset you@example.com` over SSH.
+- Two-step sign-in (recommended): **Settings, My profile**, then set up an authenticator app or email codes.
+- To manage several people again later, set `ERP_SINGLE_USER=false` in `.env` and run `php artisan optimize:clear`.
+
+### Moving an existing site to the simple version
+
+Run once over SSH. It makes a database backup first, then **removes the modules that are not part of the product**
+(HR, projects, website, blog, manufacturing and others) **together with their data**.
+
+```bash
+cd ~/domains/inventory.creativebee.app/erp
+git pull
+php artisan migrate --force
+php artisan erp:modules:prune
+php artisan erp:doctor --fix
+php artisan optimize:clear
+```
 
 ## Troubleshooting
 
@@ -270,11 +277,10 @@ database, so customers are fully separated from each other and cost you nothing 
 1. Ask the client to add you to their Hostinger account (or share SSH details), or do it on a call.
 2. Follow the **Quick path** above on their domain, using their own database and an administrator email they own.
 3. Hand over the admin login. The product is free: there is no trial or license key.
-4. Show them the setup wizard: company, logo, colours, modules, then **Settings → Users** to invite staff and
-   assign roles (Inventory Manager, Warehouse Staff, Viewer and more, each with its own avatar).
+4. Show them the short setup on first sign-in (business details, logo, colour) and the six menu areas.
 
-**Per-customer checklist:** PHP 8.3 and extensions · SSL + Force HTTPS · own database · `.env` with
-`APP_DEBUG=false` · cron jobs added · admin password changed and two-factor sign-in enabled (profile) ·
+**Per-customer checklist:** PHP 8.3 and extensions, SSL and Force HTTPS, own database, `.env` with
+`APP_DEBUG=false`, cron jobs added, a strong admin password and two-step sign-in set up (My profile),
 first backup taken (`php artisan erp:backup`).
 
 ## Security notes

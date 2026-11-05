@@ -39,9 +39,9 @@ class PaymentResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('accounts::filament/resources/payment.global-search.partner') => $record->partner?->name ?? '—',
-            __('accounts::filament/resources/payment.global-search.amount')  => $record->amount ? money($record->amount) : '—',
-            __('accounts::filament/resources/payment.global-search.date')    => $record->date ?? '—',
+            __('accounts::filament/resources/payment.global-search.partner') => $record->partner?->name ?? 'Not set',
+            __('accounts::filament/resources/payment.global-search.amount')  => $record->amount ? money($record->amount) : 'Not set',
+            __('accounts::filament/resources/payment.global-search.date')    => $record->date ?? 'Not set',
         ];
     }
 

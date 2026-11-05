@@ -60,7 +60,7 @@ class WarehouseInfolist
                                         TextEntry::make('supplierWarehouses.name')
                                             ->label(__('inventories::filament/clusters/configurations/resources/warehouse.infolist.sections.settings.entries.resupply-from'))
                                             ->icon('heroicon-o-arrow-path')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ]),
                             ]),
                         ...$customInfolistEntries,

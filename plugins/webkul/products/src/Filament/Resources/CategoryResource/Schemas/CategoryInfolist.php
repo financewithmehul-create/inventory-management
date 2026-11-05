@@ -28,17 +28,17 @@ class CategoryInfolist
                                 TextEntry::make('parent.name')
                                     ->label(__('products::filament/resources/category.infolist.sections.general.entries.parent'))
                                     ->icon('heroicon-o-folder')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('full_name')
                                     ->label(__('products::filament/resources/category.infolist.sections.general.entries.full_name'))
                                     ->icon('heroicon-o-folder-open')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('parent_path')
                                     ->label(__('products::filament/resources/category.infolist.sections.general.entries.parent_path'))
                                     ->icon('heroicon-o-arrows-right-left')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ]),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -50,19 +50,19 @@ class CategoryInfolist
                                 TextEntry::make('creator.name')
                                     ->label(__('products::filament/resources/category.infolist.sections.record-information.entries.creator'))
                                     ->icon('heroicon-o-user')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('created_at')
                                     ->label(__('products::filament/resources/category.infolist.sections.record-information.entries.created_at'))
                                     ->dateTime()
                                     ->icon('heroicon-o-calendar')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('updated_at')
                                     ->label(__('products::filament/resources/category.infolist.sections.record-information.entries.updated_at'))
                                     ->dateTime()
                                     ->icon('heroicon-o-clock')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ])
                             ->icon('heroicon-o-information-circle')
                             ->collapsible(),

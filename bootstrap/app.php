@@ -108,13 +108,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 $statusCode = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
 
                 if ($statusCode === 500) {
+                    $showDetails = config('app.debug') && ! app()->environment('production');
+
                     return response()->json([
-                        'message' => app()->environment('production')
-                            ? 'Server error occurred.'
-                            : $e->getMessage(),
-                        'exception' => app()->environment('production') ? null : get_class($e),
-                        'file'      => app()->environment('production') ? null : $e->getFile(),
-                        'line'      => app()->environment('production') ? null : $e->getLine(),
+                        'message'   => $showDetails ? $e->getMessage() : 'Server error occurred.',
+                        'exception' => $showDetails ? get_class($e) : null,
+                        'file'      => $showDetails ? $e->getFile() : null,
+                        'line'      => $showDetails ? $e->getLine() : null,
                     ], 500);
                 }
             }

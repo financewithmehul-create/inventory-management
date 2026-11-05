@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Quotation',
+    'title' => 'Quotes',
 
     'navigation' => [
         'title' => 'Quotations',

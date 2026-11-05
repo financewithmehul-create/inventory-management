@@ -53,27 +53,27 @@ class PurchaseAgreementsTable
                 TextColumn::make('user.name')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.buyer'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('company.name')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.company'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('starts_at')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.valid-from'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('ends_at')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.valid-to'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('reference')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.reference'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('state')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/purchase-agreement.table.columns.status'))

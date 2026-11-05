@@ -63,10 +63,10 @@ class ManageQuantities extends ManageRelatedRecords
                     ->visible(static::getWarehouseSettings()->enable_locations),
                 TextColumn::make('storageCategory.name')
                     ->label(__('inventories::filament/clusters/products/resources/lot/pages/manage-quantities.table.columns.storage-category'))
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('package.name')
                     ->label(__('inventories::filament/clusters/products/resources/lot/pages/manage-quantities.table.columns.package'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getOperationSettings()->enable_packages),
                 TextInputColumn::make('quantity')
                     ->label(__('inventories::filament/clusters/products/resources/lot/pages/manage-quantities.table.columns.on-hand'))
@@ -98,7 +98,7 @@ class ManageQuantities extends ManageRelatedRecords
                     }),
                 TextColumn::make('product.uom.name')
                     ->label(__('inventories::filament/clusters/products/resources/lot/pages/manage-quantities.table.columns.unit'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getProductSettings()->enable_uom),
             ])
             ->recordActions([

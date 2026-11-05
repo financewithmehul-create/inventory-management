@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Journal Entries',
+    'title' => 'Entries',
 
     'navigation' => [
         'title' => 'Journal Entries',

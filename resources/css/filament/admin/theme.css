@@ -1,0 +1,161 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/**/*';
+@source '../../../../plugins/webkul/*/resources/views/**/*';
+@source '../../../../plugins/webkul/*/src/**/*.php';
+
+/*
+ * Plain and calm: square-ish corners, flat surfaces with thin borders, no shadows, no motion.
+ */
+@theme {
+    --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-xs: 2px;
+    --radius-sm: 3px;
+    --radius-md: 4px;
+    --radius-lg: 4px;
+    --radius-xl: 4px;
+    --radius-2xl: 4px;
+    --radius-3xl: 4px;
+
+    --shadow-2xs: 0 0 #0000;
+    --shadow-xs: 0 0 #0000;
+    --shadow-sm: 0 0 #0000;
+    --shadow-md: 0 0 #0000;
+    --shadow-lg: 0 0 #0000;
+    --shadow-xl: 0 0 #0000;
+    --shadow-2xl: 0 0 #0000;
+
+    --default-transition-duration: 0s;
+}
+
+:root {
+    --page-bg: #f5f4f0;
+    --surface: #fdfdfb;
+    --line: #dcd9d1;
+    --ink: #22262b;
+    --ink-soft: #5b5f66;
+}
+
+html {
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* No hover or entrance animations anywhere. Loading spinners keep turning. */
+*,
+*::before,
+*::after {
+    transition-property: none !important;
+    transition-duration: 0s !important;
+}
+
+.fi-body {
+    background-color: var(--page-bg);
+    color: var(--ink);
+    font-size: 15px;
+}
+
+/* Flat surfaces: one thin border instead of shadows and rings. */
+.fi-section,
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-fo-wizard,
+.fi-modal-window,
+.fi-dropdown-panel,
+.fi-in-entry-wrp-section,
+.fi-no-notification,
+.fi-simple-main {
+    background-color: var(--surface);
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    border: 1px solid var(--line);
+}
+
+.fi-sidebar {
+    background-color: var(--surface);
+    border-right: 1px solid var(--line);
+    box-shadow: none !important;
+}
+
+.fi-topbar,
+.fi-topbar > nav {
+    background-color: var(--surface);
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--line);
+}
+
+/* Bigger, easier targets. */
+.fi-btn {
+    min-height: 2.5rem;
+    font-weight: 500;
+    box-shadow: none !important;
+}
+
+.fi-input-wrp {
+    background-color: #ffffff;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    border: 1px solid #c9c5bb;
+}
+
+.fi-input-wrp:focus-within {
+    border-color: var(--primary-600);
+    outline: 2px solid color-mix(in oklab, var(--primary-600) 35%, transparent);
+    outline-offset: 0;
+}
+
+.fi-sidebar-item-button {
+    font-size: 15px;
+}
+
+.fi-sidebar-group-label {
+    color: var(--ink-soft);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.fi-header-heading {
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.fi-header-subheading {
+    color: var(--ink-soft);
+}
+
+/* Table text a little larger than the default for easier reading. */
+.fi-ta-text-item,
+.fi-ta-cell {
+    font-size: 14.5px;
+}
+
+/* A visible focus ring for keyboard users. */
+:where(a, button, [role='button'], input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--primary-600);
+    outline-offset: 2px;
+}
+
+/* Skeleton blocks shown while a widget loads. */
+.app-skeleton {
+    background-color: #e8e5de;
+    border-radius: 4px;
+}
+
+/* Shown when the browser loses its connection. */
+.app-offline-banner {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 60;
+    padding: 10px 16px;
+    background: #3a3f45;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+}

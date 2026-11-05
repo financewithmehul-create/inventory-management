@@ -32,11 +32,11 @@ class PackagesTable
                     ->sortable(),
                 TextColumn::make('packageType.name')
                     ->label(__('inventories::filament/clusters/products/resources/package.table.columns.package-type'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable(),
                 TextColumn::make('location.full_name')
                     ->label(__('inventories::filament/clusters/products/resources/package.table.columns.location'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable(),
                 TextColumn::make('company.name')
                     ->label(__('inventories::filament/clusters/products/resources/package.table.columns.company'))

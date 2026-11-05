@@ -33,6 +33,12 @@ class FileAction extends Action
                 FileUpload::make('files')
                     ->hiddenLabel()
                     ->multiple()
+                    ->acceptedFileTypes([
+                        'image/jpeg', 'image/png', 'image/webp', 'application/pdf', 'text/plain', 'text/csv',
+                        'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    ])
+                    ->maxSize(5120)
                     ->directory('chats-attachments')
                     ->disk('public')
                     ->visibility('public')

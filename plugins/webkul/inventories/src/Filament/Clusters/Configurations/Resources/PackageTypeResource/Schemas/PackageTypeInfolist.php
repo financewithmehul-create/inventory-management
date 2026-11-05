@@ -71,7 +71,7 @@ class PackageTypeInfolist
                                 TextEntry::make('barcode')
                                     ->label(__('inventories::filament/clusters/configurations/resources/package-type.infolist.sections.general.entries.barcode'))
                                     ->icon('heroicon-o-bars-4')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('company.name')
                                     ->label(__('inventories::filament/clusters/configurations/resources/package-type.infolist.sections.general.entries.company'))

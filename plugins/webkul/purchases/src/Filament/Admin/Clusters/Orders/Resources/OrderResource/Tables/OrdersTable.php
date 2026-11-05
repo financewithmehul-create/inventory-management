@@ -50,7 +50,7 @@ class OrdersTable
                     ->searchable()
                     ->sortable()
                     ->toggleable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('name')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.reference'))
@@ -65,23 +65,23 @@ class OrdersTable
                 TextColumn::make('company.name')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.company'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('user.name')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.buyer'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('ordered_at')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.order-deadline'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('origin')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.source-document'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(),
                 TextColumn::make('untaxed_amount')
                     ->label(__('purchases::filament/admin/clusters/orders/resources/order.table.columns.untaxed-amount'))

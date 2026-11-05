@@ -53,7 +53,7 @@ class UserResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('security::filament/resources/user.global-search.email') => $record->email ?? '—',
+            __('security::filament/resources/user.global-search.email') => $record->email ?? 'Not set',
         ];
     }
 

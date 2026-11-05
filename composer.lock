@@ -115,7 +115,7 @@
                     "email": "support@webkul.com"
                 }
             ],
-            "description": "NativePHP hosted remote mode support — connect NativePHP mobile apps to a centralized web server",
+            "description": "NativePHP hosted remote mode support \u2014 connect NativePHP mobile apps to a centralized web server",
             "support": {
                 "issues": "https://github.com/aureuserp/nativephp-remote/issues",
                 "source": "https://github.com/aureuserp/nativephp-remote/tree/v0.1.0"
@@ -2051,7 +2051,7 @@
                     "email": "igor@wiedler.ch"
                 }
             ],
-            "description": "Événement is a very simple event dispatching library for PHP",
+            "description": "\u00c9v\u00e9nement is a very simple event dispatching library for PHP",
             "keywords": [
                 "event-dispatcher",
                 "event-emitter"
@@ -2171,7 +2171,7 @@
             ],
             "authors": [
                 {
-                    "name": "François Zaninotto"
+                    "name": "Fran\u00e7ois Zaninotto"
                 }
             ],
             "description": "Faker is a PHP library that generates fake data for you.",
@@ -3162,7 +3162,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -3361,7 +3361,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -3371,7 +3371,7 @@
                     "homepage": "https://github.com/Tobion"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -3776,7 +3776,7 @@
                     "name": "Shalvah"
                 }
             ],
-            "description": "Generate API documentation for humans from your Laravel codebase.✍",
+            "description": "Generate API documentation for humans from your Laravel codebase.\u270d",
             "homepage": "https://github.com/knuckleswtf/scribe",
             "keywords": [
                 "api",
@@ -5337,7 +5337,7 @@
                     "email": "pabs@pablotron.org"
                 },
                 {
-                    "name": "Jonatan Männchen",
+                    "name": "Jonatan M\u00e4nnchen",
                     "email": "jonatan@maennchen.ch"
                 },
                 {
@@ -5345,7 +5345,7 @@
                     "email": "donatj@gmail.com"
                 },
                 {
-                    "name": "András Kolesár",
+                    "name": "Andr\u00e1s Koles\u00e1r",
                     "email": "kolesar@kolesar.hu"
                 }
             ],
@@ -6094,7 +6094,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.5 features.",
+            "description": "\ud83d\udc18 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.5 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -6163,7 +6163,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "📐 Nette Schema: validating data structures against a given Schema.",
+            "description": "\ud83d\udcd0 Nette Schema: validating data structures against a given Schema.",
             "homepage": "https://nette.org",
             "keywords": [
                 "config",
@@ -6242,7 +6242,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🛠  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "description": "\ud83d\udee0  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
             "keywords": [
                 "array",
@@ -8081,7 +8081,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering",
                     "homepage": "https://clue.engineering/"
                 },
@@ -8157,7 +8157,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering",
                     "homepage": "https://clue.engineering/"
                 },
@@ -8238,7 +8238,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering",
                     "homepage": "https://clue.engineering/"
                 },
@@ -8312,7 +8312,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering",
                     "homepage": "https://clue.engineering/"
                 },
@@ -8390,7 +8390,7 @@
                     "homepage": "https://sorgalla.com/"
                 },
                 {
-                    "name": "Christian Lück",
+                    "name": "Christian L\u00fcck",
                     "email": "christian@clue.engineering",
                     "homepage": "https://clue.engineering/"
                 },
@@ -9577,7 +9577,7 @@
                     "email": "fabien@symfony.com"
                 },
                 {
-                    "name": "Jean-François Simon",
+                    "name": "Jean-Fran\u00e7ois Simon",
                     "email": "jeanfrancois.simon@sensiolabs.com"
                 },
                 {
@@ -11314,7 +11314,7 @@
             ],
             "authors": [
                 {
-                    "name": "Grégoire Pineau",
+                    "name": "Gr\u00e9goire Pineau",
                     "email": "lyrixx@lyrixx.info"
                 },
                 {
@@ -11899,7 +11899,7 @@
             ],
             "authors": [
                 {
-                    "name": "Grégoire Pineau",
+                    "name": "Gr\u00e9goire Pineau",
                     "email": "lyrixx@lyrixx.info"
                 },
                 {
@@ -12930,7 +12930,7 @@
             ],
             "authors": [
                 {
-                    "name": "Théo FIDRY",
+                    "name": "Th\u00e9o FIDRY",
                     "email": "theo.fidry@gmail.com"
                 }
             ],
@@ -13560,7 +13560,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "P\u00e1draic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "https://github.com/padraic",
                     "role": "Author"
@@ -14236,70 +14236,6 @@
             "time": "2026-03-18T20:49:53+00:00"
         },
         {
-            "name": "phpstan/phpstan",
-            "version": "2.2.14",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9c672e7a8e791dfc3d30e55f683e73fc0b63a3ac",
-                "reference": "9c672e7a8e791dfc3d30e55f683e73fc0b63a3ac",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4|^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan-shim": "*"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ondřej Mirtes"
-                },
-                {
-                    "name": "Markus Staab"
-                },
-                {
-                    "name": "Vincent Langlet"
-                }
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "keywords": [
-                "dev",
-                "static analysis"
-            ],
-            "support": {
-                "docs": "https://phpstan.org/user-guide/getting-started",
-                "forum": "https://github.com/phpstan/phpstan/discussions",
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "security": "https://github.com/phpstan/phpstan/security/policy",
-                "source": "https://github.com/phpstan/phpstan-src"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/phpstan",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-09-12T21:39:33+00:00"
-        },
-        {
             "name": "phpunit/php-code-coverage",
             "version": "12.5.7",
             "source": {
@@ -14749,8 +14685,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4|^8.0",
-                "phpstan/phpstan": "^2.2.14"
+                "php": "^7.4|^8.0"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",

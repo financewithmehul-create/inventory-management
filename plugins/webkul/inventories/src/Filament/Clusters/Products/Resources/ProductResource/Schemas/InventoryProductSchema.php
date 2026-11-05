@@ -31,7 +31,7 @@ class InventoryProductSchema
                 : null
             )
             ->suffix(fn (Model $record): string => $record->uom ? ' '.$record->uom->name : '')
-            ->placeholder('—')
+            ->placeholder('Not set')
             ->numeric()
             ->toggleable();
     }
@@ -45,7 +45,7 @@ class InventoryProductSchema
                 : null
             )
             ->suffix(fn (Model $record): string => $record->uom ? ' '.$record->uom->name : '')
-            ->placeholder('—')
+            ->placeholder('Not set')
             ->numeric()
             ->toggleable();
     }
@@ -175,7 +175,7 @@ class InventoryProductSchema
                             ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.operation.entries.routes'))
                             ->icon('heroicon-o-arrow-path')
                             ->listWithLineBreaks()
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ]),
 
                 Section::make(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.logistics.title'))
@@ -184,22 +184,22 @@ class InventoryProductSchema
                             ->schema([
                                 TextEntry::make('responsible.name')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.responsible'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-user'),
 
                                 TextEntry::make('weight')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.weight'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-scale'),
 
                                 TextEntry::make('volume')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.volume'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-beaker'),
 
                                 TextEntry::make('sale_delay')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.sale-delay'))
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ]),
                     ]),
 
@@ -209,22 +209,22 @@ class InventoryProductSchema
                             ->schema([
                                 TextEntry::make('expiration_time')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.traceability.entries.expiration-date'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-clock'),
 
                                 TextEntry::make('use_time')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.traceability.entries.best-before-date'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-clock'),
 
                                 TextEntry::make('removal_time')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.traceability.entries.removal-date'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-clock'),
 
                                 TextEntry::make('alert_time')
                                     ->label(__('inventories::filament/clusters/products/resources/product.infolist.sections.inventory.fieldsets.traceability.entries.alert-date'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-clock'),
                             ]),
                     ])

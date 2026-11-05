@@ -2,7 +2,7 @@
 
 return [
     'navigation' => [
-        'title' => 'Quantities',
+        'title' => 'Stock on hand',
         'group' => 'Adjustments',
     ],
 

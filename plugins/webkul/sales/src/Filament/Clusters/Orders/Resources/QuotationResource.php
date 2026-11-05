@@ -54,9 +54,9 @@ class QuotationResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('sales::filament/clusters/orders/resources/quotation.global-search.customer')  => $record->partner?->name ?? '—',
-            __('sales::filament/clusters/orders/resources/quotation.global-search.reference') => $record->client_order_ref ?? '—',
-            __('sales::filament/clusters/orders/resources/quotation.global-search.amount')    => $record->amount_total ? money($record->amount_total) : '—',
+            __('sales::filament/clusters/orders/resources/quotation.global-search.customer')  => $record->partner?->name ?? 'Not set',
+            __('sales::filament/clusters/orders/resources/quotation.global-search.reference') => $record->client_order_ref ?? 'Not set',
+            __('sales::filament/clusters/orders/resources/quotation.global-search.amount')    => $record->amount_total ? money($record->amount_total) : 'Not set',
         ];
     }
 

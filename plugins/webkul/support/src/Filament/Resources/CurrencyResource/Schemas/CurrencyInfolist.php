@@ -25,30 +25,30 @@ class CurrencyInfolist
                                     ->schema([
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-currency-dollar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/currency.infolist.sections.currency-details.entries.name')),
                                         TextEntry::make('symbol')
                                             ->icon('heroicon-o-tag')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/currency.infolist.sections.currency-details.entries.symbol')),
                                         TextEntry::make('full_name')
                                             ->icon('heroicon-o-document-text')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/currency.infolist.sections.currency-details.entries.full-name')),
                                         TextEntry::make('iso_numeric')
                                             ->icon('heroicon-o-hashtag')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/currency.infolist.sections.currency-details.entries.iso-numeric')),
                                     ])->columns(2),
                                 Section::make(__('support::filament/resources/currency.infolist.sections.format-information.title'))
                                     ->schema([
                                         TextEntry::make('decimal_places')
                                             ->icon('heroicon-o-calculator')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/currency.infolist.sections.format-information.entries.decimal-places')),
                                         TextEntry::make('rounding')
                                             ->icon('heroicon-o-arrow-path-rounded-square')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->money(fn ($record) => $record->code, divideBy: 1)
                                             ->label(__('support::filament/resources/currency.infolist.sections.format-information.entries.rounding')),
                                     ])->columns(2),

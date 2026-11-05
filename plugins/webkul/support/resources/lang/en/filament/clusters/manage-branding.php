@@ -2,7 +2,7 @@
 
 return [
     'breadcrumb' => 'Branding',
-    'title'      => 'Branding',
+    'title'      => 'Business and look',
     'group'      => 'General',
 
     'navigation' => [
@@ -12,16 +12,16 @@ return [
     'form' => [
         'sections' => [
             'identity' => [
-                'title'       => 'Name & Theme',
-                'description' => 'The name shown in the app and the theme everyone sees first. Each person can still switch between light and dark mode.',
+                'title'       => 'Name',
+                'description' => 'The name shown at the top of every page.',
             ],
             'logo' => [
-                'title'       => 'Logo & Favicon',
-                'description' => 'Override the logos, favicon and logo height used across the admin and customer panels. Leave a field empty to keep the default.',
+                'title'       => 'Logo',
+                'description' => 'Your logo and the small icon shown in the browser tab. Leave empty to keep the current one.',
             ],
             'colors' => [
-                'title'       => 'Colors',
-                'description' => 'Override the theme colors used across the admin and customer panels. Leave a color empty to keep the default.',
+                'title'       => 'Main colour',
+                'description' => 'Used for buttons and links. Dark, calm colours are easiest to read.',
             ],
         ],
         'fields' => [
@@ -51,7 +51,7 @@ return [
 
     'actions' => [
         'rerun-setup' => [
-            'label' => 'Run setup wizard again',
+            'label' => 'Change business details',
         ],
         'reset' => [
             'label' => 'Reset to default',

@@ -26,17 +26,17 @@ class PackagingInfolist
                         TextEntry::make('barcode')
                             ->label(__('products::filament/resources/packaging.infolist.sections.general.entries.barcode'))
                             ->icon('heroicon-o-bars-4')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('product.name')
                             ->label(__('products::filament/resources/packaging.infolist.sections.general.entries.product'))
                             ->icon('heroicon-o-cube')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('qty')
                             ->label(__('products::filament/resources/packaging.infolist.sections.general.entries.qty'))
                             ->icon('heroicon-o-scale')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ])
                     ->columns(2),
 
@@ -45,24 +45,24 @@ class PackagingInfolist
                         TextEntry::make('company.name')
                             ->label(__('products::filament/resources/packaging.infolist.sections.organization.entries.company'))
                             ->icon('heroicon-o-building-office')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('creator.name')
                             ->label(__('products::filament/resources/packaging.infolist.sections.organization.entries.creator'))
                             ->icon('heroicon-o-user')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('created_at')
                             ->label(__('products::filament/resources/packaging.infolist.sections.organization.entries.created_at'))
                             ->dateTime()
                             ->icon('heroicon-o-calendar')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('updated_at')
                             ->label(__('products::filament/resources/packaging.infolist.sections.organization.entries.updated_at'))
                             ->dateTime()
                             ->icon('heroicon-o-clock')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ])
                     ->collapsible()
                     ->columns(2),

@@ -23,8 +23,8 @@ class Msg91Service
 
         if (! $response->successful()) {
             Log::error('MSG91 SMS failed', [
-                'mobile'   => $mobile,
-                'response' => $response->body(),
+                'mobile' => substr((string) $mobile, 0, 3).str_repeat('*', max(0, strlen((string) $mobile) - 5)).substr((string) $mobile, -2),
+                'status' => $response->status(),
             ]);
 
             return false;

@@ -280,11 +280,6 @@
     direction: rtl;
 }
 
-/* Transition for smooth direction changes */
-* {
-    transition: margin 0.2s ease, padding 0.2s ease, transform 0.2s ease;
-}
-
 /* Ensure numbers stay LTR */
 [dir="rtl"] .number,
 [dir="rtl"] .price,

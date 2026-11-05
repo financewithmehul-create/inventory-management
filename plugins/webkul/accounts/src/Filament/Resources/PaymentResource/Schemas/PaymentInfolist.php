@@ -71,21 +71,21 @@ class PaymentInfolist
                                             : __('accounts::filament/resources/payment.infolist.sections.payment-information.entries.vendor')
                                     )
                                     ->icon('heroicon-o-user')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('amount')
                                     ->icon('heroicon-o-currency-dollar')
                                     ->label(__('accounts::filament/resources/payment.infolist.sections.payment-information.entries.amount'))
                                     ->money(fn (Payment $record) => $record->currency->name, true)
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('date')
                                     ->icon('heroicon-o-calendar')
                                     ->label(__('accounts::filament/resources/payment.infolist.sections.payment-information.entries.date'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->date(),
                                 TextEntry::make('memo')
                                     ->label(__('accounts::filament/resources/payment.infolist.sections.payment-information.entries.memo'))
                                     ->icon('heroicon-o-document-text')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ])
                             ->columns(1),
 
@@ -94,11 +94,11 @@ class PaymentInfolist
                                 TextEntry::make('journal.name')
                                     ->label(__('accounts::filament/resources/payment.infolist.sections.payment-information.entries.journal'))
                                     ->icon('heroicon-o-building-library')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('paymentMethodLine.display_name')
                                     ->label(__('accounts::filament/resources/payment.infolist.sections.payment-information.entries.payment-method'))
                                     ->icon('heroicon-o-credit-card')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('partnerBank.account_number')
                                     ->label(
                                         fn ($record) => $record->payment_type === PaymentType::RECEIVE
@@ -106,7 +106,7 @@ class PaymentInfolist
                                             : __('accounts::filament/resources/payment.infolist.sections.payment-information.entries.vendor-bank-account')
                                     )
                                     ->icon('heroicon-o-building-library')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ])
                             ->columns(1),
 

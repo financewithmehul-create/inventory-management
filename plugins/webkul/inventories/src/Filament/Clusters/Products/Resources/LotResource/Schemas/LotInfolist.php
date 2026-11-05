@@ -35,13 +35,13 @@ class LotInfolist
                                         TextEntry::make('reference')
                                             ->label(__('inventories::filament/clusters/products/resources/lot.infolist.sections.general.entries.reference'))
                                             ->icon('heroicon-o-document-text')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ]),
 
                                 TextEntry::make('description')
                                     ->label(__('inventories::filament/clusters/products/resources/lot.infolist.sections.general.entries.description'))
                                     ->html()
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 Grid::make(2)
                                     ->schema([

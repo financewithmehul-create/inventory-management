@@ -22,7 +22,7 @@ class OrdersTable
                 TextColumn::make('approved_at')
                     ->label(__('purchases::filament/customer/clusters/account/resources/order.table.columns.confirmation-date'))
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('invoice_status')
                     ->label(__('purchases::filament/customer/clusters/account/resources/order.table.columns.status'))
                     ->sortable()

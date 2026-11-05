@@ -56,7 +56,7 @@ class LotResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('inventories::filament/clusters/products/resources/lot.global-search.product') => $record->product?->name ?? '—',
+            __('inventories::filament/clusters/products/resources/lot.global-search.product') => $record->product?->name ?? 'Not set',
         ];
     }
 

@@ -32,16 +32,16 @@ class CategoriesTable
                     ->searchable(),
                 TextColumn::make('parent_path')
                     ->label(__('products::filament/resources/category.table.columns.parent-path'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable(),
                 TextColumn::make('parent.name')
                     ->label(__('products::filament/resources/category.table.columns.parent'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('creator.name')
                     ->label(__('products::filament/resources/category.table.columns.creator'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')

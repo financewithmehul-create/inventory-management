@@ -54,7 +54,7 @@ class ProductInfolist
                 TextEntry::make('description')
                     ->label(__('products::filament/resources/product.infolist.sections.general.entries.description'))
                     ->html()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
 
                 TextEntry::make('tags.name')
                     ->label(__('products::filament/resources/product.infolist.sections.general.entries.tags'))
@@ -84,12 +84,12 @@ class ProductInfolist
                             ->schema([
                                 TextEntry::make('weight')
                                     ->label(__('products::filament/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.weight'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-scale'),
 
                                 TextEntry::make('volume')
                                     ->label(__('products::filament/resources/product.infolist.sections.inventory.fieldsets.logistics.entries.volume'))
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-beaker'),
                             ]),
                     ]),
@@ -123,27 +123,27 @@ class ProductInfolist
             ->schema([
                 TextEntry::make('type')
                     ->label(__('products::filament/resources/product.infolist.sections.settings.entries.type'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->icon('heroicon-o-queue-list'),
 
                 TextEntry::make('reference')
                     ->label(__('products::filament/resources/product.infolist.sections.settings.entries.reference'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->icon('heroicon-o-identification'),
 
                 TextEntry::make('barcode')
                     ->label(__('products::filament/resources/product.infolist.sections.settings.entries.barcode'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->icon('heroicon-o-bars-4'),
 
                 TextEntry::make('category.full_name')
                     ->label(__('products::filament/resources/product.infolist.sections.settings.entries.category'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->icon('heroicon-o-folder'),
 
                 TextEntry::make('company.name')
                     ->label(__('products::filament/resources/product.infolist.sections.settings.entries.company'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->icon('heroicon-o-building-office'),
             ]);
     }
@@ -154,13 +154,13 @@ class ProductInfolist
             ->schema([
                 TextEntry::make('price')
                     ->label(__('products::filament/resources/product.infolist.sections.pricing.entries.price'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->money()
                     ->suffix(fn ($record): string => $record->uom ? ' / '.$record->uom->name : ''),
 
                 TextEntry::make('cost')
                     ->label(__('products::filament/resources/product.infolist.sections.pricing.entries.cost'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->money()
                     ->suffix(fn ($record): string => $record->uomPO ? ' / '.$record->uomPO->name : ''),
             ]);

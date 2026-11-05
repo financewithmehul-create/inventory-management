@@ -24,18 +24,18 @@ class UserInfolist
                                     ->schema([
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-user')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->extraAttributes([
                                                 'style' => 'word-break: break-all;',
                                             ])
                                             ->label(__('security::filament/resources/user.infolist.sections.general-information.entries.name')),
                                         TextEntry::make('email')
                                             ->icon('heroicon-o-envelope')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('security::filament/resources/user.infolist.sections.general-information.entries.email')),
                                         TextEntry::make('language')
                                             ->icon('heroicon-o-language')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('security::filament/resources/user.infolist.sections.lang-and-status.entries.language')),
                                     ])
                                     ->columns(2),
@@ -44,7 +44,7 @@ class UserInfolist
                                     ->schema([
                                         TextEntry::make('roles.name')
                                             ->icon('heroicon-o-key')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('security::filament/resources/user.infolist.sections.permissions.entries.roles'))
                                             ->listWithLineBreaks()
                                             ->formatStateUsing(fn ($state) => ucfirst($state))
@@ -52,7 +52,7 @@ class UserInfolist
                                         TextEntry::make('teams.name')
                                             ->badge()
                                             ->icon('heroicon-o-user-group')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('security::filament/resources/user.infolist.sections.permissions.entries.teams')),
                                         TextEntry::make('resource_permission')
                                             ->placeholder('-')
@@ -68,7 +68,7 @@ class UserInfolist
                                     ImageEntry::make('partner.avatar')
                                         ->hiddenLabel()
                                         ->circular()
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                 ]),
 
                             Section::make(__('security::filament/resources/user.infolist.sections.multi-company.title'))
@@ -76,11 +76,11 @@ class UserInfolist
                                     TextEntry::make('allowedCompanies.name')
                                         ->badge()
                                         ->icon('heroicon-o-building-office')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('security::filament/resources/user.infolist.sections.multi-company.allowed-companies')),
                                     TextEntry::make('defaultCompany.name')
                                         ->icon('heroicon-o-building-office-2')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('security::filament/resources/user.infolist.sections.multi-company.default-company')),
                                 ]),
 

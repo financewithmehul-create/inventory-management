@@ -730,7 +730,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 1,
-            'name'                     => $this->code.': Vendors → Stock',
+            'name'                     => $this->code.': Vendors to Stock',
             'route_sort'               => 9,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -749,7 +749,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                      => 2,
-            'name'                      => $this->code.': Stock → Customers',
+            'name'                      => $this->code.': Stock to Customers',
             'route_sort'                => 10,
             'group_propagation_option'  => GroupPropagation::PROPAGATE,
             'action'                    => RuleAction::PULL,
@@ -768,7 +768,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 3,
-            'name'                     => $this->code.': Vendors → Customers',
+            'name'                     => $this->code.': Vendors to Customers',
             'route_sort'               => 20,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -788,7 +788,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 4,
-            'name'                     => $this->code.': Input → Output',
+            'name'                     => $this->code.': Input to Output',
             'route_sort'               => 20,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -808,7 +808,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = $this->mto_pull_id = Rule::create([
             'sort'                     => 5,
-            'name'                     => $this->code.': Stock → Customers (MTO)',
+            'name'                     => $this->code.': Stock to Customers (MTO)',
             'route_sort'               => 5,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -826,7 +826,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 6,
-            'name'                     => $this->code.': Input → Quality Control',
+            'name'                     => $this->code.': Input to Quality Control',
             'route_sort'               => 6,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -845,7 +845,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 7,
-            'name'                     => $this->code.': Quality Control → Stock',
+            'name'                     => $this->code.': Quality Control to Stock',
             'route_sort'               => 7,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -864,7 +864,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 8,
-            'name'                     => $this->code.': Stock → Customers',
+            'name'                     => $this->code.': Stock to Customers',
             'route_sort'               => 8,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PULL,
@@ -883,7 +883,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 9,
-            'name'                     => $this->code.': Packing Zone → Output',
+            'name'                     => $this->code.': Packing Zone to Output',
             'route_sort'               => 9,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -902,7 +902,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 10,
-            'name'                     => $this->code.': Output → Customers',
+            'name'                     => $this->code.': Output to Customers',
             'route_sort'               => 10,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -921,7 +921,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 11,
-            'name'                     => $this->code.': Input → Stock',
+            'name'                     => $this->code.': Input to Stock',
             'route_sort'               => 11,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::PUSH,
@@ -940,7 +940,7 @@ class Warehouse extends Model implements Sortable
 
         $this->ruleIds[] = Rule::create([
             'sort'                     => 12,
-            'name'                     => $this->code.': False → Customers',
+            'name'                     => $this->code.': False to Customers',
             'route_sort'               => 12,
             'group_propagation_option' => GroupPropagation::PROPAGATE,
             'action'                   => RuleAction::BUY,

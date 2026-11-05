@@ -411,19 +411,19 @@ class BranchesRelationManager extends RelationManager
                                     ->schema([
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-building-office')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.general-information.sections.branch-information.entries.company-name')),
                                         TextEntry::make('registration_number')
                                             ->icon('heroicon-o-document-text')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.general-information.sections.branch-information.entries.registration-number')),
                                         TextEntry::make('tax_id')
                                             ->icon('heroicon-o-currency-dollar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.general-information.sections.branch-information.entries.tax-id')),
                                         TextEntry::make('color')
                                             ->icon('heroicon-o-swatch')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->badge()
                                             ->color(fn ($record) => $record->color ?? 'gray')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.general-information.sections.branch-information.entries.color')),
@@ -435,7 +435,7 @@ class BranchesRelationManager extends RelationManager
                                         ImageEntry::make('partner.avatar')
                                             ->hiddenLabel()
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.general-information.sections.branding.entries.branch-logo'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ]),
                             ]),
 
@@ -445,24 +445,24 @@ class BranchesRelationManager extends RelationManager
                                     ->schema([
                                         TextEntry::make('street1')
                                             ->icon('heroicon-o-map-pin')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.street1')),
                                         TextEntry::make('street2')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.street2')),
                                         TextEntry::make('city')
                                             ->icon('heroicon-o-building-library')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.city')),
                                         TextEntry::make('zip')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.zip-code')),
                                         TextEntry::make('country.name')
                                             ->icon('heroicon-o-globe-alt')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.country')),
                                         TextEntry::make('state.name')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.address-information.entries.state')),
                                     ])
                                     ->columns(2),
@@ -471,11 +471,11 @@ class BranchesRelationManager extends RelationManager
                                     ->schema([
                                         TextEntry::make('currency.full_name')
                                             ->icon('heroicon-o-currency-dollar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.additional-information.entries.default-currency')),
                                         TextEntry::make('founded_date')
                                             ->icon('heroicon-o-calendar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->date()
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.address-information.sections.additional-information.entries.company-foundation-date')),
                                         IconEntry::make('is_active')
@@ -491,15 +491,15 @@ class BranchesRelationManager extends RelationManager
                                     ->schema([
                                         TextEntry::make('phone')
                                             ->icon('heroicon-o-phone')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.contact-information.sections.contact-information.entries.phone-number')),
                                         TextEntry::make('mobile')
                                             ->icon('heroicon-o-device-phone-mobile')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company/relation-managers/manage-branch.infolist.tabs.contact-information.sections.contact-information.entries.mobile-number')),
                                         TextEntry::make('email')
                                             ->icon('heroicon-o-envelope')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->copyable()
                                             ->copyMessage('Email copied')
                                             ->copyMessageDuration(1500)

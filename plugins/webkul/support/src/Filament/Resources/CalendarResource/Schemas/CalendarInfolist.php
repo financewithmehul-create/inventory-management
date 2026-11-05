@@ -23,26 +23,26 @@ class CalendarInfolist
                                     ->schema([
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-clock')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/calendar.infolist.sections.general.entries.name')),
                                         TextEntry::make('timezone')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock')
                                             ->label(__('support::filament/resources/calendar.infolist.sections.general.entries.timezone')),
                                         TextEntry::make('company.name')
                                             ->icon('heroicon-o-building-office-2')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/calendar.infolist.sections.general.entries.company')),
                                     ])->columns(2),
                                 Section::make(__('support::filament/resources/calendar.infolist.sections.configuration.title'))
                                     ->schema([
                                         TextEntry::make('hours_per_day')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/calendar.infolist.sections.configuration.entries.hours-per-day'))
                                             ->suffix(__('support::filament/resources/calendar.infolist.sections.configuration.entries.hours-per-day-suffix'))
                                             ->icon('heroicon-o-clock'),
                                         TextEntry::make('full_time_required_hours')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/calendar.infolist.sections.configuration.entries.full-time-required-hours'))
                                             ->suffix(__('support::filament/resources/calendar.infolist.sections.configuration.entries.full-time-required-hours-suffix'))
                                             ->icon('heroicon-o-clock'),
@@ -56,10 +56,10 @@ class CalendarInfolist
                                         ->label(__('support::filament/resources/calendar.infolist.sections.flexibility.entries.status')),
                                     IconEntry::make('two_weeks_calendar')
                                         ->boolean()
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/calendar.infolist.sections.flexibility.entries.two-weeks-calendar')),
                                     IconEntry::make('flexible_hours')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->boolean()
                                         ->label(__('support::filament/resources/calendar.infolist.sections.flexibility.entries.flexible-hours')),
                                 ]),

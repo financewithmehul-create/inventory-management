@@ -3,11 +3,16 @@
 namespace Webkul\Security;
 
 use Filament\Panel;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Webkul\PluginManager\Package;
 use Webkul\PluginManager\PackageServiceProvider;
+use Webkul\Security\Bouncer;
 use Webkul\Security\Console\Commands\ResetAdmin;
+use Webkul\Security\Models\User;
 use Webkul\Security\Console\Commands\SyncDefaultRoles;
 use Webkul\Security\Facades\Bouncer as BouncerFacade;
 
@@ -55,6 +60,10 @@ class SecurityServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         require_once __DIR__.'/Helpers/helpers.php';
+
+        Event::listen([Login::class, Logout::class], fn () => Bouncer::flushCache());
+
+        User::saved(fn () => Bouncer::flushCache());
 
         Gate::before(function ($user, string $ability) {
             if ($ability !== 'bypass_ownership_scope') {

@@ -41,12 +41,6 @@ class SupportPlugin implements Plugin
                     ->discoverClusters(
                         in: __DIR__.'/Filament/Widgets',
                         for: 'Webkul\\Support\\Filament\\Widgets'
-                    )
-                    ->renderHook(
-                        'panels::body.end',
-                        fn (): string => Filament::auth()->check()
-                            ? Blade::render("@livewire('quick-navigation')")
-                            : '',
                     );
             });
     }

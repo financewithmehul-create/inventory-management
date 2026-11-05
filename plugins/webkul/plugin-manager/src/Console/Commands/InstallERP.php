@@ -583,7 +583,6 @@ class InstallERP extends Command
         if (empty($email)) {
             $email = text(
                 'Email address',
-                default: 'admin@example.com',
                 required: true,
                 validate: fn ($email) => $this->validateAdminEmail($email, $userModel)
             );
@@ -651,9 +650,22 @@ class InstallERP extends Command
      */
     protected function validateAdminPassword(string $password): ?string
     {
-        return strlen($password) >= 8 ? null : 'The password must be at least 8 characters long.';
-    }
+        if (strlen($password) < 10) {
+            return 'The password must be at least 10 characters long.';
+        }
 
+        if (! preg_match('/[a-z]/', $password) || ! preg_match('/[A-Z]/', $password) || ! preg_match('/\d/', $password)) {
+            return 'Use upper and lower case letters and at least one number.';
+        }
+
+        $common = ['password', 'password1', 'admin', 'admin123', 'admin1234', '12345678', '123456789', '1234567890', 'qwerty', 'welcome', 'changeme', 'letmein'];
+
+        if (in_array(strtolower($password), $common, true) || str_contains(strtolower($password), 'password')) {
+            return 'This password is too easy to guess. Choose another one.';
+        }
+
+        return null;
+    }
 
     /**
      * Storage link command to create a symbolic link from "public/storage" to "storage/app/public".

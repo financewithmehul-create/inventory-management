@@ -48,12 +48,12 @@ class ManageMoves extends ManageRelatedRecords
                 TextColumn::make('lot.name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation/pages/manage-moves.table.columns.lot'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(OperationResource::getTraceabilitySettings()->enable_lots_serial_numbers && $this->getOwnerRecord()->tracking != ProductTracking::QTY),
                 TextColumn::make('resultPackage.name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation/pages/manage-moves.table.columns.package'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(OperationResource::getOperationSettings()->enable_packages),
                 TextColumn::make('sourceLocation.full_name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation/pages/manage-moves.table.columns.source-location'))

@@ -13,7 +13,7 @@ class TeamInfolist
             ->components([
                 TextEntry::make('name')
                     ->icon('heroicon-o-user')
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->label(__('security::filament/resources/team.infolist.entries.name')),
             ]);
     }

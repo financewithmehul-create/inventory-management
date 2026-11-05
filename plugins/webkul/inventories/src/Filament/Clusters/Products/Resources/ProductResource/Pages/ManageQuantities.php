@@ -223,18 +223,18 @@ class ManageQuantities extends ManageRelatedRecords
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.storage-category'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getWarehouseSettings()->enable_locations),
                 TextColumn::make('package.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.package'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getOperationSettings()->enable_packages),
                 TextColumn::make('lot.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.lot'))
                     ->searchable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getTraceabilitySettings()->enable_lots_serial_numbers && $this->getOwnerRecord()->tracking != ProductTracking::QTY),
                 TextInputColumn::make('quantity')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.on-hand'))
@@ -272,7 +272,7 @@ class ManageQuantities extends ManageRelatedRecords
                 TextColumn::make('product.uom.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.unit'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getProductSettings()->enable_uom),
             ])
             ->headerActions([

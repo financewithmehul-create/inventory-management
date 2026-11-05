@@ -3,7 +3,9 @@
 namespace Webkul\Security\Http\Controllers\API\V1;
 
 use Illuminate\Http\Request;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
@@ -30,15 +32,40 @@ class AuthController extends Controller
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required',
+            'code'     => 'nullable|string|max:20',
         ]);
+
+        $throttleKey = 'api-login:'.sha1(strtolower((string) $request->email).'|'.$request->ip());
+
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            return response()->json([
+                'message' => 'Too many sign-in attempts. Try again in '.RateLimiter::availableIn($throttleKey).' seconds.',
+            ], 429);
+        }
+
+        RateLimiter::hit($throttleKey, 60);
 
         $user = User::whereRaw(db_dialect()->caseInsensitiveEquals('email'), [$request->email])->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password) || ! $user->is_active) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
+
+        if (filled($user->getAppAuthenticationSecret())) {
+            if (! AppAuthentication::make()->verifyCode((string) $request->input('code'), $user->getAppAuthenticationSecret())) {
+                throw ValidationException::withMessages([
+                    'code' => ['Enter the 6-digit code from your authenticator app.'],
+                ]);
+            }
+        } elseif ($user->hasEmailAuthentication()) {
+            throw ValidationException::withMessages([
+                'email' => ['This account uses email codes to sign in. Use the website, or switch to an authenticator app for API access.'],
+            ]);
+        }
+
+        RateLimiter::clear($throttleKey);
 
         $token = $user->createToken('api-token')->plainTextToken;
 

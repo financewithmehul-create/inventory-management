@@ -50,13 +50,13 @@ class ScrapsTable
                     ->label(__('inventories::filament/clusters/operations/resources/scrap.table.columns.lot'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(ScrapResource::getTraceabilitySettings()->enable_lots_serial_numbers),
                 TextColumn::make('package.name')
                     ->label(__('inventories::filament/clusters/operations/resources/scrap.table.columns.package'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(ScrapResource::getOperationSettings()->enable_packages),
                 TextColumn::make('sourceLocation.full_name')
                     ->label(__('inventories::filament/clusters/operations/resources/scrap.table.columns.source-location'))

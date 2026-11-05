@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/filament/admin/theme.css',
                 'resources/js/app.js',
                 'plugins/webkul/barcode/resources/dist/barcode.css',
                 'plugins/webkul/barcode/resources/dist/barcode.js',
@@ -13,4 +14,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        sourcemap: false,
+    },
 });

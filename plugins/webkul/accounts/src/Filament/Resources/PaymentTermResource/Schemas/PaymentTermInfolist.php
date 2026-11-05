@@ -31,7 +31,7 @@ class PaymentTermInfolist
                                 TextEntry::make('name')
                                     ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.payment-term'))
                                     ->icon('heroicon-o-briefcase')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 IconEntry::make('early_discount')
                                     ->hidden()
                                     ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.early-discount'))
@@ -42,22 +42,22 @@ class PaymentTermInfolist
                                         TextEntry::make('discount_percentage')
                                             ->suffix('%')
                                             ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.discount-percentage'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('discount_days')
                                             ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.discount-days-prefix'))
                                             ->suffix(__('accounts::filament/resources/payment-term.infolist.sections.entries.discount-days-suffix'))
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ])->columns(2),
                                 TextEntry::make('early_pay_discount')
                                     ->visible(fn (Get $get) => $get('early_discount'))
                                     ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.reduced-tax'))
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('note')
                                     ->label(__('accounts::filament/resources/payment-term.infolist.sections.entries.note'))
                                     ->columnSpanFull()
                                     ->formatStateUsing(fn ($state) => new HtmlString(str($state)->sanitizeHtml()))
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ]),
                     ]),
                 Tabs::make()

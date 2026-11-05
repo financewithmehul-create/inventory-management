@@ -139,20 +139,20 @@ class SequenceResource extends Resource
                     ->label(__('support::filament/resources/sequence.table.columns.name'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('code')
                     ->label(__('support::filament/resources/sequence.table.columns.code'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('scope')
                     ->label(__('support::filament/resources/sequence.table.columns.applies-to'))
                     ->state(fn (Sequence $record): ?string => static::scopeLabel($record))
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('company.name')
                     ->label(__('support::filament/resources/sequence.table.columns.company'))
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('next_preview')
                     ->label(__('support::filament/resources/sequence.table.columns.next-preview'))
                     ->state(fn (Sequence $record): string => $record->formatNumber(max(1, $record->next_number)))
@@ -212,7 +212,7 @@ class SequenceResource extends Resource
         $label = $record->scope?->name ?? "#{$record->scope_id}";
 
         if ($record->variant) {
-            $label .= ' — '.__("support::filament/resources/sequence.table.variants.{$record->variant}");
+            $label .= ' - '.__("support::filament/resources/sequence.table.variants.{$record->variant}");
         }
 
         return $label;

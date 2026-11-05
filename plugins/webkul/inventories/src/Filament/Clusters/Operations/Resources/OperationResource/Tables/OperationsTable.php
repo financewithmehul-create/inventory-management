@@ -53,34 +53,34 @@ class OperationsTable
                     ->visible(OperationResource::getWarehouseSettings()->enable_locations),
                 TextColumn::make('partner.name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.contact'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('user.name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.responsible'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('scheduled_at')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.scheduled-at'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('deadline')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.deadline'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('closed_at')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.closed-at'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('origin')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.source-document'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('operationType.name')
@@ -89,7 +89,7 @@ class OperationsTable
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('company.name')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.company'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable(),
                 TextColumn::make('state')
                     ->label(__('inventories::filament/clusters/operations/resources/operation.table.columns.state'))

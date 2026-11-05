@@ -39,7 +39,7 @@ class QuantitiesTable
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.storage-category'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->visible(QuantityResource::getWarehouseSettings()->enable_locations),
                 TextColumn::make('product.name')
@@ -55,13 +55,13 @@ class QuantitiesTable
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.lot'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getTraceabilitySettings()->enable_lots_serial_numbers),
                 TextColumn::make('package.name')
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.package'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getOperationSettings()->enable_packages),
                 TextColumn::make('available_quantity')
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.available-quantity'))
@@ -74,7 +74,7 @@ class QuantitiesTable
                 TextColumn::make('product.uom.name')
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.uom'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(isToggledHiddenByDefault: false)
                     ->visible(QuantityResource::getProductSettings()->enable_uom),
                 TextInputColumn::make('counted_quantity')
@@ -108,12 +108,12 @@ class QuantitiesTable
                 TextColumn::make('user.name')
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.user'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('company.name')
                     ->label(__('inventories::filament/clusters/operations/resources/quantity.table.columns.company'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->groups(

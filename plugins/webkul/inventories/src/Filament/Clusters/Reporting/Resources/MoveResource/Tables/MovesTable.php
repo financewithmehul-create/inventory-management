@@ -39,7 +39,7 @@ class MovesTable
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.product'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('scheduled_at')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.date'))
                     ->sortable()
@@ -51,12 +51,12 @@ class MovesTable
                 TextColumn::make('lot.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.lot'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(MoveResource::getTraceabilitySettings()->enable_lots_serial_numbers),
                 TextColumn::make('resultPackage.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.package'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(MoveResource::getOperationSettings()->enable_packages),
                 TextColumn::make('sourceLocation.full_name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.source-location'))
@@ -71,7 +71,7 @@ class MovesTable
                 TextColumn::make('uom.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.unit'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(MoveResource::getProductSettings()->enable_uom),
                 TextColumn::make('state')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.state'))

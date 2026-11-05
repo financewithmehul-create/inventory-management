@@ -57,9 +57,9 @@ class ReturnAction extends Action
                     'return_moves' => $returnableMoves->map(fn ($move) => [
                         'move_id'       => $move->id,
                         'move_quantity' => (float) $move->quantity,
-                        'product_name'  => $move->product?->name ?? '—',
+                        'product_name'  => $move->product?->name ?? 'Not set',
                         'qty'           => $move->product_uom_qty,
-                        'uom_name'      => $move->uom?->name ?? '—',
+                        'uom_name'      => $move->uom?->name ?? 'Not set',
                     ])->values()->all(),
                 ]);
             })

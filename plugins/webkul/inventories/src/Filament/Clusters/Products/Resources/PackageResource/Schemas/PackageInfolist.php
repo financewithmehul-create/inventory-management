@@ -31,7 +31,7 @@ class PackageInfolist
                                         TextEntry::make('packageType.name')
                                             ->label(__('inventories::filament/clusters/products/resources/package.infolist.sections.general.entries.package-type'))
                                             ->icon('heroicon-o-rectangle-stack')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('pack_date')
                                             ->label(__('inventories::filament/clusters/products/resources/package.infolist.sections.general.entries.pack-date'))
@@ -44,7 +44,7 @@ class PackageInfolist
                                         TextEntry::make('location.full_name')
                                             ->label(__('inventories::filament/clusters/products/resources/package.infolist.sections.general.entries.location'))
                                             ->icon('heroicon-o-map-pin')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('company.name')
                                             ->label(__('inventories::filament/clusters/products/resources/package.infolist.sections.general.entries.company'))

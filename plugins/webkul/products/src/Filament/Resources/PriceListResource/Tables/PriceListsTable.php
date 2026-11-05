@@ -30,7 +30,7 @@ class PriceListsTable
                 TextColumn::make('company.name')
                     ->label(__('products::filament/resources/price-list.table.columns.company'))
                     ->sortable()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('items_count')
                     ->label(__('products::filament/resources/price-list.table.columns.rules'))
                     ->counts('items'),

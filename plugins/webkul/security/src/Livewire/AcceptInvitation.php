@@ -2,6 +2,7 @@
 
 namespace Webkul\Security\Livewire;
 
+use Livewire\Attributes\Locked;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\TextInput;
@@ -22,6 +23,7 @@ class AcceptInvitation extends SimplePage
 
     protected string $view = 'security::livewire.accept-invitation';
 
+    #[Locked]
     public int $invitation;
 
     private Invitation $invitationModel;

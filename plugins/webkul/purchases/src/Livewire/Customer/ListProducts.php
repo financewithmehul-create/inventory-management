@@ -44,7 +44,7 @@ class ListProducts extends Component implements HasActions, HasForms, HasTable
                 TextColumn::make('taxes.name')
                     ->label(__('purchases::filament/customer/clusters/account/resources/order.products.columns.taxes'))
                     ->badge()
-                    ->placeholder('—'),
+                    ->placeholder('Not set'),
                 TextColumn::make('discount')
                     ->label(__('purchases::filament/customer/clusters/account/resources/order.products.columns.discount'))
                     ->suffix('%'),

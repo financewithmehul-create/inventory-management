@@ -73,7 +73,7 @@ Install the ERP with your own admin login and the India defaults:
 
 ```bash
 php artisan erp:install --force --country=IN --currency=INR \
-  --admin-name="Your Name" --admin-email=you@example.com --admin-password="ChooseAStrongOne"
+  --admin-name="Your Name" --admin-email=you@example.com --admin-password="ChooseAStrong1"
 ```
 
 On Windows PowerShell put the command on one line (no `\`).
@@ -170,7 +170,7 @@ The tests sign in as `admin@example.com` with password `admin123`, so create tha
 
 ```bash
 cd ../..
-php artisan erp:install --force --country=IN --currency=INR --admin-name=Admin --admin-email=admin@example.com --admin-password=admin123
+php artisan erp:install --force --country=IN --currency=INR --admin-name=Admin --admin-email=admin@example.com --admin-password="ChooseAStrong1"
 ```
 
 (Do this on a throw-away database, never on real data.) Then:

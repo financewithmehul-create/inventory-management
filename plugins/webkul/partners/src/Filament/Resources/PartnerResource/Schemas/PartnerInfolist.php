@@ -65,22 +65,22 @@ class PartnerInfolist
                     ->schema([
                         TextEntry::make('tax_id')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.tax-id'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('job_title')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.job-title'))
-                            ->placeholder('—')
+                            ->placeholder('Not set')
                             ->visible(fn ($record): bool => in_array($record->account_type, [AccountType::INDIVIDUAL, AccountType::INDIVIDUAL->value], true)),
 
                         TextEntry::make('phone')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.phone'))
                             ->icon('heroicon-o-phone')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('mobile')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.mobile'))
                             ->icon('heroicon-o-device-phone-mobile')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('email')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.email'))
@@ -89,11 +89,11 @@ class PartnerInfolist
                         TextEntry::make('website')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.website'))
                             ->icon('heroicon-o-globe-alt')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('title.name')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.fields.title'))
-                            ->placeholder('—')
+                            ->placeholder('Not set')
                             ->visible(fn ($record): bool => in_array($record->account_type, [AccountType::INDIVIDUAL, AccountType::INDIVIDUAL->value], true)),
 
                         TextEntry::make('tags.name')
@@ -116,27 +116,27 @@ class PartnerInfolist
                     ->schema([
                         TextEntry::make('street1')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.street1'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('street2')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.street2'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('city')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.city'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('zip')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.zip'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('country.name')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.country'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('state.name')
                             ->label(__('partners::filament/resources/partner.infolist.sections.general.address.fields.state'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ]),
             ]);
     }
@@ -160,7 +160,7 @@ class PartnerInfolist
                     ->schema(array_merge([
                         TextEntry::make('user.name')
                             ->label(__('partners::filament/resources/partner.infolist.tabs.sales-purchase.fields.responsible'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ], Registry::renderInfolist('sales.fields')))
                     ->columns(1),
 
@@ -168,15 +168,15 @@ class PartnerInfolist
                     ->schema([
                         TextEntry::make('company_registry')
                             ->label(__('partners::filament/resources/partner.infolist.tabs.sales-purchase.fields.company-id'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('reference')
                             ->label(__('partners::filament/resources/partner.infolist.tabs.sales-purchase.fields.reference'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
 
                         TextEntry::make('industry.name')
                             ->label(__('partners::filament/resources/partner.infolist.tabs.sales-purchase.fields.industry'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                     ])
                     ->columns(2),
             ], Registry::renderInfolist('salesPurchase.append')));

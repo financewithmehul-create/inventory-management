@@ -39,7 +39,7 @@ class LotsTable
                     }),
                 TextColumn::make('reference')
                     ->label(__('inventories::filament/clusters/products/resources/lot.table.columns.reference'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('total_quantity')

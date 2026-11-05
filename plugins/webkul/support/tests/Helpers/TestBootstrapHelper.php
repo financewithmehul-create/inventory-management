@@ -228,7 +228,7 @@ class TestBootstrapHelper
             '--no-interaction' => true,
             '--admin-name'     => 'Test Admin',
             '--admin-email'    => 'admin@example.com',
-            '--admin-password' => 'admin123',
+            '--admin-password' => 'Admin12345x',
         ]);
 
         static::$isERPInstalled = true;

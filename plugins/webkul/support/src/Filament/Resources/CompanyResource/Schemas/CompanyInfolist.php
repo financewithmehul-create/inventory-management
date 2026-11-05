@@ -26,23 +26,23 @@ class CompanyInfolist
                                     ->schema([
                                         TextEntry::make('name')
                                             ->icon('heroicon-o-building-office')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.company-information.entries.name')),
                                         TextEntry::make('registration_number')
                                             ->icon('heroicon-o-document-text')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.company-information.entries.registration-number')),
                                         TextEntry::make('company_id')
                                             ->icon('heroicon-o-identification')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.company-information.entries.company-id')),
                                         TextEntry::make('tax_id')
                                             ->icon('heroicon-o-currency-dollar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.company-information.entries.tax-id')),
                                         TextEntry::make('website')
                                             ->icon('heroicon-o-globe-alt')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.company-information.entries.website')),
                                     ])
                                     ->columns(2),
@@ -51,24 +51,24 @@ class CompanyInfolist
                                     ->schema([
                                         TextEntry::make('street1')
                                             ->icon('heroicon-o-map-pin')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.street1')),
                                         TextEntry::make('street2')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.street2')),
                                         TextEntry::make('city')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.city'))
                                             ->icon('heroicon-o-building-library')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('zip')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.zipcode')),
                                         TextEntry::make('country.name')
                                             ->icon('heroicon-o-globe-alt')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.country')),
                                         TextEntry::make('state.name')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.address-information.entries.state')),
                                     ])
                                     ->columns(2),
@@ -77,11 +77,11 @@ class CompanyInfolist
                                     ->schema([
                                         TextEntry::make('currency.full_name')
                                             ->icon('heroicon-o-currency-dollar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->label(__('support::filament/resources/company.infolist.sections.additional-information.entries.default-currency')),
                                         TextEntry::make('founded_date')
                                             ->icon('heroicon-o-calendar')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->date()
                                             ->label(__('support::filament/resources/company.infolist.sections.additional-information.entries.company-foundation-date')),
                                         IconEntry::make('is_active')
@@ -99,9 +99,9 @@ class CompanyInfolist
                                     ImageEntry::make('partner.avatar')
                                         ->label(__('support::filament/resources/company.infolist.sections.branding.entries.company-logo'))
                                         ->circular()
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                     ColorEntry::make('color')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/company.infolist.sections.branding.entries.color')),
                                 ]),
 
@@ -109,15 +109,15 @@ class CompanyInfolist
                                 ->schema([
                                     TextEntry::make('phone')
                                         ->icon('heroicon-o-phone')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/company.infolist.sections.contact-information.entries.phone')),
                                     TextEntry::make('mobile')
                                         ->icon('heroicon-o-device-phone-mobile')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/company.infolist.sections.contact-information.entries.mobile')),
                                     TextEntry::make('email')
                                         ->icon('heroicon-o-envelope')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/company.infolist.sections.contact-information.entries.email'))
                                         ->copyable()
                                         ->copyMessage('Email address copied')

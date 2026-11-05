@@ -41,7 +41,7 @@ class LocationsTable
                     ->searchable(),
                 TextColumn::make('storageCategory.name')
                     ->label(__('inventories::filament/clusters/configurations/resources/location.table.columns.storage-category'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable()
                     ->hiddenOn(ManageLocations::class),
                 TextColumn::make('company.name')

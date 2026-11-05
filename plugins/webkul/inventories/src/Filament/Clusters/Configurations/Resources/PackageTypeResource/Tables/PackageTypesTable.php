@@ -34,7 +34,7 @@ class PackageTypesTable
                     ->sortable(),
                 TextColumn::make('barcode')
                     ->label(__('inventories::filament/clusters/configurations/resources/package-type.table.columns.barcode'))
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')

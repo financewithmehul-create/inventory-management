@@ -8,34 +8,41 @@ use Webkul\Security\Models\User;
 class Bouncer
 {
     /**
-     * Cached authorized user IDs.
+     * Authorized user IDs, cached per signed-in user so a long-running worker never reuses another person's list.
+     *
+     * @var array<int, array<int, int>|null>
      */
-    protected static ?array $authorizedUserIdsCache = null;
+    protected static array $authorizedUserIdsCache = [];
 
     /**
-     * Return user IDs authorized for the current user.
+     * Return user IDs authorized for the current user (null means no restriction).
      */
     public function getAuthorizedUserIds(): ?array
     {
-        if (static::$authorizedUserIdsCache !== null) {
-            return static::$authorizedUserIdsCache;
-        }
-
         $user = auth()->user();
 
         if (! $user) {
-            return static::$authorizedUserIdsCache = null;
+            return null;
+        }
+
+        if (array_key_exists($user->id, static::$authorizedUserIdsCache)) {
+            return static::$authorizedUserIdsCache[$user->id];
         }
 
         if ($user->resource_permission == PermissionType::GLOBAL) {
-            static::$authorizedUserIdsCache = null;
+            $ids = null;
         } elseif ($user->resource_permission == PermissionType::GROUP) {
-            static::$authorizedUserIdsCache = $this->getCurrentAccessibleUserIds($user);
+            $ids = array_values(array_unique(array_merge([$user->id], $this->getCurrentAccessibleUserIds($user))));
         } else {
-            static::$authorizedUserIdsCache = [$user->id];
+            $ids = [$user->id];
         }
 
-        return static::$authorizedUserIdsCache;
+        return static::$authorizedUserIdsCache[$user->id] = $ids;
+    }
+
+    public static function flushCache(): void
+    {
+        static::$authorizedUserIdsCache = [];
     }
 
     /**

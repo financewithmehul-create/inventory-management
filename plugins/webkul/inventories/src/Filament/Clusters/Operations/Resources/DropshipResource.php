@@ -64,8 +64,8 @@ class DropshipResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('inventories::filament/clusters/operations/resources/dropship.global-search.partner') => $record->partner?->name ?? '—',
-            __('inventories::filament/clusters/operations/resources/dropship.global-search.origin')  => $record->origin ?? '—',
+            __('inventories::filament/clusters/operations/resources/dropship.global-search.partner') => $record->partner?->name ?? 'Not set',
+            __('inventories::filament/clusters/operations/resources/dropship.global-search.origin')  => $record->origin ?? 'Not set',
         ];
     }
 

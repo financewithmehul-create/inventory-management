@@ -25,11 +25,11 @@ class VendorPriceInfolist
                                 TextEntry::make('product_name')
                                     ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.infolist.sections.general.entries.vendor-product-name'))
                                     ->icon('heroicon-o-tag')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('product_code')
                                     ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.infolist.sections.general.entries.vendor-product-code'))
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('delay')
                                     ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.infolist.sections.general.entries.delay'))
@@ -66,13 +66,13 @@ class VendorPriceInfolist
                                             ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.infolist.sections.prices.entries.valid-from'))
                                             ->icon('heroicon-o-calendar')
                                             ->date()
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
 
                                         TextEntry::make('ends_at')
                                             ->label(__('purchases::filament/admin/clusters/configurations/resources/vendor-price.infolist.sections.prices.entries.valid-to'))
                                             ->icon('heroicon-o-calendar')
                                             ->date()
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ])
                                     ->columns(2),
 

@@ -87,6 +87,7 @@ class SupportServiceProvider extends PackageServiceProvider
                 '2026_10_08_000001_add_brand_name_and_default_theme',
                 '2026_10_08_000002_create_onboarding_settings',
                 '2026_10_12_000001_remove_license_settings',
+                '2026_11_05_000001_set_sober_brand_defaults',
             ])
             ->runsSettings()
             ->hasSeeder('Webkul\\Support\\Database\\Seeders\\DatabaseSeeder');

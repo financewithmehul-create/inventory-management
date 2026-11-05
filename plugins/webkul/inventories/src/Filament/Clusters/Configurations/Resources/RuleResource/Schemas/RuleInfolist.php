@@ -85,7 +85,7 @@ class RuleInfolist
                                                     ->label(__('inventories::filament/clusters/configurations/resources/rule.infolist.sections.general.entries.partner-address'))
                                                     ->icon('heroicon-o-user-group')
                                                     ->getStateUsing(fn ($record) => $record->partnerAddress?->name)
-                                                    ->placeholder('—'),
+                                                    ->placeholder('Not set'),
 
                                                 TextEntry::make('delay')
                                                     ->label(__('inventories::filament/clusters/configurations/resources/rule.infolist.sections.general.entries.lead-time'))

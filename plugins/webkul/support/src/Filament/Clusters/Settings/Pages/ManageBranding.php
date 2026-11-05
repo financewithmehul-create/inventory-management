@@ -61,7 +61,7 @@ class ManageBranding extends SettingsPage
         return [
             Action::make('rerunSetup')
                 ->label(__('support::filament/clusters/manage-branding.actions.rerun-setup.label'))
-                ->icon('heroicon-o-rocket-launch')
+                ->icon('heroicon-o-pencil-square')
                 ->color('gray')
                 ->visible(fn (): bool => Onboarding::canAccess())
                 ->url(fn (): string => Onboarding::getUrl()),
@@ -80,16 +80,6 @@ class ManageBranding extends SettingsPage
                             ->label(__('support::filament/clusters/manage-branding.form.fields.brand-name'))
                             ->helperText(__('support::filament/clusters/manage-branding.form.fields.brand-name-helper'))
                             ->maxLength(60),
-                        Select::make('default_theme')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.default-theme'))
-                            ->helperText(__('support::filament/clusters/manage-branding.form.fields.default-theme-helper'))
-                            ->options([
-                                'system' => __('support::filament/clusters/manage-branding.form.fields.theme-system'),
-                                'light'  => __('support::filament/clusters/manage-branding.form.fields.theme-light'),
-                                'dark'   => __('support::filament/clusters/manage-branding.form.fields.theme-dark'),
-                            ])
-                            ->native(false)
-                            ->required(),
                     ]),
                 Section::make(__('support::filament/clusters/manage-branding.form.sections.logo.title'))
                     ->description(__('support::filament/clusters/manage-branding.form.sections.logo.description'))
@@ -98,21 +88,6 @@ class ManageBranding extends SettingsPage
                         FileUpload::make('light_logo')
                             ->label(__('support::filament/clusters/manage-branding.form.fields.light-logo'))
                             ->helperText(__('support::filament/clusters/manage-branding.form.fields.light-logo-helper'))
-                            ->image()
-                            ->maxSize(2048)
-                            ->acceptedFileTypes([
-                                'image/jpeg',
-                                'image/png',
-                                'image/gif',
-                                'image/bmp',
-                                'image/webp',
-                            ])
-                            ->disk('public')
-                            ->directory('branding')
-                            ->visibility('public'),
-                        FileUpload::make('dark_logo')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.dark-logo'))
-                            ->helperText(__('support::filament/clusters/manage-branding.form.fields.dark-logo-helper'))
                             ->image()
                             ->maxSize(2048)
                             ->acceptedFileTypes([
@@ -140,14 +115,10 @@ class ManageBranding extends SettingsPage
                             ->disk('public')
                             ->directory('branding')
                             ->visibility('public'),
-                        TextInput::make('logo_height')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.logo-height'))
-                            ->helperText(__('support::filament/clusters/manage-branding.form.fields.logo-height-helper'))
-                            ->placeholder('2rem'),
                     ]),
                 Section::make(__('support::filament/clusters/manage-branding.form.sections.colors.title'))
                     ->description(__('support::filament/clusters/manage-branding.form.sections.colors.description'))
-                    ->columns(3)
+                    ->columns(1)
                     ->headerActions([
                         Action::make('reset')
                             ->label(__('support::filament/clusters/manage-branding.actions.reset.label'))
@@ -165,21 +136,6 @@ class ManageBranding extends SettingsPage
                         ColorPicker::make('primary_color')
                             ->label(__('support::filament/clusters/manage-branding.form.fields.primary-color'))
                             ->hexColor(),
-                        ColorPicker::make('gray_color')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.gray-color'))
-                            ->hexColor(),
-                        ColorPicker::make('danger_color')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.danger-color'))
-                            ->hexColor(),
-                        ColorPicker::make('info_color')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.info-color'))
-                            ->hexColor(),
-                        ColorPicker::make('success_color')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.success-color'))
-                            ->hexColor(),
-                        ColorPicker::make('warning_color')
-                            ->label(__('support::filament/clusters/manage-branding.form.fields.warning-color'))
-                            ->hexColor(),
                     ]),
             ]);
     }
@@ -187,12 +143,7 @@ class ManageBranding extends SettingsPage
     private function getDefaultColors(): array
     {
         return [
-            'primary_color' => Color::convertToHex(Color::Blue[600]),
-            'gray_color'    => Color::convertToHex(Color::Zinc[600]),
-            'danger_color'  => Color::convertToHex(Color::Red[600]),
-            'info_color'    => Color::convertToHex(Color::Blue[600]),
-            'success_color' => Color::convertToHex(Color::Green[600]),
-            'warning_color' => Color::convertToHex(Color::Amber[600]),
+            'primary_color' => '#1f3b57',
         ];
     }
 }

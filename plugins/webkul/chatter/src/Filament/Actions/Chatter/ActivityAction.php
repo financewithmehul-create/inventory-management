@@ -112,7 +112,7 @@ class ActivityAction extends Action
                                                 $planDate = $get('date_deadline') ? Carbon::parse($get('date_deadline'))->format('m/d/Y') : '';
                                                 $html .= '<div class="flex items-center space-x-2" style="margin-left: 20px;">
                                                             <span>•</span>
-                                                            <span style="margin-left:2px;">'.$activityPlanTemplate->summary.($planDate ? ' ('.$planDate.')' : '').'</span>
+                                                            <span style="margin-left:2px;">'.e($activityPlanTemplate->summary).($planDate ? ' ('.e($planDate).')' : '').'</span>
                                                           </div>';
                                             }
                                             $html .= '</div>';

@@ -55,18 +55,18 @@ class QuantitiesTable
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.storage-category'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getWarehouseSettings()->enable_locations),
                 TextColumn::make('package.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.package'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getOperationSettings()->enable_packages),
                 TextColumn::make('lot.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.lot'))
                     ->searchable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getTraceabilitySettings()->enable_lots_serial_numbers),
                 TextInputColumn::make('quantity')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.on-hand'))
@@ -99,7 +99,7 @@ class QuantitiesTable
                 TextColumn::make('product.uom.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.columns.unit'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(QuantityResource::getProductSettings()->enable_uom),
             ])
             ->filters([

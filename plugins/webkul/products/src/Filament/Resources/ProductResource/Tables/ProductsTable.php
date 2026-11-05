@@ -195,7 +195,7 @@ class ProductsTable
                 }),
             ImageColumn::make('images')
                 ->label(__('products::filament/resources/product.table.columns.images'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->circular()
                 ->stacked()
                 ->limit(3)
@@ -206,27 +206,27 @@ class ProductsTable
                 ->sortable(),
             TextColumn::make('variants_count')
                 ->label(__('products::filament/resources/product.table.columns.variants'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->counts('variants')
                 ->sortable(),
             TextColumn::make('reference')
                 ->label(__('products::filament/resources/product.table.columns.reference'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->searchable()
                 ->sortable(),
             TextColumn::make('tags.name')
                 ->label(__('products::filament/resources/product.table.columns.tags'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->badge()
                 ->toggleable(),
             TextColumn::make('responsible.name')
                 ->label(__('products::filament/resources/product.table.columns.responsible'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('barcode')
                 ->label(__('products::filament/resources/product.table.columns.barcode'))
-                ->placeholder('—')
+                ->placeholder('Not set')
                 ->searchable()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),

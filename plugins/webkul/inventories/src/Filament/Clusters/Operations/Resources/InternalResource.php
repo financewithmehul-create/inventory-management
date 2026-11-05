@@ -65,7 +65,7 @@ class InternalResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('inventories::filament/clusters/operations/resources/internal.global-search.origin') => $record->origin ?? '—',
+            __('inventories::filament/clusters/operations/resources/internal.global-search.origin') => $record->origin ?? 'Not set',
         ];
     }
 

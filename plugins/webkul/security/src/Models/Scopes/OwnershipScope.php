@@ -35,6 +35,8 @@ class OwnershipScope implements Scope
         }
 
         if (empty($userIds)) {
+            $builder->whereRaw('1 = 0');
+
             return;
         }
 

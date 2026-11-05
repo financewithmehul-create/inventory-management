@@ -45,7 +45,7 @@ class ScrapInfolist
                                                         TextEntry::make('lot.name')
                                                             ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.lot'))
                                                             ->icon('heroicon-o-rectangle-stack')
-                                                            ->placeholder('—')
+                                                            ->placeholder('Not set')
                                                             ->visible(ScrapResource::getTraceabilitySettings()->enable_lots_serial_numbers),
 
                                                         TextEntry::make('tags.name')
@@ -60,7 +60,7 @@ class ScrapInfolist
                                                         TextEntry::make('package.name')
                                                             ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.package'))
                                                             ->icon('heroicon-o-cube')
-                                                            ->placeholder('—')
+                                                            ->placeholder('Not set')
                                                             ->visible(ScrapResource::getOperationSettings()->enable_packages),
 
                                                         TextEntry::make('partner.name')
@@ -78,7 +78,7 @@ class ScrapInfolist
                                                         TextEntry::make('origin')
                                                             ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.source-document'))
                                                             ->icon('heroicon-o-document-text')
-                                                            ->placeholder('—'),
+                                                            ->placeholder('Not set'),
 
                                                         TextEntry::make('company.name')
                                                             ->label(__('inventories::filament/clusters/operations/resources/scrap.infolist.sections.general.entries.company'))

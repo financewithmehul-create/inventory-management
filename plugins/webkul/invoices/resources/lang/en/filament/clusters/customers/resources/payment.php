@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Payment',
+    'title' => 'Money received',
 
     'navigation' => [
         'title' => 'Payments',

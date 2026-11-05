@@ -26,7 +26,7 @@ class AttributeInfolist
 
                                 TextEntry::make('type')
                                     ->label(__('products::filament/resources/attribute.infolist.sections.general.entries.type'))
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ]),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -38,19 +38,19 @@ class AttributeInfolist
                                 TextEntry::make('creator.name')
                                     ->label(__('products::filament/resources/attribute.infolist.sections.record-information.entries.creator'))
                                     ->icon('heroicon-o-user')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('created_at')
                                     ->label(__('products::filament/resources/attribute.infolist.sections.record-information.entries.created_at'))
                                     ->dateTime()
                                     ->icon('heroicon-o-calendar')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
 
                                 TextEntry::make('updated_at')
                                     ->label(__('products::filament/resources/attribute.infolist.sections.record-information.entries.updated_at'))
                                     ->dateTime()
                                     ->icon('heroicon-o-clock')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ])
                             ->icon('heroicon-o-information-circle')
                             ->collapsible(),

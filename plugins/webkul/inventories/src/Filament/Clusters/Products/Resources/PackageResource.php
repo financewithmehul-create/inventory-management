@@ -56,8 +56,8 @@ class PackageResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('inventories::filament/clusters/products/resources/package.global-search.package-type') => $record->packageType?->name ?? '—',
-            __('inventories::filament/clusters/products/resources/package.global-search.location')     => $record->location?->full_name ?? '—',
+            __('inventories::filament/clusters/products/resources/package.global-search.package-type') => $record->packageType?->name ?? 'Not set',
+            __('inventories::filament/clusters/products/resources/package.global-search.location')     => $record->location?->full_name ?? 'Not set',
         ];
     }
 

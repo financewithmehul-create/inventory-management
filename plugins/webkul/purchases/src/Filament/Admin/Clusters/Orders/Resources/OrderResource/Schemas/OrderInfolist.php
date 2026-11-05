@@ -63,10 +63,10 @@ class OrderInfolist
                                     TextEntry::make('partner_reference')
                                         ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.sections.general.entries.vendor-reference'))
                                         ->icon('heroicon-o-document-text')
-                                        ->placeholder('—'),
+                                        ->placeholder('Not set'),
                                     TextEntry::make('requisition.name')
                                         ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.sections.general.entries.agreement'))
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->icon('heroicon-o-document-check')
                                         ->visible(OrderResource::getOrderSettings()->enable_purchase_agreements),
                                     TextEntry::make('currency.name')
@@ -236,24 +236,24 @@ class OrderInfolist
                                         Group::make([
                                             TextEntry::make('user.name')
                                                 ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.buyer'))
-                                                ->placeholder('—'),
+                                                ->placeholder('Not set'),
                                             TextEntry::make('company.name')
                                                 ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.company'))
-                                                ->placeholder('—'),
+                                                ->placeholder('Not set'),
                                             TextEntry::make('reference')
                                                 ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.source-document'))
-                                                ->placeholder('—'),
+                                                ->placeholder('Not set'),
                                             TextEntry::make('incoterm.name')
                                                 ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.incoterm'))
                                                 ->icon('heroicon-o-question-mark-circle')
-                                                ->placeholder('—')
+                                                ->placeholder('Not set')
                                                 ->tooltip(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.incoterm-tooltip')),
                                         ]),
 
                                         Group::make([
                                             TextEntry::make('paymentTerm.name')
                                                 ->label(__('purchases::filament/admin/clusters/orders/resources/order.infolist.tabs.additional.entries.payment-term'))
-                                                ->placeholder('—'),
+                                                ->placeholder('Not set'),
                                         ]),
                                     ]),
                             ]),

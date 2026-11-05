@@ -39,9 +39,9 @@ class InvoiceResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('accounts::filament/resources/invoice.global-search.customer') => $record?->partner?->name ?? '—',
-            __('accounts::filament/resources/invoice.global-search.date')     => $record?->invoice_date ?? '—',
-            __('accounts::filament/resources/invoice.global-search.due-date') => $record?->invoice_date_due ?? '—',
+            __('accounts::filament/resources/invoice.global-search.customer') => $record?->partner?->name ?? 'Not set',
+            __('accounts::filament/resources/invoice.global-search.date')     => $record?->invoice_date ?? 'Not set',
+            __('accounts::filament/resources/invoice.global-search.due-date') => $record?->invoice_date_due ?? 'Not set',
         ];
     }
 

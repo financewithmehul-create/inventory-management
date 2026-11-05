@@ -126,11 +126,11 @@ class LocationForm
                                         TextEntry::make('last_inventory_date')
                                             ->label(__('inventories::filament/clusters/configurations/resources/location.form.sections.settings.fields.last-inventory'))
                                             ->hintIcon('heroicon-m-question-mark-circle', tooltip: __('inventories::filament/clusters/configurations/resources/location.form.sections.settings.fields.last-inventory-hint-tooltip'))
-                                            ->state(fn ($record) => $record?->last_inventory_date?->toFormattedDateString() ?? '—'),
+                                            ->state(fn ($record) => $record?->last_inventory_date?->toFormattedDateString() ?? 'Not set'),
                                         TextEntry::make('next_inventory_date')
                                             ->label(__('inventories::filament/clusters/configurations/resources/location.form.sections.settings.fields.next-expected'))
                                             ->hintIcon('heroicon-m-question-mark-circle', tooltip: __('inventories::filament/clusters/configurations/resources/location.form.sections.settings.fields.next-expected-hint-tooltip'))
-                                            ->state(fn ($record) => $record?->next_inventory_date?->toFormattedDateString() ?? '—'),
+                                            ->state(fn ($record) => $record?->next_inventory_date?->toFormattedDateString() ?? 'Not set'),
                                     ])
                                     ->visible(fn (Get $get): bool => in_array($get('type'), [LocationType::INTERNAL, LocationType::TRANSIT]))
                                     ->columns(1),

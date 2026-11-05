@@ -152,7 +152,7 @@ class PriceListForm
                     ->state(fn (Get $get): string => (string) (float) ($get('min_quantity') ?? 0)),
                 TextEntry::make('display_type')
                     ->hiddenLabel()
-                    ->state(fn (Get $get): string => static::ruleType($get('type'))?->getLabel() ?? '—'),
+                    ->state(fn (Get $get): string => static::ruleType($get('type'))?->getLabel() ?? 'Not set'),
                 TextEntry::make('display_price')
                     ->hiddenLabel()
                     ->state(fn (Get $get): string => static::describePrice($get)),
@@ -496,7 +496,7 @@ class PriceListForm
             PriceRuleType::FIXED      => money((float) ($get('fixed_price') ?? 0), $currencyCode),
             PriceRuleType::PERCENTAGE => static::percentage($get('percent_price')),
             PriceRuleType::FORMULA    => static::describeFormula($get),
-            default                   => '—',
+            default                   => 'Not set',
         };
     }
 
@@ -530,10 +530,18 @@ class PriceListForm
         $ends = $get('ends_at');
 
         if (blank($starts) && blank($ends)) {
-            return '—';
+            return 'Not set';
         }
 
-        return trim((string) $starts.' → '.(string) $ends, ' →');
+        if (blank($ends)) {
+            return 'From '.$starts;
+        }
+
+        if (blank($starts)) {
+            return 'Until '.$ends;
+        }
+
+        return $starts.' to '.$ends;
     }
 
     /**

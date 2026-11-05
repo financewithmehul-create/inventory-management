@@ -83,7 +83,7 @@ class ManageMoves extends ManageRelatedRecords
                 TextColumn::make('product.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.product'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible((bool) $this->getOwnerRecord()->is_configurable),
                 TextColumn::make('scheduled_at')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.date'))
@@ -96,12 +96,12 @@ class ManageMoves extends ManageRelatedRecords
                 TextColumn::make('lot.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.lot'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getTraceabilitySettings()->enable_lots_serial_numbers && $this->getOwnerRecord()->tracking != ProductTracking::QTY),
                 TextColumn::make('resultPackage.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.package'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getOperationSettings()->enable_packages),
                 TextColumn::make('sourceLocation.full_name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.source-location'))
@@ -116,7 +116,7 @@ class ManageMoves extends ManageRelatedRecords
                 TextColumn::make('uom.name')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.unit'))
                     ->sortable()
-                    ->placeholder('—')
+                    ->placeholder('Not set')
                     ->visible(static::getProductSettings()->enable_uom),
                 TextColumn::make('state')
                     ->label(__('inventories::filament/clusters/products/resources/product/pages/manage-moves.table.columns.state'))

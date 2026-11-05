@@ -35,8 +35,8 @@ class PartnerResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('partners::filament/resources/partner.global-search.email') => $record->email ?? '—',
-            __('partners::filament/resources/partner.global-search.phone') => $record->phone ?? '—',
+            __('partners::filament/resources/partner.global-search.email') => $record->email ?? 'Not set',
+            __('partners::filament/resources/partner.global-search.phone') => $record->phone ?? 'Not set',
         ];
     }
 

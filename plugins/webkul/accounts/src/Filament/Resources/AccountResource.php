@@ -35,8 +35,8 @@ class AccountResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('accounts::filament/resources/account.global-search.code') => $record->code ?? '—',
-            __('accounts::filament/resources/account.global-search.type') => $record->account_type ?? '—',
+            __('accounts::filament/resources/account.global-search.code') => $record->code ?? 'Not set',
+            __('accounts::filament/resources/account.global-search.type') => $record->account_type ?? 'Not set',
         ];
     }
 

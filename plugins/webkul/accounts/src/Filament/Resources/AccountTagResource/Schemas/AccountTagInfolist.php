@@ -18,18 +18,18 @@ class AccountTagInfolist
                         TextEntry::make('name')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.name'))
                             ->icon('heroicon-o-briefcase')
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                         TextEntry::make('color')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.color'))
                             ->formatStateUsing(fn ($state) => "<span style='display:inline-block;width:15px;height:15px;background-color:{$state};border-radius:50%;'></span> ".$state)
                             ->html()
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                         TextEntry::make('applicability')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.applicability'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                         TextEntry::make('country.name')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.country'))
-                            ->placeholder('—'),
+                            ->placeholder('Not set'),
                         IconEntry::make('tax_negate')
                             ->label(__('accounts::filament/resources/account-tag.infolist.entries.tax-negate'))
                             ->boolean(),

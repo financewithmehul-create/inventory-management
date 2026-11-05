@@ -22,7 +22,7 @@ class PackagingInfolist
         $firstSectionChildComponents[] = TextEntry::make('packageType.name')
             ->label(__('inventories::filament/clusters/configurations/resources/packaging.infolist.sections.general.entries.package_type'))
             ->icon('heroicon-o-archive-box')
-            ->placeholder('—')
+            ->placeholder('Not set')
             ->visible(PackagingResource::getOperationSettings()->enable_packages);
 
         $components[0]->childComponents($firstSectionChildComponents);
@@ -37,7 +37,7 @@ class PackagingInfolist
                                 ->label(__('inventories::filament/clusters/configurations/resources/packaging.infolist.sections.routing.entries.route_name'))
                                 ->icon('heroicon-o-truck'),
                         ])
-                        ->placeholder('—')
+                        ->placeholder('Not set')
                         ->columns(1),
                 ])
                 ->collapsible()

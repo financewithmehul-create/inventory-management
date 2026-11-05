@@ -23,26 +23,26 @@ class ActivityTemplateInfolist
                                     ->schema([
                                         TextEntry::make('activityType.name')
                                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.activity-details.entries.activity-type'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-briefcase'),
                                         TextEntry::make('summary')
                                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.activity-details.entries.summary'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-document-text'),
                                     ])->columns(2),
                                 Section::make(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.delay-information.title'))
                                     ->schema([
                                         TextEntry::make('delay_count')
                                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.delay-information.entries.delay-count'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock'),
                                         TextEntry::make('delay_unit')
                                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.delay-information.entries.delay-unit'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-calendar'),
                                         TextEntry::make('delay_from')
                                             ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.delay-information.entries.delay-from'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->formatStateUsing(fn ($state) => ActivityDelayInterval::options()[$state])
                                             ->helperText(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.delay-information.entries.delay-from-helper-text'))
                                             ->icon('heroicon-o-ellipsis-horizontal-circle'),
@@ -50,7 +50,7 @@ class ActivityTemplateInfolist
                                 TextEntry::make('note')
                                     ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.note'))
                                     ->html()
-                                    ->placeholder('—')
+                                    ->placeholder('Not set')
                                     ->icon('heroicon-o-document'),
                             ])->columnSpan(2),
                         Group::make([
@@ -58,10 +58,10 @@ class ActivityTemplateInfolist
                                 ->schema([
                                     TextEntry::make('responsible_type')
                                         ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.assignment.entries.assignment'))
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->icon('heroicon-o-user-circle'),
                                     TextEntry::make('responsible.name')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('sales::filament/clusters/configurations/resources/activity-plan/relation-managers/activity-template.infolist.sections.assignment.entries.assignee'))
                                         ->icon('heroicon-o-user'),
                                 ]),

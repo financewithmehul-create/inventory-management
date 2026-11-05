@@ -48,8 +48,8 @@ class PurchaseAgreementResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('purchases::filament/admin/clusters/orders/resources/purchase-agreement.global-search.vendor') => $record->partner?->name ?? '—',
-            __('purchases::filament/admin/clusters/orders/resources/purchase-agreement.global-search.type')   => $record->type?->getLabel() ?? '—',
+            __('purchases::filament/admin/clusters/orders/resources/purchase-agreement.global-search.vendor') => $record->partner?->name ?? 'Not set',
+            __('purchases::filament/admin/clusters/orders/resources/purchase-agreement.global-search.type')   => $record->type?->getLabel() ?? 'Not set',
         ];
     }
 

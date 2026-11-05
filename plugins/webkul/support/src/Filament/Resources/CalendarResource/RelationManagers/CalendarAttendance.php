@@ -247,12 +247,12 @@ class CalendarAttendance extends RelationManager
                                 Section::make(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.general.title'))
                                     ->schema([
                                         TextEntry::make('name')
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock')
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.general.entries.name')),
                                         TextEntry::make('day_of_week')
                                             ->formatStateUsing(fn ($state) => DayOfWeek::options()[$state])
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock')
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.general.entries.day-of-week')),
                                     ])->columns(2),
@@ -260,21 +260,21 @@ class CalendarAttendance extends RelationManager
                                     ->schema([
                                         TextEntry::make('day_period')
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.timing-information.entries.day-period'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->formatStateUsing(fn ($state) => DayPeriod::options()[$state])
                                             ->icon('heroicon-o-clock'),
                                         TextEntry::make('week_type')
                                             ->formatStateUsing(fn ($state) => WeekType::options()[$state])
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.timing-information.entries.week-type'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock'),
                                         TextEntry::make('hour_from')
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.timing-information.entries.work-from'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock'),
                                         TextEntry::make('hour_to')
                                             ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.timing-information.entries.work-to'))
-                                            ->placeholder('—')
+                                            ->placeholder('Not set')
                                             ->icon('heroicon-o-clock'),
                                     ])->columns(2),
 
@@ -284,12 +284,12 @@ class CalendarAttendance extends RelationManager
                                 ->schema([
                                     TextEntry::make('date_from')
                                         ->icon('heroicon-o-calendar')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->date()
                                         ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.date-information.entries.starting-date')),
                                     TextEntry::make('date_to')
                                         ->icon('heroicon-o-calendar')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.date-information.entries.ending-date'))
                                         ->date(),
                                 ]),
@@ -297,11 +297,11 @@ class CalendarAttendance extends RelationManager
                                 ->schema([
                                     TextEntry::make('display_type')
                                         ->formatStateUsing(fn ($state) => CalendarDisplayType::options()[$state])
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.additional-information.entries.display-type'))
                                         ->icon('heroicon-o-clock'),
                                     TextEntry::make('duration_days')
-                                        ->placeholder('—')
+                                        ->placeholder('Not set')
                                         ->label(__('support::filament/resources/calendar/relation-managers/working-hours.infolist.sections.additional-information.entries.durations-days'))
                                         ->icon('heroicon-o-clock'),
                                 ]),

@@ -33,7 +33,7 @@ class LocationInfolist
                                 TextEntry::make('description')
                                     ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.general.entries.external-notes'))
                                     ->markdown()
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                                 TextEntry::make('type')
                                     ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.settings.entries.location-type'))
                                     ->icon('heroicon-o-tag'),
@@ -43,7 +43,7 @@ class LocationInfolist
                                 TextEntry::make('storageCategory.name')
                                     ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.settings.entries.storage-category'))
                                     ->icon('heroicon-o-archive-box')
-                                    ->placeholder('—'),
+                                    ->placeholder('Not set'),
                             ])
                             ->columns(2),
 
@@ -61,15 +61,15 @@ class LocationInfolist
                                         TextEntry::make('cyclic_inventory_frequency')
                                             ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.settings.entries.inventory-frequency'))
                                             ->icon('heroicon-o-clock')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('cyclic_inventory_last')
                                             ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.settings.entries.last-inventory'))
                                             ->icon('heroicon-o-calendar')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                         TextEntry::make('cyclic_inventory_next_expected')
                                             ->label(__('inventories::filament/clusters/configurations/resources/location.infolist.sections.settings.entries.next-expected'))
                                             ->icon('heroicon-o-calendar-days')
-                                            ->placeholder('—'),
+                                            ->placeholder('Not set'),
                                     ]),
                             ])
                             ->columns(2),
