@@ -10,7 +10,7 @@ class Bouncer
     /**
      * Authorized user IDs, cached per signed-in user so a long-running worker never reuses another person's list.
      *
-     * @var array<int, array<int, int>|null>
+     * @var array<string, array<int, int>|null>
      */
     protected static array $authorizedUserIdsCache = [];
 
@@ -25,8 +25,14 @@ class Bouncer
             return null;
         }
 
-        if (array_key_exists($user->id, static::$authorizedUserIdsCache)) {
-            return static::$authorizedUserIdsCache[$user->id];
+        $permission = $user->resource_permission instanceof PermissionType
+            ? $user->resource_permission->value
+            : (string) $user->resource_permission;
+
+        $cacheKey = $user->id.'|'.$permission;
+
+        if (array_key_exists($cacheKey, static::$authorizedUserIdsCache)) {
+            return static::$authorizedUserIdsCache[$cacheKey];
         }
 
         if ($user->resource_permission == PermissionType::GLOBAL) {
@@ -37,7 +43,7 @@ class Bouncer
             $ids = [$user->id];
         }
 
-        return static::$authorizedUserIdsCache[$user->id] = $ids;
+        return static::$authorizedUserIdsCache[$cacheKey] = $ids;
     }
 
     public static function flushCache(): void
