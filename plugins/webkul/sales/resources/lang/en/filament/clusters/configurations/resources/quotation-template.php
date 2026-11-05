@@ -20,7 +20,7 @@ return [
             ],
 
             'terms-and-conditions' => [
-                'title'  => 'Terms',
+                'title'  => 'Terms and conditions',
                 'fields' => [
                     'note-placeholder' => 'Write your terms and conditions for the quotations.',
                 ],
@@ -98,7 +98,7 @@ return [
                 'title' => 'Products',
             ],
             'terms-and-conditions' => [
-                'title' => 'Terms',
+                'title' => 'Terms and conditions',
             ],
         ],
         'sections' => [

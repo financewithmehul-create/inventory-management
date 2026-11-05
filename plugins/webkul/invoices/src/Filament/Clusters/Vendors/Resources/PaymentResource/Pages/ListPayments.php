@@ -11,6 +11,11 @@ class ListPayments extends BaseListPayments
 {
     protected static string $resource = PaymentResource::class;
 
+    public function getTitle(): string
+    {
+        return 'Money paid';
+    }
+
     public function getPresetTableViews(): array
     {
         $presets = parent::getPresetTableViews();

@@ -11,6 +11,11 @@ class ListVendors extends BaseListVendors
 {
     protected static string $resource = VendorResource::class;
 
+    public function getTitle(): string
+    {
+        return 'Suppliers';
+    }
+
     public function table(Table $table): Table
     {
         $table = parent::table($table)

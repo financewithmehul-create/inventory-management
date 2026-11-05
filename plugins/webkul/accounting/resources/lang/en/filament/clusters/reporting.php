@@ -29,7 +29,7 @@ return [
     'pages' => [
         'balance-sheet' => [
             'navigation' => [
-                'title' => 'Balance Sheet',
+                'title' => 'Balance sheet',
                 'group' => 'Statement Reports',
             ],
             'actions' => [
@@ -96,7 +96,7 @@ return [
         ],
         'profit-loss' => [
             'navigation' => [
-                'title' => 'Profit & Loss',
+                'title' => 'Profit and loss',
                 'group' => 'Statement Reports',
             ],
             'actions' => [
@@ -167,7 +167,7 @@ return [
         ],
         'aged-receivable' => [
             'navigation' => [
-                'title' => 'Aged Receivable',
+                'title' => 'Who owes us',
                 'group' => 'Partner Reports',
             ],
             'actions' => [
@@ -194,7 +194,7 @@ return [
         ],
         'aged-payable' => [
             'navigation' => [
-                'title' => 'Aged Payable',
+                'title' => 'What we owe',
                 'group' => 'Partner Reports',
             ],
             'actions' => [

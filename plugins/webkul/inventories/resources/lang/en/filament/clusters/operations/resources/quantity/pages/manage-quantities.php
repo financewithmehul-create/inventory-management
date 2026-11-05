@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Quantity Adjustments',
+    'title' => 'Stock on hand',
 
     'tabs' => [
         'internal-locations' => 'Internal Locations',

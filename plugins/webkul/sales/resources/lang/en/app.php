@@ -25,6 +25,6 @@ return [
         'payment-information'   => 'Payment Information',
         'payment-communication' => 'Payment Communication',
         'account-details'       => 'on this account details:',
-        'terms-and-conditions'  => 'Terms',
+        'terms-and-conditions'  => 'Terms and conditions',
     ],
 ];

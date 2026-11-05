@@ -195,7 +195,7 @@ return [
             ],
 
             'term-and-conditions' => [
-                'title' => 'Terms',
+                'title' => 'Terms and conditions',
             ],
         ],
     ],
@@ -422,7 +422,7 @@ return [
             ],
 
             'term-and-conditions' => [
-                'title' => 'Terms',
+                'title' => 'Terms and conditions',
             ],
         ],
     ],
