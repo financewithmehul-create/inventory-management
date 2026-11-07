@@ -151,6 +151,40 @@ LOG_LEVEL=warning
 Save in nano with `Ctrl+O`, `Enter`, then `Ctrl+X`. Never commit this file or share it: it holds the database
 password. Protect it with `chmod 600 .env`.
 
+### Using Supabase instead of MySQL
+
+The app also runs on PostgreSQL, so you can use a free [Supabase](https://supabase.com) project as the
+database instead of the MySQL database above. Nothing else about this deploy guide changes.
+
+1. Create a Supabase project, then open **Project Settings → Database** and copy the host and password
+   (the password is shown once — save it somewhere safe).
+2. Use these `.env` values instead of the `DB_*` block above:
+
+```ini
+DB_CONNECTION=pgsql
+DB_HOST=db.xxxxxxxxxxxxxxxxxxxx.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=the-password-you-copied
+DB_SSLMODE=require
+```
+
+3. Continue with Part 7 as normal — `php artisan erp:install` builds the whole schema on Supabase the same
+   way it does on MySQL.
+4. **Lock down Supabase's own API** so it can never be used to bypass this app's own permission checks.
+   Supabase auto-exposes every table it creates over a separate REST API; since this app talks to the
+   database directly and never uses that API, turn it off for these tables. In the Supabase SQL editor, run:
+
+```sql
+revoke all on all tables in schema public from anon, authenticated;
+revoke all on all sequences in schema public from anon, authenticated;
+alter default privileges in schema public revoke all on tables from anon, authenticated;
+alter default privileges in schema public revoke all on sequences from anon, authenticated;
+```
+
+   Re-run this (or re-check it) after installing new modules, since each one adds its own tables.
+
 Mail (for password resets and notifications): set `MAIL_MAILER=smtp` and the host, port, username and
 password of a mailbox created in hPanel under **Emails**.
 
